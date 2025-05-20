@@ -1,0 +1,57 @@
+# System files
+.DS_Store
+Thumbs.db
+
+# Unity generated files and directories
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Pp]references/
+[Uu]serSettings/
+
+# Visual Studio files
+*.sln
+*.csproj
+*.unityproj
+*.booproj
+*.pidb
+*.suo
+*.user
+*.userprefs
+*.dll
+*.exe
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+.vs/
+
+# Unity3D generated meta files
+*.pidb.meta
+
+# Local and package files
+*.local
+Packages-lock.json
+
+# Platform specific exports
+ExportedObj/
+*.apk
+*.aab
+*.unitypackage
+*.app
+
+# Test results
+TestResults/
+
+# Third-party plugins
+Plugins/Android/
+Plugins/iOS/
+
+# Unity3D Cache Server
+cacheserver/
+
+# Crashlytics generated files
+com.crashlytics/
