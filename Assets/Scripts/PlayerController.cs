@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 15f;
     public float maxSpeed = 30f;
     public float decelerationForce = 10f; // Force applied when no input
+    public bool isLocked = false;
     private Rigidbody rb;
 
     // Start is called before the first frame update
@@ -18,6 +19,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        // 如果玩家被锁定，则不移动
+        if (isLocked) return;
+
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
         
