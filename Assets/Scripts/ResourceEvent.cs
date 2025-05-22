@@ -39,6 +39,21 @@ public class ResourceEvent : Event
         InitializeUI();
     }
     
+    /// <summary>
+    /// 设置事件面板
+    /// </summary>
+    protected override void SetupEventPanel()
+    {
+        Debug.Log("SetupEventPanel");
+        Text eventNameText = eventPanel.transform.Find("Name").GetComponent<Text>();
+        Text descriptionText = eventPanel.transform.Find("Description").GetComponent<Text>();
+        Image backgroundImage = eventPanel.transform.Find("BackgroundImage").GetComponent<Image>();
+        eventNameText.text = eventName;
+        descriptionText.text = description;
+        backgroundImage.sprite = backgroundImageSprite;
+        Debug.Log("SetupEventPanel done");
+    }
+    
     protected virtual void InitializeUI()
     {
         if (rewardsContainer != null)
@@ -118,9 +133,4 @@ public class ResourceEvent : Event
         Debug.Log($"Giving reward: {reward.rewardName} x {totalReward}");
     }
     
-    protected override void OnPanelOpened()
-    {
-        base.OnPanelOpened();
-        // You might want to refresh the UI here
-    }
 } 

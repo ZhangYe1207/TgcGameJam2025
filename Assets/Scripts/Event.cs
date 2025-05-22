@@ -7,14 +7,11 @@ public abstract class Event : MonoBehaviour
     public string eventName;
     public string description;
     public Sprite eventIcon;
-    public Sprite backgroundImage;
+    public Sprite backgroundImageSprite;
     
     [Header("UI References")]
     public GameObject eventPanel;
     public GameObject eventPreviewPanel;
-    public Text nameText;
-    public Text descriptionText;
-    public Image iconImage;
     
     [Header("Interaction Settings")]
     public float interactionDistance = 3f;
@@ -22,8 +19,6 @@ public abstract class Event : MonoBehaviour
     protected bool isPlayerNearby = false;
     protected GameObject parentLocation;
     protected GameObject player;
-    // 是否显示面板
-    protected bool isPanelVisible = false;
     
     protected virtual void Start()
     {
@@ -45,12 +40,12 @@ public abstract class Event : MonoBehaviour
         // Check if player is nearby
         float distance = Vector3.Distance(parentLocation.transform.position, playerTransform.position);
         isPlayerNearby = distance <= interactionDistance;
-        Debug.Log("isPlayerNearby: " + isPlayerNearby);
         // Show interaction prompt when nearby
         if (isPlayerNearby && Input.GetKeyDown(KeyCode.E))
         {
             player.GetComponent<PlayerController>().isLocked = true;
             Debug.Log("Player locked");
+            SetupEventPanel();
             ToggleEventPanel();
         }
     }
@@ -60,25 +55,11 @@ public abstract class Event : MonoBehaviour
         if (eventPanel != null)
         {
             eventPanel.SetActive(true);
-            
-            if (isPanelVisible)
-            {
-                OnPanelOpened();
-            }
-            else
-            {
-                OnPanelClosed();
-            }
         }
     }
-    
-    protected virtual void OnPanelOpened()
-    {
-        // Override this in derived classes to handle panel opening
+
+    protected virtual void SetupEventPanel() {
+
     }
     
-    protected virtual void OnPanelClosed()
-    {
-        // Override this in derived classes to handle panel closing
-    }
 } 

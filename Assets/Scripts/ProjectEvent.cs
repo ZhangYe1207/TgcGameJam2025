@@ -216,9 +216,4 @@ public class ProjectEvent : Event
         UpdateUI();
     }
     
-    protected override void OnPanelOpened()
-    {
-        base.OnPanelOpened();
-        UpdateUI();
-    }
 } 
