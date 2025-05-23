@@ -9,19 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 596e9113cca82f44cb60b0200e920aeb, type: 3}
+  m_Script: {fileID: 11500000, guid: dff22a12795fa2b48bb833cc4c7406c9, type: 3}
   m_Name: CardDatabase
   m_EditorClassIdentifier: 
   allCards:
-  - cardName: ConsultantCard
-    cardId: 0
-    description: 'Consultant Card '
-    cardImage: {fileID: 0}
   - cardName: InsightCard
-    cardId: 1
+    cardId: 0
     description: Insight Card
-    cardImage: {fileID: 21300000, guid: f1a09b7f0fade6d44935c96cc19438ce, type: 3}
-  - cardName: RecommendationCard
-    cardId: 2
-    description: 'Recommendation Card '
     cardImage: {fileID: 0}
