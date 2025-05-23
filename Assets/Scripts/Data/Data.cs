@@ -39,7 +39,7 @@ public class PlayerData
 // 事件类型枚举
 public enum EventType
 {
-    Resoursce,
+    Resource,
     PreviewableProject,
     UnpreviewableProject
 }

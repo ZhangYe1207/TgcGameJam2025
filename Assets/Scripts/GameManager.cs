@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            cardDatabase = Resources.Load<CardDatabase>("CardDataBase");
+            cardDatabase = Resources.Load<CardDatabase>("Databases/CardDatabase");
         }
         else
         {
