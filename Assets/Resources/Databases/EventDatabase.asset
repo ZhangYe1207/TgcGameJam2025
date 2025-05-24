@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f45d0f73d70a895468f8cc36f319c545, type: 3}
+  m_Name: EventDatabase
+  m_EditorClassIdentifier: 
+  allEvents:
+  - eventId: gain_money_15000
+    title: Gain Money 15000
+    description: This is Gain Money 15000
+    eventType: 0
+    eventImage: {fileID: 21300008, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    results:
+    - description: money +15000, reputation -1, InsightCard +1
+      moneyChange: 15000
+      reputationChange: -1
+      addCardIds: 00000000
+      removeCardIds: 
+    prerequisite:
+      minReputation: 0
+      maxReputation: 0
+      minMoney: 0
+      maxMoney: 0
+      minLevel: 0
+      maxLevel: 3
+      requiredEventIds: []
