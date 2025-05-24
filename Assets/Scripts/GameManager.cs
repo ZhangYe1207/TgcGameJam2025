@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -6,7 +7,11 @@ public class GameManager : MonoBehaviour
 
     public CardDatabase cardDatabase;
     public EventDatabase eventDatabase;
-    
+    public ProjectDatabase projectDatabase;
+    public int currentLevel = 0;
+    // 这一轮结算时需要结算的项目结果
+    public List<ProjectResult> projectResults = new List<ProjectResult>();
+
     private void Awake()
     {
         // 确保单例唯一
@@ -16,6 +21,7 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             cardDatabase = Resources.Load<CardDatabase>("Databases/CardDatabase");
             eventDatabase = Resources.Load<EventDatabase>("Databases/EventDatabase");
+            projectDatabase = Resources.Load<ProjectDatabase>("Databases/ProjectDatabase");
         }
         else
         {
