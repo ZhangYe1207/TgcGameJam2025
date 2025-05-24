@@ -125,6 +125,7 @@ public class Project
     public bool isPreviewable;     // 是否可预览
     public ProjectResult[] results;  // 可选结果
     public ProjectPrerequisite prerequisite; // 前置条件
+    public int minInvestment; // 最小投资金额
 
     [Header("实际成功率配置")]
     [Tooltip("实际结算时的基础成功率")]
@@ -164,9 +165,19 @@ public class Project
         formulaType = SuccessRateFormula.Custom;
     }
 
-    // 计算基于投资金额的成功率
-    public float CalculateSuccessRate(float investment, float reputation)
+    public void SetCustomShowFormula(System.Func<float, float, float, float, float> formula)
     {
+        customShowSuccessRateFormula = formula;
+        showFormulaType = SuccessRateFormula.Custom;
+    }
+
+    // 计算基于投资金额的成功率
+    public float CalculateSuccessRate(int investment, int reputation)
+    {
+        if (investment < minInvestment) {
+            return 0;
+        }
+        investment = investment - minInvestment;
         switch (formulaType)
         {
             case SuccessRateFormula.Linear:
@@ -184,6 +195,33 @@ public class Project
                     
             default:
                 return baseSuccessRate;
+        }
+    }
+
+    // 计算基于投资金额的成功率
+    public float CalculateShowSuccessRate(int investment, int reputation)
+    {
+        if (investment < minInvestment) {
+            return 0;
+        }
+        investment = investment - minInvestment;
+        switch (showFormulaType)
+        {
+            case SuccessRateFormula.Linear:
+                return Mathf.Clamp01(showBaseSuccessRate + showFormulaParamA * investment + showFormulaParamB * reputation);
+                
+            case SuccessRateFormula.Logarithmic:
+                return Mathf.Clamp01(showBaseSuccessRate + showFormulaParamA * Mathf.Log(investment + 1) + showFormulaParamB * reputation);
+                
+            case SuccessRateFormula.Exponential:
+                return Mathf.Clamp01(showBaseSuccessRate + showFormulaParamA * (Mathf.Exp(investment) - 1) + showFormulaParamB * reputation);
+                
+            case SuccessRateFormula.Custom:
+                Debug.LogError("自定义公式未设置!");
+                return showBaseSuccessRate; 
+                    
+            default:
+                return showBaseSuccessRate;
         }
     }
 }

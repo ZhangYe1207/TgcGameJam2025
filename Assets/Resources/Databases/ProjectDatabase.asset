@@ -25,6 +25,8 @@ MonoBehaviour:
       reputationChange: 2
       addCardIds: 
       removeCardIds: 
+      numLevelsToTakeEffect: 0
+      nextProjectId: 
     prerequisite:
       minReputation: 0
       maxReputation: 0
@@ -33,7 +35,12 @@ MonoBehaviour:
       minLevel: 0
       maxLevel: 0
       requiredProjectIds: []
+    minInvestment: 5000
     baseSuccessRate: 0.45
     formulaType: 0
-    formulaParamA: 0.0001
-    formulaParamB: 0.1
+    formulaParamA: 0.00002
+    formulaParamB: 0.02
+    showBaseSuccessRate: 0.5
+    showFormulaType: 0
+    showFormulaParamA: 0.0001
+    showFormulaParamB: 0.01

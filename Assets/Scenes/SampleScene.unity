@@ -1019,9 +1019,10 @@ MonoBehaviour:
       minLevel: 0
       maxLevel: 0
       requiredProjectIds: []
+    minInvestment: 5000
     baseSuccessRate: 0.5
     formulaType: 0
-    formulaParamA: 0.0001
+    formulaParamA: 0.00002
     formulaParamB: 0.01
     showBaseSuccessRate: 0.5
     showFormulaType: 0
@@ -3363,6 +3364,7 @@ GameObject:
   - component: {fileID: 1913902444}
   - component: {fileID: 1913902446}
   - component: {fileID: 1913902445}
+  - component: {fileID: 1913902447}
   m_Layer: 5
   m_Name: ProjectInvestmentPanel
   m_TagString: Untagged
@@ -3435,6 +3437,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1913902443}
   m_CullTransparentMesh: 1
+--- !u!114 &1913902447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913902443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 861d3661c9511ea41a9e50409da92c2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  titleText: {fileID: 0}
+  descriptionText: {fileID: 0}
+  amountText: {fileID: 0}
+  successRateText: {fileID: 0}
+  projectImage: {fileID: 0}
+  addButton: {fileID: 0}
+  subButton: {fileID: 0}
+  confirmButton: {fileID: 0}
+  investmentStep: 1000
+  projectHandler: {fileID: 0}
 --- !u!1 &2123561673
 GameObject:
   m_ObjectHideFlags: 0

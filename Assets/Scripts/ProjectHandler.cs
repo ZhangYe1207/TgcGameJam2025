@@ -64,9 +64,7 @@ public class ProjectHandler : MonoBehaviour
 
     private void HandleProject() {
         // TODO: 项目投资UI界面&交互逻辑
-        projectInvestmentUI.transform.Find("Title").GetComponent<Text>().text = projectData.title;
-        projectInvestmentUI.transform.Find("Description").GetComponent<Text>().text = projectData.description;
-        projectInvestmentUI.transform.Find("ProjectImage").GetComponent<Image>().sprite = projectData.projectImage;
+        projectInvestmentUI.GetComponent<InvestmentUIManager>().SetProjectAndInit(this);
         projectInvestmentUI.SetActive(true);
         waitingForConfirm = true;
         PlayerController playerController = PlayerManager.Instance.playerGO.GetComponent<PlayerController>();
