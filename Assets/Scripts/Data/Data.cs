@@ -45,8 +45,7 @@ public class PlayerData
 // 事件类型枚举
 public enum EventType
 {
-    Resource,
-    Project
+    Resource
 }
  
 // 事件选择结果
@@ -85,4 +84,92 @@ public class RandomEvent
     public Sprite eventImage;      // 事件图片
     public EventResult[] results;  // 可选结果
     public EventPrerequisite prerequisite; // 前置条件
+}
+
+// 项目结果
+[System.Serializable]
+public class ProjectResult
+{
+    public string resultBrief;     // 结果简要
+    public string description;     // 结果描述
+    public int moneyChange;        // 金钱变化
+    public int reputationChange;   // 声望变化
+    public int[] addCardIds;     // 添加的卡牌ID
+    public int[] removeCardIds;  // 移除的卡牌ID
+}
+
+// 项目前置条件
+[System.Serializable]
+public class ProjectPrerequisite
+{
+    public int minReputation;   // 最小声望
+    public int maxReputation;   // 最大声望
+    public int minMoney;        // 最小金钱
+    public int maxMoney;        // 最大金钱
+    public int minLevel;        // 最早出现的关卡
+    public int maxLevel;        // 最晚出现的关卡
+    public string[] requiredProjectIds; // 前置项目ID
+}
+
+[System.Serializable]
+public class Project
+{
+    public string projectId;
+    public string title;
+    public string description;
+    public Sprite projectImage;
+    public bool isPreviewable;     // 是否可预览
+    public ProjectResult[] results;  // 可选结果
+    public ProjectPrerequisite prerequisite; // 前置条件
+    [Range(0f, 1f)] public float baseSuccessRate = 0.5f; // 基础成功率
+    
+    [Header("成功率计算公式")]
+    public SuccessRateFormula formulaType = SuccessRateFormula.Linear;
+    public float formulaParamA = 1f;
+    public float formulaParamB = 0f;
+
+    // 存储自定义公式的委托
+    private System.Func<float, float, float, float> customSuccessRateFormula;
+
+    // 预设的成功率计算公式类型
+    public enum SuccessRateFormula
+    {
+        Linear,      // 线性增长
+        Logarithmic, // 对数增长
+        Exponential, // 指数增长
+        Custom       // 自定义公式
+    }
+
+    // 设置自定义公式
+    public void SetCustomFormula(System.Func<float, float, float, float> formula)
+    {
+        customSuccessRateFormula = formula;
+        formulaType = SuccessRateFormula.Custom;
+    }
+
+    // 计算基于投资金额的成功率
+    public float CalculateSuccessRate(float investment)
+    {
+        switch (formulaType)
+        {
+            case SuccessRateFormula.Linear:
+                return Mathf.Clamp01(baseSuccessRate + formulaParamA * investment + formulaParamB);
+                
+            case SuccessRateFormula.Logarithmic:
+                return Mathf.Clamp01(baseSuccessRate + formulaParamA * Mathf.Log(investment + 1) + formulaParamB);
+                
+            case SuccessRateFormula.Exponential:
+                return Mathf.Clamp01(baseSuccessRate + formulaParamA * (Mathf.Exp(investment) - 1) + formulaParamB);
+                
+            case SuccessRateFormula.Custom:
+                if (customSuccessRateFormula != null)
+                    return Mathf.Clamp01(customSuccessRateFormula(baseSuccessRate, investment, formulaParamA));
+                else
+                    Debug.LogError("自定义公式未设置!");
+                    return baseSuccessRate;
+                    
+            default:
+                return baseSuccessRate;
+        }
+    }
 }

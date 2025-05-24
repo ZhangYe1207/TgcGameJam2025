@@ -63,13 +63,10 @@ public class RandomEventHandler : MonoBehaviour
         Debug.Log("Event triggered: " + eventId);
         if (eventData.eventType == EventType.Resource) {
             HandleResourceEvent();
-        } else if (eventData.eventType == EventType.Project) {
-            HandleProjectEvent();
         }
     }
     
     private void HandleResourceEvent() {
-        // TODO: 资源事件处理
         // 1. 结果结算, 随机选择一个结果
         EventResult result = eventData.results[Random.Range(0, eventData.results.Length)];
         // Debug.Log($"资源事件{eventId}结果: {result.description}");
