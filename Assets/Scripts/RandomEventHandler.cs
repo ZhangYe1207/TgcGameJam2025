@@ -1,11 +1,15 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RandomEventHandler : MonoBehaviour
 {
     public string eventId;
     public RandomEvent eventData;
-    public GameObject locationGO;
     public float eventTriggerRadius = 5f;
+
+    private GameObject eventResultUI;
+    private GameObject locationGO;
+    private bool waitingForConfirm = false;
     
     public void Start() {
         eventData = GameManager.Instance.eventDatabase.GetEventByID(eventId);
@@ -13,10 +17,24 @@ public class RandomEventHandler : MonoBehaviour
             Debug.LogError("Event not found: " + eventId);
         }
         locationGO = gameObject.transform.parent.gameObject;
+        eventResultUI = GameObject.Find("Canvas").transform.Find("ResourceEventPanel").gameObject;
+        Debug.Log("eventResultUI: " + eventResultUI);
     }
 
     public void Update() {
-        if (IsPlayerNearby()) {
+        if (waitingForConfirm) {
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape)) {
+                waitingForConfirm = false;
+                eventResultUI.SetActive(false);
+                Debug.Log("事件已确认，退出UI");
+                PlayerManager.Instance.playerGO.GetComponent<PlayerController>().isLocked = false;
+                return;
+            }
+        }
+        if (IsPlayerNearby() || MouseHovering()) {
+            // TODO: 显示预览UI
+        }
+        if (IsPlayerNearby() || MouseHovering()) {
             if (Input.GetKeyDown(KeyCode.E)) {
                 HandleEvent();
             }
@@ -31,21 +49,45 @@ public class RandomEventHandler : MonoBehaviour
         return Vector3.Distance(locationPosition, playerPosition) < eventTriggerRadius;
     }
 
+    private bool MouseHovering() {
+        // TODO: 鼠标悬停事件处理
+        return false;
+    }
+
     private void HandleEvent() {
         Debug.Log("Event triggered: " + eventId);
-        if (eventData.eventType == RandomEventType.Resource) {
+        if (eventData.eventType == EventType.Resource) {
             HandleResourceEvent();
-        } else if (eventData.eventType == RandomEventType.Project) {
+        } else if (eventData.eventType == EventType.Project) {
             HandleProjectEvent();
         }
     }
     
     private void HandleResourceEvent() {
-        // 资源事件处理
+        // TODO: 资源事件处理
+        // 1. 结果结算, 随机选择一个结果
+        EventResult result = eventData.results[Random.Range(0, eventData.results.Length)];
+        // Debug.Log($"资源事件{eventId}结果: {result.description}");
+        // 2. 显示结算UI
+        ShowResourceEventResultUI(result);
+        // 3. 更新玩家数据
+        PlayerManager.Instance.AddEventFinished(eventId);
     }
 
+    private void ShowResourceEventResultUI(EventResult result) {
+        eventResultUI.transform.Find("Title").GetComponent<Text>().text = eventData.title;
+        eventResultUI.transform.Find("Description").GetComponent<Text>().text = eventData.description;
+        eventResultUI.transform.Find("EventImage").GetComponent<Image>().sprite = eventData.eventImage;
+        eventResultUI.transform.Find("Result").GetComponent<Text>().text = result.description;
+        eventResultUI.SetActive(true);
+        waitingForConfirm = true;
+        PlayerController playerController = PlayerManager.Instance.playerGO.GetComponent<PlayerController>();
+        playerController.isLocked = true;
+    }
+
+
     private void HandleProjectEvent() {
-        // 项目事件处理
+        // TODO: 项目事件处理
     }
 
 }

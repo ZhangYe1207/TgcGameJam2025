@@ -19,6 +19,8 @@ public class PlayerData
     public int money;       // 金钱
     public int reputation;  // 声望
     public List<Card> cards; // 卡牌列表
+    public List<RandomEvent> eventsToProcess; // 需要处理的随机事件列表
+    public List<string> eventsFinished; // 已完成随机事件列表
 
     // 构造函数
     public PlayerData()
@@ -26,6 +28,8 @@ public class PlayerData
         money = 0;
         reputation = 0;
         cards = new List<Card>();
+        eventsToProcess = new List<RandomEvent>();
+        eventsFinished = new List<string>();
     }
 
     public PlayerData(int money, int reputation, List<Card> cards)
@@ -33,6 +37,8 @@ public class PlayerData
         this.money = money;
         this.reputation = reputation;
         this.cards = cards;
+        eventsToProcess = new List<RandomEvent>();
+        eventsFinished = new List<string>();
     }
 }
 

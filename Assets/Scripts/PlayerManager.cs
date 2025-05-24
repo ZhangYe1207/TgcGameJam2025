@@ -37,10 +37,6 @@ public class PlayerManager : MonoBehaviour
         // LoadPlayerData();
     }
 
-    public void Start() {
-        playerGO = GameObject.FindWithTag("Player");
-    }
-
     // ===== 金钱管理 =====
     public void AddMoney(int amount)
     {
@@ -116,6 +112,32 @@ public class PlayerManager : MonoBehaviour
     {
         return playerData.cards;
     }
+
+    // ===== 随机事件管理 =====
+    public void AddEventToProcess(RandomEvent eventData) {
+        playerData.eventsToProcess.Add(eventData);
+        Debug.Log("事件加入处理列表: " + eventData.eventId);
+        OnPlayerDataChanged();
+    }
+    
+    public void AddEventFinished(string eventId) {
+        playerData.eventsFinished.Add(eventId);
+        Debug.Log("事件加入完成列表: " + eventId);
+        OnPlayerDataChanged();
+    }
+
+    public void RemoveEventToProcess(string eventId) {
+        playerData.eventsToProcess.RemoveAll(eventData => eventData.eventId == eventId);
+        Debug.Log("事件移出处理列表: " + eventId);
+        OnPlayerDataChanged();
+    }
+
+    public void RemoveEventFinished(string eventId) {
+        playerData.eventsFinished.RemoveAll(eId => eId == eventId);
+        Debug.Log("事件移出完成列表: " + eventId);
+        OnPlayerDataChanged();
+    }
+
 
     // 数据变更回调（可用于更新UI）
     private void OnPlayerDataChanged()
