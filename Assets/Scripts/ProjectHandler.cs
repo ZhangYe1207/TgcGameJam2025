@@ -1,0 +1,76 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class ProjectHandler : MonoBehaviour
+{
+    public string projectId;
+    public Project projectData;
+    public float eventTriggerRadius = 5f;
+
+    private GameObject projectInvestmentUI;
+    private GameObject locationGO;
+    private bool waitingForConfirm = false;
+    private bool isFinished = false;
+
+    void Start()
+    {
+        projectData = GameManager.Instance.projectDatabase.GetProjectByID(projectId);
+        if (projectData == null) {
+            Debug.LogError("Project not found: " + projectId);
+        }
+        locationGO = gameObject.transform.parent.gameObject;
+        projectInvestmentUI = GameObject.Find("Canvas").transform.Find("ProjectInvestmentPanel").gameObject;
+        Debug.Log("projectInvestmentUI: " + projectInvestmentUI);
+    }
+
+    public void Update() {
+        if (waitingForConfirm) {
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape)) {
+                waitingForConfirm = false;
+                projectInvestmentUI.SetActive(false);
+                Debug.Log($"项目{projectId}已确认, 退出UI");
+                PlayerManager.Instance.playerGO.GetComponent<PlayerController>().isLocked = false;
+                isFinished = true;
+                return;
+            }
+        }
+        if (IsPlayerNearby() || MouseHovering()) {
+            // TODO: 显示预览UI
+        }
+        if (isFinished) {
+            return;
+        }
+        if (IsPlayerNearby()) {
+            if (Input.GetKeyDown(KeyCode.E)) {
+                HandleProject();
+            }
+        }
+    }
+
+    private bool IsPlayerNearby() {
+        Vector3 locationPosition = locationGO.transform.position;
+        locationPosition.y = 0;
+        Vector3 playerPosition = PlayerManager.Instance.playerGO.transform.position;
+        playerPosition.y = 0;
+        return Vector3.Distance(locationPosition, playerPosition) < eventTriggerRadius;
+    }
+
+    private bool MouseHovering() {
+        // TODO: 鼠标悬停事件处理
+        return false;
+    }
+
+    private void HandleProject() {
+        // TODO: 项目投资UI界面&交互逻辑
+        projectInvestmentUI.transform.Find("Title").GetComponent<Text>().text = projectData.title;
+        projectInvestmentUI.transform.Find("Description").GetComponent<Text>().text = projectData.description;
+        projectInvestmentUI.transform.Find("ProjectImage").GetComponent<Image>().sprite = projectData.projectImage;
+        projectInvestmentUI.SetActive(true);
+        waitingForConfirm = true;
+        PlayerController playerController = PlayerManager.Instance.playerGO.GetComponent<PlayerController>();
+        playerController.isLocked = true;
+    }
+        
+}
