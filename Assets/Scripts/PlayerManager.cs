@@ -93,6 +93,33 @@ public class PlayerManager : MonoBehaviour
         playerData.cards.Add(card);
         OnPlayerDataChanged();
     }
+    
+    public void AddCardById(int cardId)
+    {
+        Card cardToAdd = GameManager.Instance.cardDatabase.GetCardById(cardId);
+        if (cardToAdd != null)
+        {
+            AddCard(cardToAdd);
+        }
+        else
+        {
+            Debug.LogError("未找到卡牌ID: " + cardId);
+        }
+    }
+
+    public void RemoveCardById(int cardId)
+    {
+        Card cardToRemove = playerData.cards.Find(card => card.cardId == cardId);
+        if (cardToRemove != null)
+        {
+            RemoveCard(cardId);
+        }
+        else
+        {
+            Debug.LogError("未找到卡牌ID: " + cardId);
+        }
+    }
+
 
     public void RemoveCard(int cardId)
     {
@@ -144,7 +171,7 @@ public class PlayerManager : MonoBehaviour
     {
         // 触发事件通知UI更新
         Debug.Log("玩家数据已更新");
-        SavePlayerData();
+        // TODO: SavePlayerData();
     }
 
     // 保存/加载数据（简化版）
@@ -158,8 +185,7 @@ public class PlayerManager : MonoBehaviour
 
     private void LoadPlayerData()
     {
-        if (PlayerPrefs.HasKey("PlayerData"))
-        {
+        if (PlayerPrefs.HasKey("PlayerData")) {
             string jsonData = PlayerPrefs.GetString("PlayerData");
             playerData = JsonUtility.FromJson<PlayerData>(jsonData);
         }

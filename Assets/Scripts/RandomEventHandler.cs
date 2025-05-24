@@ -10,6 +10,7 @@ public class RandomEventHandler : MonoBehaviour
     private GameObject eventResultUI;
     private GameObject locationGO;
     private bool waitingForConfirm = false;
+    private bool isFinished = false;
     
     public void Start() {
         eventData = GameManager.Instance.eventDatabase.GetEventByID(eventId);
@@ -26,15 +27,19 @@ public class RandomEventHandler : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape)) {
                 waitingForConfirm = false;
                 eventResultUI.SetActive(false);
-                Debug.Log("事件已确认，退出UI");
+                Debug.Log($"事件{eventId}已确认, 退出UI");
                 PlayerManager.Instance.playerGO.GetComponent<PlayerController>().isLocked = false;
+                isFinished = true;
                 return;
             }
         }
         if (IsPlayerNearby() || MouseHovering()) {
             // TODO: 显示预览UI
         }
-        if (IsPlayerNearby() || MouseHovering()) {
+        if (isFinished) {
+            return;
+        }
+        if (IsPlayerNearby()) {
             if (Input.GetKeyDown(KeyCode.E)) {
                 HandleEvent();
             }
@@ -72,6 +77,15 @@ public class RandomEventHandler : MonoBehaviour
         ShowResourceEventResultUI(result);
         // 3. 更新玩家数据
         PlayerManager.Instance.AddEventFinished(eventId);
+        PlayerManager.Instance.AddMoney(result.moneyChange);
+        PlayerManager.Instance.AddReputation(result.reputationChange);
+        // 4. 更新卡牌
+        foreach (int cardId in result.addCardIds) {
+            PlayerManager.Instance.AddCardById(cardId);
+        }
+        foreach (int cardId in result.removeCardIds) {
+            PlayerManager.Instance.RemoveCardById(cardId);
+        }
     }
 
     private void ShowResourceEventResultUI(EventResult result) {
@@ -85,9 +99,7 @@ public class RandomEventHandler : MonoBehaviour
         playerController.isLocked = true;
     }
 
-
     private void HandleProjectEvent() {
         // TODO: 项目事件处理
     }
-
 }
