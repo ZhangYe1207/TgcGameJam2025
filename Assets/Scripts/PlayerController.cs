@@ -1,48 +1,56 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
     public float speed = 15f;
     public float maxSpeed = 30f;
-    public float decelerationForce = 10f; // Force applied when no input
+    public float acceleration = 40f;
+    public float deceleration = 60f;
     public bool isLocked = false;
-    private Rigidbody rb;
 
-    // Start is called before the first frame update
+    private Rigidbody rb;
+    private Vector3 inputDirection;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
-        // 如果玩家被锁定，则不移动
         if (isLocked) return;
 
-        float moveX = Input.GetAxis("Horizontal");
-        float moveZ = Input.GetAxis("Vertical");
-        
-        // Check if there's any input
-        if (Mathf.Abs(moveX) < 0.1f && Mathf.Abs(moveZ) < 0.1f)
+        float moveX = Input.GetAxisRaw("Horizontal");
+        float moveZ = Input.GetAxisRaw("Vertical");
+        inputDirection = new Vector3(moveX, 0, moveZ).normalized;
+
+        Vector3 currentVelocity = rb.velocity;
+        Vector3 targetVelocity = inputDirection * speed;
+
+        Vector3 velocityChange;
+
+        if (inputDirection != Vector3.zero)
         {
-            // Apply deceleration force in the opposite direction of current velocity
-            if (rb.velocity.magnitude > 0.1f)
-            {
-                rb.AddForce(-rb.velocity.normalized * decelerationForce, ForceMode.Force);
-            }
+            // 加速
+            velocityChange = Vector3.MoveTowards(currentVelocity, targetVelocity, acceleration * Time.fixedDeltaTime) - currentVelocity;
         }
         else
         {
-            Vector3 move = new Vector3(moveX, 0, moveZ) * speed;
-            rb.AddForce(move, ForceMode.Force);
+            // 减速（强制将速度逐渐归零）
+            velocityChange = Vector3.MoveTowards(currentVelocity, Vector3.zero, deceleration * Time.fixedDeltaTime) - currentVelocity;
         }
 
-        if (rb.velocity.magnitude > maxSpeed)
+        rb.AddForce(velocityChange, ForceMode.VelocityChange);
+
+        // 限制最大速度
+        Vector3 horizontalVelocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+        if (horizontalVelocity.magnitude > maxSpeed)
         {
-            rb.velocity = rb.velocity.normalized * maxSpeed;
+            horizontalVelocity = horizontalVelocity.normalized * maxSpeed;
+            rb.velocity = new Vector3(horizontalVelocity.x, rb.velocity.y, horizontalVelocity.z);
         }
     }
 }
+
