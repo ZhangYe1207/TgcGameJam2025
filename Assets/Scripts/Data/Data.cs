@@ -40,8 +40,7 @@ public class PlayerData
 public enum EventType
 {
     Resource,
-    PreviewableProject,
-    UnpreviewableProject
+    Project
 }
  
 // 事件选择结果
@@ -76,6 +75,7 @@ public class RandomEvent
     public string title;           // 事件标题
     public string description;     // 事件描述
     public EventType eventType;    // 事件类型
+    public bool isPreviewable;     // 是否可预览
     public Sprite eventImage;      // 事件图片
     public EventResult[] results;  // 可选结果
     public EventPrerequisite prerequisite; // 前置条件

@@ -12,6 +12,7 @@ public class PlayerManager : MonoBehaviour
     public List<Card> initCards = new List<Card>();
 
     public PlayerData playerData;
+    public GameObject playerGO;
 
     private void Awake()
     {
@@ -34,6 +35,10 @@ public class PlayerManager : MonoBehaviour
         playerData = new PlayerData(initMoney, initReputation, initCards);
         // TODO: 可从存档加载数据
         // LoadPlayerData();
+    }
+
+    public void Start() {
+        playerGO = GameObject.FindWithTag("Player");
     }
 
     // ===== 金钱管理 =====
