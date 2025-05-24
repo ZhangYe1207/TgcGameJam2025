@@ -70,5 +70,13 @@ public class ProjectHandler : MonoBehaviour
         PlayerController playerController = PlayerManager.Instance.playerGO.GetComponent<PlayerController>();
         playerController.isLocked = true;
     }
-        
+    
+    public void ConfirmInvestment() {
+        waitingForConfirm = false;
+        projectInvestmentUI.SetActive(false);
+        Debug.Log($"项目投资{projectId}已确认, 退出UI");
+        PlayerManager.Instance.playerGO.GetComponent<PlayerController>().isLocked = false;
+        isFinished = true;
+        return;
+    }
 }

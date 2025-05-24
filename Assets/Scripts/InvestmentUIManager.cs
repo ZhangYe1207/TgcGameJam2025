@@ -99,7 +99,8 @@ public class InvestmentUIManager : MonoBehaviour
     }
 
     private void ConfirmInvestment() {
-        // TODO: 确认投资
+        // TODO: 确认投资逻辑，当前只是关闭了UI，应该通过projectHandler来处理计算Result，然后添加到GameManager的projectResults中
+        projectHandler.ConfirmInvestment();
     }
     
 }

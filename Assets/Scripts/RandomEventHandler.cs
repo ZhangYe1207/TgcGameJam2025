@@ -25,12 +25,7 @@ public class RandomEventHandler : MonoBehaviour
     public void Update() {
         if (waitingForConfirm) {
             if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape)) {
-                waitingForConfirm = false;
-                eventResultUI.SetActive(false);
-                Debug.Log($"事件{eventId}已确认, 退出UI");
-                PlayerManager.Instance.playerGO.GetComponent<PlayerController>().isLocked = false;
-                isFinished = true;
-                return;
+                ConfirmEvent();
             }
         }
         if (IsPlayerNearby() || MouseHovering()) {
@@ -44,6 +39,15 @@ public class RandomEventHandler : MonoBehaviour
                 HandleEvent();
             }
         }
+    }
+
+    private void ConfirmEvent() {
+        waitingForConfirm = false;
+        eventResultUI.SetActive(false);
+        Debug.Log($"事件{eventId}已确认, 退出UI");
+        PlayerManager.Instance.playerGO.GetComponent<PlayerController>().isLocked = false;
+        isFinished = true;
+        return;
     }
 
     private bool IsPlayerNearby() {
