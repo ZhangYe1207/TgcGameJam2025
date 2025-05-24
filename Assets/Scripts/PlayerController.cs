@@ -20,7 +20,10 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         // 如果玩家被锁定，则不移动
-        if (isLocked) return;
+        if (isLocked) {
+            rb.velocity = Vector3.zero;
+            return;
+        }
 
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
