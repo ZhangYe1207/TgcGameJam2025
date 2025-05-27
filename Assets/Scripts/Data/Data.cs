@@ -9,8 +9,44 @@ public class Card
     public int cardId;
     public string description;
     public Sprite cardImage;
+    public List<EffectData> cardEffects;
     // 其他卡牌属性...
 }
+
+[System.Serializable]
+public class EffectData
+{
+    public string effectCode;
+    [TextArea] public string explanation;
+}   
+
+[System.Serializable]
+public class ConditionData
+{
+    public string conditionCode;
+    [TextArea] public string explanation;
+}
+
+[System.Serializable]
+public class GameProperty
+{
+    public string propertyName;
+    public int currentValue;
+    public int maxValue;
+    public int minValue;
+    [TextArea] public string explanation;
+}
+
+[System.Serializable]
+public class GameState
+{
+    public List<GameProperty> gameProperties;
+    public List<Card> handCards;
+    public List<string> eventsFinished;
+    public List<string> projectFinished;
+    public List<string> friends;
+}
+
 
 // 玩家数据类
 [System.Serializable]
@@ -53,9 +89,7 @@ public enum EventType
 public class EventResult
 {
     public string description;     // 结果描述
-    public int reputationChange;   // 声望变化
-    public int[] addCardIds;     // 添加的卡牌ID
-    public int[] removeCardIds;  // 移除的卡牌ID
+    public List<EffectData> eventEffects;
 }
 
 // 事件前置条件

@@ -21,6 +21,9 @@ public class CardDatabase : ScriptableObject
     {
         foreach (Card card in allCards)
         {
+            if (card.cardImage != null) {
+                continue;
+            }
             card.cardImage = Resources.Load<Sprite>($"CardSprites/{card.cardName}");
             Debug.Log("card.cardName: " + card.cardName);
             Debug.Log("card.cardId: " + card.cardId);

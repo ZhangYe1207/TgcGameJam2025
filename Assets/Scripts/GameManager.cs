@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public int currentLevel = 0;
     // 这一轮结算时需要结算的项目结果
     public List<ProjectResult> projectResults = new List<ProjectResult>();
+    public int currentActionPoints = 0;
+    public List<GameProperty> gameProperties = new List<GameProperty>();
 
     private void Awake()
     {
