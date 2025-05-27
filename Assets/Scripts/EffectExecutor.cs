@@ -6,7 +6,11 @@ using UnityEngine;
 
 public class EffectExecutor : MonoBehaviour
 {
-    private Dictionary<string, PropertyInfo> gameProperties = new Dictionary<string, PropertyInfo>();
+    private Dictionary<string, GameProperty> baseGameProperties;
+    private Dictionary<string, FieldInfo> listGameProperties;
+    private string[] supportedOperations = new string[] { "+=", "-=", "*=", "/=", "=" };
+    private string[] supportedListOperations = new string[] { "add", "remove", "clear" };
+    private string[] specialEffectCodes = new string[] { "xxxx" };
     private static EffectExecutor instance;
 
     private void Awake()
@@ -17,39 +21,31 @@ public class EffectExecutor : MonoBehaviour
             return;
         }
         instance = this;
-        DontDestroyOnLoad(gameObject);
-        
+        DontDestroyOnLoad(gameObject);        
+    }
+
+    public void Start() {
         InitializeGameProperties();
     }
 
     private void InitializeGameProperties()
     {
-        Type gameStateType = typeof(GameManager);
-        PropertyInfo[] properties = gameStateType.GetProperties(
-            BindingFlags.Public | BindingFlags.Instance | BindingFlags.SetProperty);
-            
-        foreach (PropertyInfo property in properties)
-        {
-            if (property.CanWrite && IsSupportedType(property.PropertyType))
-            {
-                gameProperties[property.Name] = property;
-            }
+        baseGameProperties = new Dictionary<string, GameProperty>();
+        listGameProperties = new Dictionary<string, FieldInfo>();
+        foreach (var property in GameManager.Instance.baseGameProperties) {
+            baseGameProperties[property.propertyName] = property;
         }
+        listGameProperties["HandCards"] = typeof(GameManager).GetField("HandCards");
+        listGameProperties["EventsFinished"] = typeof(GameManager).GetField("EventsFinished");
+        listGameProperties["ProjectFinished"] = typeof(GameManager).GetField("ProjectFinished");
+        listGameProperties["Friends"] = typeof(GameManager).GetField("Friends");
 
-        Debug.Log("初始化游戏属性: " + string.Join(", ", gameProperties.Keys));
-    }
-
-    private bool IsSupportedType(Type type)
-    {
-        // 基础类型支持
-        if (type == typeof(int))
-            return true;
-            
-        // List类型支持
-        if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(List<>))
-            return true;
-            
-        return false;
+        // foreach (var property in baseGameProperties) {
+        //     Debug.Log(property.Key + ": " + property.Value);
+        // }
+        // foreach (var property in listGameProperties) {
+        //     Debug.Log(property.Key + ": " + string.Join(", ", property.Value));
+        // }
     }
 
     public static void ExecuteEffect(string effectCode)
@@ -73,74 +69,91 @@ public class EffectExecutor : MonoBehaviour
     private void ExecuteNumberOperation(string effectCode)
     {
         // 基础类型操作解析
-        string[] parts = effectCode.Split();
-        if (parts.Length < 3)
+        string[] parts = effectCode.Split(supportedOperations, StringSplitOptions.RemoveEmptyEntries);
+        if (parts.Length != 2)
         {
             Debug.LogError($"无效的效果代码: {effectCode}");
             return;
         }
 
-        string propertyName = parts[0].Trim().ToLower();
-        string operation = parts[1].Trim().ToLower();
-        string valueString = parts[2].Trim();
-        
-        if (gameProperties.TryGetValue(propertyName, out PropertyInfo property))
-        {
-            try
-            {
-                object value = ConvertToType(valueString, property.PropertyType);
-                ApplyNumberOperation(property, value, operation);
+        try {
+            string propertyName = parts[0].Trim();
+            string valueString = parts[1].Trim();
+            int value = int.Parse(valueString);
+            if (baseGameProperties.TryGetValue(propertyName, out GameProperty property)) {
+                int oldValue = property.currentValue;
+                foreach (var operation in supportedOperations) {
+                    if (effectCode.Contains(operation)) {
+                        ApplyNumberOperation(property, value, operation);
+                        Debug.Log($"执行效果 {effectCode} 成功，{propertyName}: {oldValue} -> {property.currentValue}");
+                        return;
+                    }
+                }
             }
-            catch (Exception e)
-            {
-                Debug.LogError($"执行效果时出错: {e.Message}");
+            else {
+                Debug.LogError($"未找到属性: {propertyName}");
             }
         }
-        else
-        {
-            Debug.LogError($"未找到属性: {propertyName}");
+        catch (Exception e) {
+            Debug.LogError($"执行效果时出错: {e.Message}");
         }
     }
 
-    
-    private void ApplyNumberOperation(PropertyInfo property, object value, string operation)
+    private int HandleOutOfRange(GameProperty property, int value, string operation)
     {
-        object currentValue = property.GetValue(GameManager.Instance);
-        
+        switch (property.outOfRangeHandlePolicy) {
+            case GamePropertyOutOfRangeHandlePolicy.Clamp:
+                return Mathf.Clamp(value, property.minValue, property.maxValue);
+            case GamePropertyOutOfRangeHandlePolicy.Error:
+                Debug.LogError($"属性 {property.propertyName} 超出范围: {value}");
+                return value;
+            default:
+                Debug.LogError($"不支持的超出范围处理策略: {property.outOfRangeHandlePolicy}");
+                return value;
+        }
+    }
+    
+    private void ApplyNumberOperation(GameProperty property, int value, string operation)
+    {
+        int currentValue = property.currentValue;
+        int newValue;
+
         switch (operation)
         {
             case "+=":
-                if (property.PropertyType == typeof(int)) {
-                    int newValue = (int)currentValue + (int)value;
-                    // int ma
-                    // if (newValue > 
-                    //     || newValue < property.PropertyType.GetProperty("minValue").GetValue(GameManager.Instance)) 
-                    // {
-                    //     GamePropertyOutOfRangeHandlePolicy outOfRangeHandlePolicy = 
-                    //     (GamePropertyOutOfRangeHandlePolicy)property.PropertyType.GetProperty("outOfRangeHandlePolicy").GetValue(GameManager.Instance);
-                    //     if (outOfRangeHandlePolicy == GamePropertyOutOfRangeHandlePolicy.Clamp) {
-                    //         newValue = Mathf.Clamp(newValue, (int)property.PropertyType.GetProperty("minValue").GetValue(GameManager.Instance), 
-                    //             (int)property.PropertyType.GetProperty("maxValue").GetValue(GameManager.Instance));
-                    //     }
-                    // }
-                    property.SetValue(GameManager.Instance, newValue);
+                newValue = currentValue + value;
+                if (newValue > property.maxValue || newValue < property.minValue) {
+                    newValue = HandleOutOfRange(property, newValue, operation);
                 }
-
+                property.currentValue = newValue;
                 break;
             case "-=":
-                if (property.PropertyType == typeof(int))
-                    property.SetValue(GameManager.Instance, (int)currentValue - (int)value);
+                newValue = currentValue - value;
+                if (newValue > property.maxValue || newValue < property.minValue) {
+                    newValue = HandleOutOfRange(property, newValue, operation);
+                }
+                property.currentValue = newValue;
                 break;
             case "*=":
-                if (property.PropertyType == typeof(int))
-                    property.SetValue(GameManager.Instance, (int)currentValue * (int)value);
+                newValue = currentValue * value;
+                if (newValue > property.maxValue || newValue < property.minValue) {
+                    newValue = HandleOutOfRange(property, newValue, operation);
+                }
+                property.currentValue = newValue;
                 break;
             case "/=":
-                if (property.PropertyType == typeof(int))
-                    property.SetValue(GameManager.Instance, (int)currentValue / (int)value);
+                newValue = currentValue / value;
+                if (newValue > property.maxValue || newValue < property.minValue) {
+                    newValue = HandleOutOfRange(property, newValue, operation);
+                }
+                property.currentValue = newValue;
                 break;
             case "=":
-                property.SetValue(GameManager.Instance, value);
+                newValue = value;
+                if (newValue > property.maxValue || newValue < property.minValue) {
+                    newValue = HandleOutOfRange(property, newValue, operation);
+                }
+                property.currentValue = newValue;
                 break;
             default:
                 Debug.LogError($"不支持的操作: {operation}");
@@ -150,35 +163,35 @@ public class EffectExecutor : MonoBehaviour
 
     private void ExecuteListOperation(string effectCode)
     {
-        string[] parts = effectCode.Split(':');
-        if (parts.Length < 3)
-        {
-            Debug.LogError($"无效的List操作格式: {effectCode}");
-            return;
-        }
+        // string[] parts = effectCode.Split(':');
+        // if (parts.Length < 3)
+        // {
+        //     Debug.LogError($"无效的List操作格式: {effectCode}");
+        //     return;
+        // }
         
-        string propertyName = parts[0].Trim().ToLower();
-        string operation = parts[1].Trim().ToLower();
-        string valueString = parts[2].Trim();
+        // string propertyName = parts[0].Trim().ToLower();
+        // string operation = parts[1].Trim().ToLower();
+        // string valueString = parts[2].Trim();
         
-        if (gameProperties.TryGetValue(propertyName, out PropertyInfo property))
-        {
-            try
-            {
-                Type elementType = property.PropertyType.GetGenericArguments()[0];
-                object value = Convert.ChangeType(valueString, elementType);
-                ApplyListOperation(property, value, operation);
-            }
-            catch (Exception e)
-            {
-                Debug.LogError($"执行List操作时出错: {e.Message}");
-            }
-        }
-        else
-        {
-            Debug.LogError($"未找到属性: {propertyName}");
-        }
-        return;
+        // if (gameProperties.TryGetValue(propertyName, out PropertyInfo property))
+        // {
+        //     try
+        //     {
+        //         Type elementType = property.PropertyType.GetGenericArguments()[0];
+        //         object value = Convert.ChangeType(valueString, elementType);
+        //         ApplyListOperation(property, value, operation);
+        //     }
+        //     catch (Exception e)
+        //     {
+        //         Debug.LogError($"执行List操作时出错: {e.Message}");
+        //     }
+        // }
+        // else
+        // {
+        //     Debug.LogError($"未找到属性: {propertyName}");
+        // }
+        // return;
     }
     
     private void ApplyListOperation(PropertyInfo property, object value, string operation)
@@ -207,12 +220,5 @@ public class EffectExecutor : MonoBehaviour
                 Debug.LogError($"不支持的List操作: {operation}");
                 break;
         }
-    }
-
-    private object ConvertToType(string valueString, Type targetType)
-    {
-        if (targetType == typeof(int))
-            return int.Parse(valueString);
-        return null;
     }
 }    

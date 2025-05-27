@@ -12,7 +12,7 @@ public class CardDatabase : ScriptableObject
     }
 
     // 根据ID获取卡牌
-    public Card GetCardById(int cardId)
+    public Card GetCardById(string cardId)
     {
         return allCards.Find(card => card.cardId == cardId);
     }

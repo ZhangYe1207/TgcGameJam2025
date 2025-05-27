@@ -85,6 +85,11 @@ public class RandomEventHandler : MonoBehaviour
         // 2. 显示结算UI
         ShowResourceEventResultUI(result);
         // 3. 更新玩家数据
+        foreach (EffectData effect in result.eventEffects) {
+            Debug.Log(effect.effectCode);
+            EffectExecutor.ExecuteEffect(effect.effectCode);
+        }
+        GameManager.Instance.OnGameDataChanged();
         // PlayerManager.Instance.AddEventFinished(eventId);
         // PlayerManager.Instance.AddReputation(result.reputationChange);
         // 4. 更新卡牌

@@ -6,11 +6,20 @@ using UnityEngine;
 public class Card
 {
     public string cardName;
-    public int cardId;
+    public string cardId;
     public string description;
+    public CardType cardType;
     public Sprite cardImage;
     public List<EffectData> cardEffects;
     // 其他卡牌属性...
+}
+
+[System.Serializable]
+public enum CardType
+{
+    Money,
+    Function,
+    Friend,
 }
 
 [System.Serializable]
