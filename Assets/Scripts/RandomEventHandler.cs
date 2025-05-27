@@ -26,6 +26,7 @@ public class RandomEventHandler : MonoBehaviour
         if (waitingForConfirm) {
             if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape)) {
                 ConfirmEvent();
+                return;
             }
         }
         if (IsPlayerNearby() || MouseHovering()) {
@@ -71,6 +72,13 @@ public class RandomEventHandler : MonoBehaviour
     }
     
     private void HandleResourceEvent() {
+        // 检查是否有足够的行动点
+        if (!PlayerManager.Instance.HasActionPoints()) {
+            Debug.Log("行动点不足，无法进行项目投资");
+            return;
+        }
+        // 消耗行动点
+        PlayerManager.Instance.UseActionPoint();
         // 1. 结果结算, 随机选择一个结果
         EventResult result = eventData.results[Random.Range(0, eventData.results.Length)];
         // Debug.Log($"资源事件{eventId}结果: {result.description}");

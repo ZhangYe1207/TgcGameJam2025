@@ -28,11 +28,7 @@ public class ProjectHandler : MonoBehaviour
     public void Update() {
         if (waitingForConfirm) {
             if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape)) {
-                waitingForConfirm = false;
-                projectInvestmentUI.SetActive(false);
-                Debug.Log($"项目{projectId}已确认, 退出UI");
-                PlayerManager.Instance.playerGO.GetComponent<PlayerController>().isLocked = false;
-                isFinished = true;
+                ConfirmInvestment();
                 return;
             }
         }
@@ -63,6 +59,12 @@ public class ProjectHandler : MonoBehaviour
     }
 
     private void HandleProject() {
+        // 检查是否有足够的行动点
+        if (!PlayerManager.Instance.HasActionPoints()) {
+            Debug.Log("行动点不足，无法进行项目投资");
+            return;
+        }
+
         // TODO: 项目投资UI界面&交互逻辑
         projectInvestmentUI.GetComponent<InvestmentUIManager>().SetProjectAndInit(this);
         projectInvestmentUI.SetActive(true);
@@ -72,6 +74,9 @@ public class ProjectHandler : MonoBehaviour
     }
     
     public void ConfirmInvestment() {
+        // 消耗行动点
+        PlayerManager.Instance.UseActionPoint();
+        
         waitingForConfirm = false;
         projectInvestmentUI.SetActive(false);
         Debug.Log($"项目投资{projectId}已确认, 退出UI");

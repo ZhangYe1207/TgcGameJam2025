@@ -28,4 +28,13 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    // 开始新的一轮
+    public void StartNewLevel()
+    {
+        currentLevel++;
+        // 刷新玩家行动点
+        PlayerManager.Instance.RefreshActionPoints();
+        // TODO: 其他每轮开始时的逻辑
+    }
 }

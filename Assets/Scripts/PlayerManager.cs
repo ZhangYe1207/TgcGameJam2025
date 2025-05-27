@@ -9,6 +9,7 @@ public class PlayerManager : MonoBehaviour
     // 初始化数据
     public int initMoney = 10000;
     public int initReputation = 0;
+    public int initActionPoints = 3; // 初始行动点数
     public List<Card> initCards = new List<Card>();
 
     public PlayerData playerData;
@@ -165,6 +166,35 @@ public class PlayerManager : MonoBehaviour
         OnPlayerDataChanged();
     }
 
+    // ===== 行动点管理 =====
+    public bool HasActionPoints()
+    {
+        return playerData.actionPoints > 0;
+    }
+
+    public void UseActionPoint()
+    {
+        if (playerData.actionPoints > 0)
+        {
+            playerData.actionPoints--;
+            OnPlayerDataChanged();
+        }
+        else
+        {
+            Debug.LogError("行动点不足");
+        }
+    }
+
+    public void RefreshActionPoints()
+    {
+        playerData.actionPoints = initActionPoints;
+        OnPlayerDataChanged();
+    }
+
+    public int GetActionPoints()
+    {
+        return playerData.actionPoints;
+    }
 
     // 数据变更回调（可用于更新UI）
     private void OnPlayerDataChanged()
