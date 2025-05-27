@@ -24,6 +24,10 @@ MonoBehaviour:
       eventEffects:
       - effectCode: ActionPoints -=1
         explanation: 
+      - effectCode: HandCards:add:insight_card
+        explanation: 
+      - effectCode: EventsFinished:add:insight_card_event
+        explanation: 
     prerequisite:
       minReputation: 0
       maxReputation: 0

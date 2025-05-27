@@ -163,24 +163,34 @@ public class EffectExecutor : MonoBehaviour
 
     private void ExecuteListOperation(string effectCode)
     {
-        // string[] parts = effectCode.Split(':');
-        // if (parts.Length < 3)
-        // {
-        //     Debug.LogError($"无效的List操作格式: {effectCode}");
-        //     return;
-        // }
+        string[] parts = effectCode.Split(':');
+        if (parts.Length < 3 && parts[1].Trim().ToLower() != "clear")
+        {
+            Debug.LogError($"无效的List操作格式: {effectCode}");
+            return;
+        }
         
-        // string propertyName = parts[0].Trim().ToLower();
-        // string operation = parts[1].Trim().ToLower();
-        // string valueString = parts[2].Trim();
+        try {
+            string propertyName = parts[0].Trim();
+            string operation = parts[1].Trim();
+            string elementID = parts[2].Trim();
+            if (listGameProperties.TryGetValue(propertyName, out FieldInfo fieldInfo)) {
+                ApplyListOperation(fieldInfo, elementID, operation);
+            }
+            else {
+                Debug.LogError($"未找到属性: {propertyName}");
+                return;
+            }
+        }
+        catch (Exception e) {
+            Debug.LogError($"执行List操作时出错: {e.Message}");
+        }
         
         // if (gameProperties.TryGetValue(propertyName, out PropertyInfo property))
         // {
         //     try
         //     {
-        //         Type elementType = property.PropertyType.GetGenericArguments()[0];
-        //         object value = Convert.ChangeType(valueString, elementType);
-        //         ApplyListOperation(property, value, operation);
+                
         //     }
         //     catch (Exception e)
         //     {
@@ -194,7 +204,7 @@ public class EffectExecutor : MonoBehaviour
         // return;
     }
     
-    private void ApplyListOperation(PropertyInfo property, object value, string operation)
+    private void ApplyListOperation(FieldInfo property, string elementID, string operation)
     {
         object listObject = property.GetValue(GameManager.Instance);
         IList list = listObject as IList;
@@ -205,6 +215,12 @@ public class EffectExecutor : MonoBehaviour
             return;
         }
         
+        object value;
+        if (property.Name == "HandCards") {
+            value = DatabaseManager.Instance.cardDatabase.GetCardById(elementID);
+        } else {
+            value = elementID;
+        }
         switch (operation)
         {
             case "add":
