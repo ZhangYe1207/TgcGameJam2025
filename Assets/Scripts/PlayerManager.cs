@@ -7,7 +7,6 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager Instance { get; private set; }
 
     // 初始化数据
-    public int initMoney = 10000;
     public int initReputation = 0;
     public int initActionPoints = 3; // 初始行动点数
     public List<Card> initCards = new List<Card>();
@@ -33,34 +32,9 @@ public class PlayerManager : MonoBehaviour
     // 初始化玩家数据
     private void InitializePlayerData()
     {
-        playerData = new PlayerData(initMoney, initReputation, initCards);
+        playerData = new PlayerData(initReputation, initCards);
         // TODO: 可从存档加载数据
         // LoadPlayerData();
-    }
-
-    // ===== 金钱管理 =====
-    public void AddMoney(int amount)
-    {
-        playerData.money += amount;
-        OnPlayerDataChanged();
-    }
-
-    public void RemoveMoney(int amount)
-    {
-        if (playerData.money >= amount)
-        {
-            playerData.money -= amount;
-            OnPlayerDataChanged();
-        }
-        else
-        {
-            Debug.LogError("金钱不足");
-        }
-    }
-
-    public int GetMoney()
-    {
-        return playerData.money;
     }
 
     // ===== 声望管理 =====

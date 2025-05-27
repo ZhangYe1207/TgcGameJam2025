@@ -16,7 +16,6 @@ public class Card
 [System.Serializable]
 public class PlayerData
 {
-    public int money;       // 金钱
     public int reputation;  // 声望
     public int actionPoints; // 行动点
     public List<Card> cards; // 卡牌列表
@@ -26,7 +25,6 @@ public class PlayerData
     // 构造函数
     public PlayerData()
     {
-        money = 0;
         reputation = 0;
         actionPoints = 0;
         cards = new List<Card>();
@@ -34,9 +32,8 @@ public class PlayerData
         eventsFinished = new List<string>();
     }
 
-    public PlayerData(int money, int reputation, List<Card> cards)
+    public PlayerData(int reputation, List<Card> cards)
     {
-        this.money = money;
         this.reputation = reputation;
         this.actionPoints = 3; // 默认初始行动点
         this.cards = cards;
@@ -56,7 +53,6 @@ public enum EventType
 public class EventResult
 {
     public string description;     // 结果描述
-    public int moneyChange;        // 金钱变化
     public int reputationChange;   // 声望变化
     public int[] addCardIds;     // 添加的卡牌ID
     public int[] removeCardIds;  // 移除的卡牌ID
@@ -68,8 +64,6 @@ public class EventPrerequisite
 {
     public int minReputation;   // 最小声望
     public int maxReputation;   // 最大声望
-    public int minMoney;        // 最小金钱
-    public int maxMoney;        // 最大金钱
     public int minLevel;        // 最早出现的关卡
     public int maxLevel;        // 最晚出现的关卡
     public string[] requiredEventIds; // 前置事件ID
@@ -95,7 +89,6 @@ public class ProjectResult
 {
     public string resultBrief;     // 结果简要
     public string description;     // 结果描述
-    public int moneyChange;        // 金钱变化
     public int reputationChange;   // 声望变化
     public int[] addCardIds;     // 添加的卡牌ID
     public int[] removeCardIds;  // 移除的卡牌ID
@@ -111,8 +104,6 @@ public class ProjectPrerequisite
 {
     public int minReputation;   // 最小声望
     public int maxReputation;   // 最大声望
-    public int minMoney;        // 最小金钱
-    public int maxMoney;        // 最大金钱
     public int minLevel;        // 最早出现的关卡
     public int maxLevel;        // 最晚出现的关卡
     public string[] requiredProjectIds; // 前置项目ID
