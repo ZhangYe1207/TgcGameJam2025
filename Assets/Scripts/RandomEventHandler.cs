@@ -13,7 +13,7 @@ public class RandomEventHandler : MonoBehaviour
     private bool isFinished = false;
     
     public void Start() {
-        eventData = GameManager.Instance.eventDatabase.GetEventByID(eventId);
+        eventData = DatabaseManager.Instance.eventDatabase.GetEventByID(eventId);
         if (eventData == null) {
             Debug.LogError("Event not found: " + eventId);
         }
@@ -46,7 +46,7 @@ public class RandomEventHandler : MonoBehaviour
         waitingForConfirm = false;
         eventResultUI.SetActive(false);
         Debug.Log($"事件{eventId}已确认, 退出UI");
-        PlayerManager.Instance.playerGO.GetComponent<PlayerController>().isLocked = false;
+        GameManager.Instance.playerGO.GetComponent<PlayerController>().isLocked = false;
         isFinished = true;
         return;
     }
@@ -54,7 +54,7 @@ public class RandomEventHandler : MonoBehaviour
     private bool IsPlayerNearby() {
         Vector3 locationPosition = locationGO.transform.position;
         locationPosition.y = 0;
-        Vector3 playerPosition = PlayerManager.Instance.playerGO.transform.position;
+        Vector3 playerPosition = GameManager.Instance.playerGO.transform.position;
         playerPosition.y = 0;
         return Vector3.Distance(locationPosition, playerPosition) < eventTriggerRadius;
     }
@@ -72,28 +72,28 @@ public class RandomEventHandler : MonoBehaviour
     }
     
     private void HandleResourceEvent() {
-        // 检查是否有足够的行动点
-        if (!PlayerManager.Instance.HasActionPoints()) {
-            Debug.Log("行动点不足，无法进行项目投资");
-            return;
-        }
-        // 消耗行动点
-        PlayerManager.Instance.UseActionPoint();
+        // TODO: 检查是否有足够的行动点
+        // if (!PlayerManager.Instance.HasActionPoints()) {
+        //     Debug.Log("行动点不足，无法进行项目投资");
+        //     return;
+        // }
+        // TODO: 消耗行动点
+        // PlayerManager.Instance.UseActionPoint();
         // 1. 结果结算, 随机选择一个结果
         EventResult result = eventData.results[Random.Range(0, eventData.results.Length)];
         // Debug.Log($"资源事件{eventId}结果: {result.description}");
         // 2. 显示结算UI
         ShowResourceEventResultUI(result);
         // 3. 更新玩家数据
-        PlayerManager.Instance.AddEventFinished(eventId);
-        PlayerManager.Instance.AddReputation(result.reputationChange);
+        // PlayerManager.Instance.AddEventFinished(eventId);
+        // PlayerManager.Instance.AddReputation(result.reputationChange);
         // 4. 更新卡牌
-        foreach (int cardId in result.addCardIds) {
-            PlayerManager.Instance.AddCardById(cardId);
-        }
-        foreach (int cardId in result.removeCardIds) {
-            PlayerManager.Instance.RemoveCardById(cardId);
-        }
+        // foreach (int cardId in result.addCardIds) {
+        //     PlayerManager.Instance.AddCardById(cardId);
+        // }
+        // foreach (int cardId in result.removeCardIds) {
+        //     PlayerManager.Instance.RemoveCardById(cardId);
+        // }
     }
 
     private void ShowResourceEventResultUI(EventResult result) {
@@ -103,7 +103,7 @@ public class RandomEventHandler : MonoBehaviour
         eventResultUI.transform.Find("Result").GetComponent<Text>().text = result.description;
         eventResultUI.SetActive(true);
         waitingForConfirm = true;
-        PlayerController playerController = PlayerManager.Instance.playerGO.GetComponent<PlayerController>();
+        PlayerController playerController = GameManager.Instance.playerGO.GetComponent<PlayerController>();
         playerController.isLocked = true;
     }
 

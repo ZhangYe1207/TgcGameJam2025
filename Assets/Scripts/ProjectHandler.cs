@@ -16,7 +16,7 @@ public class ProjectHandler : MonoBehaviour
 
     void Start()
     {
-        projectData = GameManager.Instance.projectDatabase.GetProjectByID(projectId);
+        projectData = DatabaseManager.Instance.projectDatabase.GetProjectByID(projectId);
         if (projectData == null) {
             Debug.LogError("Project not found: " + projectId);
         }
@@ -48,7 +48,7 @@ public class ProjectHandler : MonoBehaviour
     private bool IsPlayerNearby() {
         Vector3 locationPosition = locationGO.transform.position;
         locationPosition.y = 0;
-        Vector3 playerPosition = PlayerManager.Instance.playerGO.transform.position;
+        Vector3 playerPosition = GameManager.Instance.playerGO.transform.position;
         playerPosition.y = 0;
         return Vector3.Distance(locationPosition, playerPosition) < eventTriggerRadius;
     }
@@ -59,28 +59,28 @@ public class ProjectHandler : MonoBehaviour
     }
 
     private void HandleProject() {
-        // 检查是否有足够的行动点
-        if (!PlayerManager.Instance.HasActionPoints()) {
-            Debug.Log("行动点不足，无法进行项目投资");
-            return;
-        }
+        // TODO: 检查是否有足够的行动点
+        // if (!PlayerManager.Instance.HasActionPoints()) {
+        //     Debug.Log("行动点不足，无法进行项目投资");
+        //     return;
+        // }
 
         // TODO: 项目投资UI界面&交互逻辑
         projectInvestmentUI.GetComponent<InvestmentUIManager>().SetProjectAndInit(this);
         projectInvestmentUI.SetActive(true);
         waitingForConfirm = true;
-        PlayerController playerController = PlayerManager.Instance.playerGO.GetComponent<PlayerController>();
+        PlayerController playerController = GameManager.Instance.playerGO.GetComponent<PlayerController>();
         playerController.isLocked = true;
     }
     
     public void ConfirmInvestment() {
-        // 消耗行动点
-        PlayerManager.Instance.UseActionPoint();
+        // TODO: 消耗行动点
+        // PlayerManager.Instance.UseActionPoint();
         
         waitingForConfirm = false;
         projectInvestmentUI.SetActive(false);
         Debug.Log($"项目投资{projectId}已确认, 退出UI");
-        PlayerManager.Instance.playerGO.GetComponent<PlayerController>().isLocked = false;
+        GameManager.Instance.playerGO.GetComponent<PlayerController>().isLocked = false;
         isFinished = true;
         return;
     }

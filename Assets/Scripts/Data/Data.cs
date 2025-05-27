@@ -28,23 +28,27 @@ public class ConditionData
 }
 
 [System.Serializable]
+public enum GamePropertyOutOfRangeHandlePolicy
+{
+    Clamp,
+    Error,
+}
+
+[System.Serializable]
 public class GameProperty
 {
     public string propertyName;
     public int currentValue;
     public int maxValue;
     public int minValue;
+    public GamePropertyOutOfRangeHandlePolicy outOfRangeHandlePolicy;
     [TextArea] public string explanation;
 }
 
 [System.Serializable]
 public class GameState
 {
-    public List<GameProperty> gameProperties;
-    public List<Card> handCards;
-    public List<string> eventsFinished;
-    public List<string> projectFinished;
-    public List<string> friends;
+    
 }
 
 

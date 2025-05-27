@@ -24,7 +24,7 @@ public class ConditionEvaluator : MonoBehaviour
 
     private void InitializeGameProperties()
     {
-        Type gameStateType = typeof(GameState);
+        Type gameStateType = typeof(GameManager);
         PropertyInfo[] properties = gameStateType.GetProperties(
             BindingFlags.Public | BindingFlags.Instance | BindingFlags.GetProperty);
             
@@ -98,7 +98,7 @@ public class ConditionEvaluator : MonoBehaviour
             try
             {
                 // 获取List实例
-                IList list = property.GetValue(GameState.Instance) as IList;
+                IList list = property.GetValue(GameManager.Instance) as IList;
                 if (list == null)
                 {
                     Debug.LogError($"List属性为空: {listName}");
@@ -140,7 +140,7 @@ public class ConditionEvaluator : MonoBehaviour
                 // 仅处理int类型
                 if (property.PropertyType == typeof(int))
                 {
-                    int propertyValue = (int)property.GetValue(GameState.Instance);
+                    int propertyValue = (int)property.GetValue(GameManager.Instance);
                     int compareValue = int.Parse(valueString);
                     
                     return CompareIntValues(propertyValue, compareValue, operatorStr);
