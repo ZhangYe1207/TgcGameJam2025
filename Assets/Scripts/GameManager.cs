@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +16,9 @@ public class GameManager : MonoBehaviour
     public List<string> ProjectFinished;
     public List<string> Friends;
     public GameObject playerGO;
+    public GameObject mainUI;
+    public GameObject ActionPointUI;
+    public GameObject HandCardUI;
 
     private void Awake()
     {
@@ -48,6 +53,7 @@ public class GameManager : MonoBehaviour
         playerGO = GameObject.FindWithTag("Player");
         EffectsCheck();
         ConditionsCheck();
+        UpdateMainUI();
     }
 
     private void EffectsCheck() {
@@ -67,5 +73,34 @@ public class GameManager : MonoBehaviour
     }
 
     public void OnGameDataChanged() {   
+        UpdateMainUI();
     }
+
+    public int GetPropertyCurrentValue(string propertyName) {
+        return baseGameProperties.Find(property => property.propertyName == propertyName).currentValue;
+    }
+
+    public int GetPropertyMaxValue(string propertyName) {
+        return baseGameProperties.Find(property => property.propertyName == propertyName).maxValue;
+    }
+
+    public int GetPropertyMinValue(string propertyName) {
+        return baseGameProperties.Find(property => property.propertyName == propertyName).minValue;
+    }
+
+    private void UpdateMainUI() {
+        // TODO: 更新主界面
+        UpdateActionPointUI();
+        UpdateHandCardUI();
+    }
+
+    private void UpdateActionPointUI() {
+        int currentActionPoint = GetPropertyCurrentValue("ActionPoints");
+        int maxActionPoint = GetPropertyMaxValue("ActionPoints");
+        ActionPointUI.transform.Find("ActionPointText").GetComponent<TextMeshProUGUI>().text = $"<size=130%><b>{currentActionPoint}</b></size>/{maxActionPoint}";
+    }
+
+    private void UpdateHandCardUI() {
+        // TODO: 更新手牌UI
+    }   
 }
