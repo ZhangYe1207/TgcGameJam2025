@@ -8,7 +8,9 @@ public class RandomEventHandler : MonoBehaviour
     public float eventTriggerRadius = 5f;
 
     private GameObject eventResultUI;
+    private PromptUIManager promptUI;
     private GameObject locationGO;
+    private PlayerController playerController;
     private bool waitingForConfirm = false;
     private bool isFinished = false;
     
@@ -20,9 +22,15 @@ public class RandomEventHandler : MonoBehaviour
         locationGO = gameObject.transform.parent.gameObject;
         eventResultUI = GameObject.Find("Canvas").transform.Find("ResourceEventPanel").gameObject;
         Debug.Log("eventResultUI: " + eventResultUI);
+        promptUI = GameObject.Find("Canvas").transform.Find("PromptUI").GetComponent<PromptUIManager>();
+        Debug.Log("promptUI: " + promptUI);
+        playerController = GameManager.Instance.playerGO.GetComponent<PlayerController>();
     }
 
     public void Update() {
+        // if (promptUI.gameObject.activeInHierarchy) {
+        //     return; // 如果PromptUI显示中，等待PromptUI来处理
+        // }
         if (waitingForConfirm) {
             if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape)) {
                 ConfirmEvent();
@@ -36,10 +44,32 @@ public class RandomEventHandler : MonoBehaviour
             return;
         }
         if (IsPlayerNearby()) {
-            if (Input.GetKeyDown(KeyCode.E)) {
+            if (Input.GetKeyDown(KeyCode.E) && CheckPrerequisites()) {
                 HandleEvent();
             }
         }
+    }
+
+    private bool CheckPrerequisites() {
+        foreach (EventPrerequisite prerequisite in eventData.prerequisites) {
+            foreach (ConditionData condition in prerequisite.conditions) {
+                if (!ConditionEvaluator.EvaluateCondition(condition.conditionCode)) {
+                    waitingForConfirm = true;
+                    playerController.isLocked = true;
+                    Debug.Log($"事件{eventId}的前置条件{condition.conditionCode}不满足，无法触发事件");
+                    promptUI.ShowOkPrompt(
+                        condition.failedMessage,
+                        () => {
+                            waitingForConfirm = false;
+                            playerController.isLocked = false;
+                            return;
+                        }
+                    );
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     private void ConfirmEvent() {
@@ -72,13 +102,7 @@ public class RandomEventHandler : MonoBehaviour
     }
     
     private void HandleResourceEvent() {
-        // TODO: 检查是否有足够的行动点
-        // if (!PlayerManager.Instance.HasActionPoints()) {
-        //     Debug.Log("行动点不足，无法进行项目投资");
-        //     return;
-        // }
-        // TODO: 消耗行动点
-        // PlayerManager.Instance.UseActionPoint();
+        
         // 1. 结果结算, 随机选择一个结果
         EventResult result = eventData.results[Random.Range(0, eventData.results.Length)];
         // Debug.Log($"资源事件{eventId}结果: {result.description}");
@@ -105,10 +129,8 @@ public class RandomEventHandler : MonoBehaviour
         eventResultUI.transform.Find("Title").GetComponent<Text>().text = eventData.title;
         eventResultUI.transform.Find("Description").GetComponent<Text>().text = eventData.description;
         eventResultUI.transform.Find("EventImage").GetComponent<Image>().sprite = eventData.eventImage;
-        eventResultUI.transform.Find("Result").GetComponent<Text>().text = result.description;
         eventResultUI.SetActive(true);
         waitingForConfirm = true;
-        PlayerController playerController = GameManager.Instance.playerGO.GetComponent<PlayerController>();
         playerController.isLocked = true;
     }
 

@@ -185,23 +185,6 @@ public class EffectExecutor : MonoBehaviour
         catch (Exception e) {
             Debug.LogError($"执行List操作时出错: {e.Message}");
         }
-        
-        // if (gameProperties.TryGetValue(propertyName, out PropertyInfo property))
-        // {
-        //     try
-        //     {
-                
-        //     }
-        //     catch (Exception e)
-        //     {
-        //         Debug.LogError($"执行List操作时出错: {e.Message}");
-        //     }
-        // }
-        // else
-        // {
-        //     Debug.LogError($"未找到属性: {propertyName}");
-        // }
-        // return;
     }
     
     private void ApplyListOperation(FieldInfo property, string elementID, string operation)

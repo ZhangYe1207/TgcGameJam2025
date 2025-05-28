@@ -40,4 +40,4 @@ MonoBehaviour:
     - description: 
       conditions:
       - conditionCode: ActionPoints >= 1
-        explanation: 
+        failedMessage: You don't have enough Action Points!

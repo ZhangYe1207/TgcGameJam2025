@@ -33,7 +33,8 @@ public class EffectData
 public class ConditionData
 {
     public string conditionCode;
-    [TextArea] public string explanation;
+    [Tooltip("条件不满足时显示的提示信息")]
+    [TextArea] public string failedMessage;
 }
 
 [System.Serializable]

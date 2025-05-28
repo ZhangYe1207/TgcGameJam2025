@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class ConditionEvaluator : MonoBehaviour
 {
-    private Dictionary<string, PropertyInfo> gameProperties = new Dictionary<string, PropertyInfo>();
+    private Dictionary<string, GameProperty> baseGameProperties;
+    private Dictionary<string, FieldInfo> listGameProperties;
     private static ConditionEvaluator instance;
 
     private void Awake()
@@ -17,162 +18,146 @@ public class ConditionEvaluator : MonoBehaviour
             return;
         }
         instance = this;
-        DontDestroyOnLoad(gameObject);
-        
+        DontDestroyOnLoad(gameObject);        
+    }
+
+    public void Start() {
         InitializeGameProperties();
     }
 
     private void InitializeGameProperties()
     {
-        Type gameStateType = typeof(GameManager);
-        PropertyInfo[] properties = gameStateType.GetProperties(
-            BindingFlags.Public | BindingFlags.Instance | BindingFlags.GetProperty);
-            
-        foreach (PropertyInfo property in properties)
-        {
-            if (property.CanRead && IsSupportedType(property.PropertyType))
-            {
-                gameProperties[property.Name.ToLower()] = property;
-            }
+        baseGameProperties = new Dictionary<string, GameProperty>();
+        listGameProperties = new Dictionary<string, FieldInfo>();
+        foreach (var property in GameManager.Instance.baseGameProperties) {
+            baseGameProperties[property.propertyName] = property;
         }
+        listGameProperties["HandCards"] = typeof(GameManager).GetField("HandCards");
+        listGameProperties["EventsFinished"] = typeof(GameManager).GetField("EventsFinished");
+        listGameProperties["ProjectFinished"] = typeof(GameManager).GetField("ProjectFinished");
+        listGameProperties["Friends"] = typeof(GameManager).GetField("Friends");
     }
 
-    private bool IsSupportedType(Type type)
+    public static bool EvaluateCondition(string conditionCode)
     {
-        // 仅支持int和List<string>类型
-        if (type == typeof(int))
-            return true;
-            
-        // List类型支持
-        if (type.IsGenericType && 
-            type.GetGenericTypeDefinition() == typeof(List<>) &&
-            type.GetGenericArguments()[0] == typeof(string))
-            return true;
-            
-        return false;
+        return instance.InternalEvaluateCondition(conditionCode);
     }
 
-    public static bool EvaluateCondition(string condition)
+    private bool InternalEvaluateCondition(string conditionCode)
     {
-        return instance.InternalEvaluateCondition(condition);
-    }
-
-    private bool InternalEvaluateCondition(string condition)
-    {
-        // 处理List包含检查（新格式：listName:has:xxx）
-        if (condition.Contains(":has:"))
-            return EvaluateListContains(condition);
-
-        // 处理数值比较
-        if (condition.Contains(">="))
-            return EvaluateComparison(condition, ">=");
-        if (condition.Contains("<="))
-            return EvaluateComparison(condition, "<=");
-        if (condition.Contains(">"))
-            return EvaluateComparison(condition, ">");
-        if (condition.Contains("<"))
-            return EvaluateComparison(condition, "<");
-        if (condition.Contains("=="))
-            return EvaluateComparison(condition, "==");
-        if (condition.Contains("!="))
-            return EvaluateComparison(condition, "!=");
-
-        Debug.LogError($"不支持的条件格式: {condition}");
-        return false;
-    }
-
-    private bool EvaluateListContains(string condition)
-    {
-        string[] parts = condition.Split(new[] { ":has:" }, StringSplitOptions.RemoveEmptyEntries);
-        if (parts.Length != 2)
+        // Check if it's a list operation (contains "has")
+        if (conditionCode.Contains(":has:"))
         {
-            Debug.LogError($"List包含条件解析错误: {condition}");
+            return EvaluateListCondition(conditionCode);
+        }
+        
+        return EvaluateNumberCondition(conditionCode);
+    }
+
+    private bool EvaluateNumberCondition(string conditionCode)
+    {
+        string[] parts = conditionCode.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+        if (parts.Length != 3)
+        {
+            Debug.LogError($"Invalid condition format: {conditionCode}");
             return false;
         }
 
-        string listName = parts[0].Trim().ToLower();
-        string elementValue = parts[1].Trim();
+        string propertyName = parts[0].Trim();
+        string operation = parts[1].Trim();
+        string valueString = parts[2].Trim();
 
-        if (gameProperties.TryGetValue(listName, out PropertyInfo property))
+        if (baseGameProperties.TryGetValue(propertyName, out GameProperty property))
         {
             try
             {
-                // 获取List实例
+                int currentValue = property.currentValue;
+                int compareValue = int.Parse(valueString);
+
+                return EvaluateComparison(currentValue, operation, compareValue);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"Error evaluating condition: {e.Message}");
+                return false;
+            }
+        }
+        else
+        {
+            Debug.LogError($"Property not found: {propertyName}");
+            return false;
+        }
+    }
+
+    private bool EvaluateListCondition(string conditionCode)
+    {
+        string[] parts = conditionCode.Split(new[] { ":has:" }, StringSplitOptions.None);
+        if (parts.Length != 2)
+        {
+            Debug.LogError($"Invalid list condition format: {conditionCode}");
+            return false;
+        }
+
+        string listName = parts[0].Trim();
+        string valueToCheck = parts[1].Trim();
+
+        if (listGameProperties.TryGetValue(listName, out FieldInfo property))
+        {
+            try
+            {
                 IList list = property.GetValue(GameManager.Instance) as IList;
                 if (list == null)
                 {
-                    Debug.LogError($"List属性为空: {listName}");
+                    Debug.LogError($"Property {listName} is not a valid list");
                     return false;
                 }
 
-                // 检查List是否包含该元素
-                return list.Contains(elementValue);
-            }
-            catch (Exception e)
-            {
-                Debug.LogError($"List包含检查时出错: {e.Message}");
-                return false;
-            }
-        }
-        else
-        {
-            Debug.LogError($"未找到List属性: {listName}");
-            return false;
-        }
-    }
-
-    private bool EvaluateComparison(string condition, string operatorStr)
-    {
-        string[] parts = condition.Split(new[] { operatorStr }, StringSplitOptions.RemoveEmptyEntries);
-        if (parts.Length != 2)
-        {
-            Debug.LogError($"条件解析错误: {condition}");
-            return false;
-        }
-
-        string propertyName = parts[0].Trim().ToLower();
-        string valueString = parts[1].Trim();
-
-        if (gameProperties.TryGetValue(propertyName, out PropertyInfo property))
-        {
-            try
-            {
-                // 仅处理int类型
-                if (property.PropertyType == typeof(int))
+                // Check if the list contains the value
+                foreach (var item in list)
                 {
-                    int propertyValue = (int)property.GetValue(GameManager.Instance);
-                    int compareValue = int.Parse(valueString);
-                    
-                    return CompareIntValues(propertyValue, compareValue, operatorStr);
+                    string itemId = "";
+                    if (listName == "HandCards") {
+                        itemId = (item as Card).cardId;
+                    } else {
+                        itemId = item.ToString();
+                    }
+                    if (itemId == valueToCheck)
+                    {
+                        return true;
+                    }
                 }
+                return false;
             }
             catch (Exception e)
             {
-                Debug.LogError($"条件评估时出错: {e.Message}");
+                Debug.LogError($"Error evaluating list condition: {e.Message}");
                 return false;
             }
         }
         else
         {
-            Debug.LogError($"未找到属性: {propertyName}");
+            Debug.LogError($"List property not found: {listName}");
             return false;
         }
-        
-        return false;
     }
 
-    private bool CompareIntValues(int left, int right, string operatorStr)
+    private bool EvaluateComparison(int currentValue, string operation, int compareValue)
     {
-        switch (operatorStr)
+        switch (operation)
         {
-            case ">=": return left >= right;
-            case "<=": return left <= right;
-            case ">": return left > right;
-            case "<": return left < right;
-            case "==": return left == right;
-            case "!=": return left != right;
+            case ">=":
+                return currentValue >= compareValue;
+            case ">":
+                return currentValue > compareValue;
+            case "<=":
+                return currentValue <= compareValue;
+            case "<":
+                return currentValue < compareValue;
+            case "=":
+                return currentValue == compareValue;
+            default:
+                Debug.LogError($"Unsupported comparison operator: {operation}");
+                return false;
         }
-        
-        return false;
     }
 }    
