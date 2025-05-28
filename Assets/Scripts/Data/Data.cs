@@ -96,6 +96,7 @@ public enum EventType
 public class EventResult
 {
     public string description;     // 结果描述
+    public Sprite resultImage;
     public List<EffectData> eventEffects;
 }
 

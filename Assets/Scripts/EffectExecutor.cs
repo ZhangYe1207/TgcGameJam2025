@@ -176,6 +176,7 @@ public class EffectExecutor : MonoBehaviour
             string elementID = parts[2].Trim();
             if (listGameProperties.TryGetValue(propertyName, out FieldInfo fieldInfo)) {
                 ApplyListOperation(fieldInfo, elementID, operation);
+                Debug.Log($"执行效果 {effectCode} 成功");
             }
             else {
                 Debug.LogError($"未找到属性: {propertyName}");
@@ -198,12 +199,7 @@ public class EffectExecutor : MonoBehaviour
             return;
         }
         
-        object value;
-        if (property.Name == "HandCards") {
-            value = DatabaseManager.Instance.cardDatabase.GetCardById(elementID);
-        } else {
-            value = elementID;
-        }
+        object value = elementID;
         switch (operation)
         {
             case "add":

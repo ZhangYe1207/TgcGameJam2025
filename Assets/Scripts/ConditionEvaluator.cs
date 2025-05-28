@@ -115,12 +115,7 @@ public class ConditionEvaluator : MonoBehaviour
                 // Check if the list contains the value
                 foreach (var item in list)
                 {
-                    string itemId = "";
-                    if (listName == "HandCards") {
-                        itemId = (item as Card).cardId;
-                    } else {
-                        itemId = item.ToString();
-                    }
+                    string itemId = item.ToString();
                     if (itemId == valueToCheck)
                     {
                         return true;

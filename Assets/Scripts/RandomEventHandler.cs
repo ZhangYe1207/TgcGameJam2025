@@ -7,7 +7,7 @@ public class RandomEventHandler : MonoBehaviour
     public RandomEvent eventData;
     public float eventTriggerRadius = 5f;
 
-    private GameObject eventResultUI;
+    private ResourceEventUIManager resourceEventUI;
     private PromptUIManager promptUI;
     private GameObject locationGO;
     private PlayerController playerController;
@@ -20,17 +20,17 @@ public class RandomEventHandler : MonoBehaviour
             Debug.LogError("Event not found: " + eventId);
         }
         locationGO = gameObject.transform.parent.gameObject;
-        eventResultUI = GameObject.Find("Canvas").transform.Find("ResourceEventPanel").gameObject;
-        Debug.Log("eventResultUI: " + eventResultUI);
+        resourceEventUI = GameObject.Find("Canvas").transform.Find("ResourceEventPanel").GetComponent<ResourceEventUIManager>();
+        Debug.Log("resourceEventUI: " + resourceEventUI);
         promptUI = GameObject.Find("Canvas").transform.Find("PromptUI").GetComponent<PromptUIManager>();
         Debug.Log("promptUI: " + promptUI);
         playerController = GameManager.Instance.playerGO.GetComponent<PlayerController>();
     }
 
     public void Update() {
-        // if (promptUI.gameObject.activeInHierarchy) {
-        //     return; // 如果PromptUI显示中，等待PromptUI来处理
-        // }
+        if (promptUI.gameObject.activeInHierarchy) {
+            return; // 如果PromptUI显示中，等待PromptUI来处理
+        }
         if (waitingForConfirm) {
             if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape)) {
                 ConfirmEvent();
@@ -45,8 +45,15 @@ public class RandomEventHandler : MonoBehaviour
         }
         if (IsPlayerNearby()) {
             if (Input.GetKeyDown(KeyCode.E) && CheckPrerequisites()) {
-                HandleEvent();
+                ShowEventUI();
             }
+        }
+    }
+
+    private void ShowEventUI() {
+        if (eventData.eventType == EventType.Resource) {
+            resourceEventUI.SetRandomEventHandler(this);
+            resourceEventUI.ShowEvent(eventData);
         }
     }
 
@@ -72,9 +79,9 @@ public class RandomEventHandler : MonoBehaviour
         return true;
     }
 
-    private void ConfirmEvent() {
+    public void ConfirmEvent() {
         waitingForConfirm = false;
-        eventResultUI.SetActive(false);
+        resourceEventUI.HideEvent();
         Debug.Log($"事件{eventId}已确认, 退出UI");
         GameManager.Instance.playerGO.GetComponent<PlayerController>().isLocked = false;
         isFinished = true;
@@ -93,48 +100,12 @@ public class RandomEventHandler : MonoBehaviour
         // TODO: 鼠标悬停事件处理
         return false;
     }
-
-    private void HandleEvent() {
-        Debug.Log("Event triggered: " + eventId);
-        if (eventData.eventType == EventType.Resource) {
-            HandleResourceEvent();
-        }
-    }
     
-    private void HandleResourceEvent() {
-        
-        // 1. 结果结算, 随机选择一个结果
-        EventResult result = eventData.results[Random.Range(0, eventData.results.Length)];
-        // Debug.Log($"资源事件{eventId}结果: {result.description}");
-        // 2. 显示结算UI
-        ShowResourceEventResultUI(result);
-        // 3. 更新玩家数据
+    public void HandleResourceEvent(EventResult result) {
+        // 按顺序执行效果
         foreach (EffectData effect in result.eventEffects) {
-            Debug.Log(effect.effectCode);
             EffectExecutor.ExecuteEffect(effect.effectCode);
         }
         GameManager.Instance.OnGameDataChanged();
-        // PlayerManager.Instance.AddEventFinished(eventId);
-        // PlayerManager.Instance.AddReputation(result.reputationChange);
-        // 4. 更新卡牌
-        // foreach (int cardId in result.addCardIds) {
-        //     PlayerManager.Instance.AddCardById(cardId);
-        // }
-        // foreach (int cardId in result.removeCardIds) {
-        //     PlayerManager.Instance.RemoveCardById(cardId);
-        // }
-    }
-
-    private void ShowResourceEventResultUI(EventResult result) {
-        eventResultUI.transform.Find("Title").GetComponent<Text>().text = eventData.title;
-        eventResultUI.transform.Find("Description").GetComponent<Text>().text = eventData.description;
-        eventResultUI.transform.Find("EventImage").GetComponent<Image>().sprite = eventData.eventImage;
-        eventResultUI.SetActive(true);
-        waitingForConfirm = true;
-        playerController.isLocked = true;
-    }
-
-    private void HandleProjectEvent() {
-        // TODO: 项目事件处理
     }
 }

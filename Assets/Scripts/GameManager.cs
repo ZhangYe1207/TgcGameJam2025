@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     // 这一轮结算时需要结算的项目结果
     public List<ProjectResult> projectResults = new List<ProjectResult>();
     public List<GameProperty> baseGameProperties;
-    public List<Card> HandCards;
+    public List<string> HandCards;
     public List<string> EventsFinished;
     public List<string> ProjectFinished;
     public List<string> Friends;
@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
                 baseGameProperties = new List<GameProperty>();
             }
             if (HandCards == null) {
-                HandCards = new List<Card>();
+                HandCards = new List<string>();
             }
             if (EventsFinished == null) {
                 EventsFinished = new List<string>();
