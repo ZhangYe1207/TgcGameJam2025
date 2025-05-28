@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
     public GameObject ActionPointUI;
     public GameObject HandCardUI;
 
+    [Header("UI Prefabs")]
+    [SerializeField] private GameObject cardUIPrefab;
+
     private void Awake()
     {
         // 确保单例唯一
@@ -101,6 +104,39 @@ public class GameManager : MonoBehaviour
     }
 
     private void UpdateHandCardUI() {
-        // TODO: 更新手牌UI
-    }   
+        // Get the ScrollView content
+        Transform content = HandCardUI.transform.Find("HandCardScrollView/Viewport/Content");
+        if (content == null) {
+            Debug.LogError("HandCardUI ScrollView content not found!");
+            return;
+        }
+
+        // Clear existing cards
+        foreach (Transform child in content) {
+            Destroy(child.gameObject);
+        }
+
+        // Add cards from hand
+        foreach (string cardId in HandCards) {
+            Card cardData = DatabaseManager.Instance.cardDatabase.GetCardById(cardId);
+            if (cardData != null) {
+                // Instantiate card UI
+                GameObject cardGO = Instantiate(cardUIPrefab, content);
+                
+                // Set card image
+                Image cardImage = cardGO.GetComponent<Image>();
+                if (cardImage != null && cardData.cardImage != null) {
+                    cardImage.sprite = cardData.cardImage;
+                    // Add random rotation
+                    float randomRotation = Random.Range(-5f, 5f);
+                    cardImage.transform.rotation = Quaternion.Euler(0, 0, randomRotation);
+                }
+            }
+        }
+    }
+
+    private void OnCardClicked(Card card) {
+        // TODO: Implement card click handling
+        Debug.Log($"Card clicked: {card.cardName}");
+    }
 }
