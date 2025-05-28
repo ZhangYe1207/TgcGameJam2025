@@ -42,6 +42,7 @@
   * Effects: 结果产生的功效列表，Effect配置格式见<a href="### Effect and Condition System">Effect and Condition System</a>，列表中功效依次生效
 * Must Place Cards: 必须放置的卡牌ID列表，这些卡牌必须被放置才能开始项目，比如必须放置资金卡
 * Init Need Dices: 初始需要的正面骰子数，TODO：当前骰子系统未实现
+* Init Card Slots: 初始卡槽数，TODO：当前卡槽系统未实现
 * Prerequisites: 项目前置条件，可以有多个Prerequisite，只要满足其中一个便可开启项目
   * Description：当前Prerequisite的描述，暂时没用
   * Conditions：当前Prerequisite的条件集合，每个Condition之间是And的关系，必须满足所有Condition，这个Prerequisite才算被满足，Condition配置格式见<a href="### Effect and Condition System">Effect and Condition System</a>  

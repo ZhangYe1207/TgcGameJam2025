@@ -152,6 +152,7 @@ public class Project
     public ProjectResult[] results;  // 可选结果
     public List<string> mustPlaceCards; // 必须放置的卡牌ID
     public int initNeedDices; // 初始需要的正面骰子数
+    public int initCardSlots; // 初始卡槽数
     [Tooltip("Prerequisite可以有多个，如果满足任意一个则可以触发事件")]
     public ProjectPrerequisite[] prerequisites; // 前置条件
 }
