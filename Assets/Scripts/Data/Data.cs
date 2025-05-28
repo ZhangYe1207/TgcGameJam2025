@@ -54,13 +54,6 @@ public class GameProperty
     [TextArea] public string explanation;
 }
 
-[System.Serializable]
-public class GameState
-{
-    
-}
-
-
 // 玩家数据类
 [System.Serializable]
 public class PlayerData
@@ -109,11 +102,9 @@ public class EventResult
 [System.Serializable]
 public class EventPrerequisite
 {
-    public int minReputation;   // 最小声望
-    public int maxReputation;   // 最大声望
-    public int minLevel;        // 最早出现的关卡
-    public int maxLevel;        // 最晚出现的关卡
-    public string[] requiredEventIds; // 前置事件ID
+    public string description;
+    [Tooltip("Condition之间是And的关系，全部满足则这条Prerequisite满足")]
+    public ConditionData[] conditions; 
 }
 
 // 随机事件基类
@@ -127,7 +118,8 @@ public class RandomEvent
     public bool isPreviewable;     // 是否可预览
     public Sprite eventImage;      // 事件图片
     public EventResult[] results;  // 可选结果
-    public EventPrerequisite prerequisite; // 前置条件
+    [Tooltip("Prerequisite可以有多个，如果满足任意一个则可以触发事件")]
+    public EventPrerequisite[] prerequisites; // 前置条件
 }
 
 // 项目结果

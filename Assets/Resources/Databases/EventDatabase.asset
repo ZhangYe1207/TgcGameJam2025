@@ -28,9 +28,8 @@ MonoBehaviour:
         explanation: 
       - effectCode: EventsFinished:add:insight_card_event
         explanation: 
-    prerequisite:
-      minReputation: 0
-      maxReputation: 0
-      minLevel: 0
-      maxLevel: 3
-      requiredEventIds: []
+    prerequisites:
+    - description: 
+      conditions:
+      - conditionCode: ActionPoints >= 1
+        explanation: 
