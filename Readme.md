@@ -19,6 +19,7 @@
 * Title: 事件标题，用于界面展示
 * Description: 事件描述，用于界面展示
 * Event Type: 事件类型，当前只有Resource一种
+* is Previewable: 是否可预览， TODO：当前预览功能未实现
 * Event Image：事件展示的图片
 * Result: 结果列表，每个结果代表一个选项，最多3个选项
   * Description：选项描述，会展示在UI上
@@ -27,6 +28,24 @@
 * Prerequisites: 事件前置条件，可以有多个Prerequisite，只要满足其中一个便可开启事件
   * Description：当前Prerequisite的描述，暂时没用
   * Conditions：当前Prerequisite的条件集合，每个Condition之间是And的关系，必须满足所有Condition，这个Prerequisite才算被满足，Condition配置格式见<a href="### Effect and Condition System">Effect and Condition System</a>  
+
+### ProjectDatabase
+**配置路径：Assets/Resources/Databases/ProjectDatabase**   
+字段说明：  
+* Project Id: 项目Id，用于数据库检索，以及在Effect和Condition中的索引，比如xxx_project
+* Title: 项目标题，用于界面展示
+* Description: 项目描述，用于界面展示
+* Project Image：项目展示的图片
+* is Previewable: 是否可预览， TODO：当前预览功能未实现
+* Result: 结果列表，一般配两个，一个成功，一个失败
+  * Description：结果描述，用于展示
+  * Effects: 结果产生的功效列表，Effect配置格式见<a href="### Effect and Condition System">Effect and Condition System</a>，列表中功效依次生效
+* Must Place Cards: 必须放置的卡牌ID列表，这些卡牌必须被放置才能开始项目，比如必须放置资金卡
+* Init Need Dices: 初始需要的正面骰子数，TODO：当前骰子系统未实现
+* Prerequisites: 项目前置条件，可以有多个Prerequisite，只要满足其中一个便可开启项目
+  * Description：当前Prerequisite的描述，暂时没用
+  * Conditions：当前Prerequisite的条件集合，每个Condition之间是And的关系，必须满足所有Condition，这个Prerequisite才算被满足，Condition配置格式见<a href="### Effect and Condition System">Effect and Condition System</a>  
+
 
 
 ### Effect and Condition System
@@ -56,15 +75,15 @@
 
 ## DevLog
 ### 05/28
-[ ] 轮次结束UI & 功能
-[ ] 项目投资结算功能
-[ ] 丢骰子UI & 动画
-[ ] 项目投资骰子后台计算功能
-[ ] 项目投资界面UI绘制
-[ ] 项目投资界面UI功能
-[ ] 主界面其他属性UI绘制 & 功能
-[x] 数据配置框架说明文档
-[x] 主界面手牌显示UI绘制 & 功能
-[x] 主界面行动点UI绘制 & 功能
-[x] Effect and Condition System & 数据配置框架
-[x] Resource Event UI & 功能
+[ ] 轮次结束UI & 功能  
+[ ] 项目投资结算功能  
+[ ] 丢骰子UI & 动画  
+[ ] 项目投资骰子后台计算功能  
+[ ] 项目投资界面UI绘制  
+[ ] 项目投资界面UI功能  
+[ ] 主界面其他属性UI绘制 & 功能  
+[x] 数据配置框架说明文档  
+[x] 主界面手牌显示UI绘制 & 功能  
+[x] 主界面行动点UI绘制 & 功能  
+[x] Effect and Condition System & 数据配置框架  
+[x] Resource Event UI & 功能  

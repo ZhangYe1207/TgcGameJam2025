@@ -128,26 +128,17 @@ public class RandomEvent
 [System.Serializable]
 public class ProjectResult
 {
-    public string resultBrief;     // 结果简要
     public string description;     // 结果描述
-    public int reputationChange;   // 声望变化
-    public int[] addCardIds;     // 添加的卡牌ID
-    public int[] removeCardIds;  // 移除的卡牌ID
-    [Tooltip("在多少关之后结算，如果为0则在当前关卡结束后结算")]
-    public int numLevelsToTakeEffect; 
-    [Tooltip("如果这里有值，会自动触发下一个项目而非结算")]
-    public string nextProjectId;   
+    public EffectData[] effects;
 }
 
 // 项目前置条件
 [System.Serializable]
 public class ProjectPrerequisite
 {
-    public int minReputation;   // 最小声望
-    public int maxReputation;   // 最大声望
-    public int minLevel;        // 最早出现的关卡
-    public int maxLevel;        // 最晚出现的关卡
-    public string[] requiredProjectIds; // 前置项目ID
+    public string description;
+    [Tooltip("Condition之间是And的关系，全部满足则这条Prerequisite满足")]
+    public ConditionData[] conditions; 
 }
 
 [System.Serializable]
@@ -159,5 +150,8 @@ public class Project
     public Sprite projectImage;
     public bool isPreviewable;     // 是否可预览
     public ProjectResult[] results;  // 可选结果
-    public ProjectPrerequisite prerequisite; // 前置条件
+    public List<string> mustPlaceCards; // 必须放置的卡牌ID
+    public int initNeedDices; // 初始需要的正面骰子数
+    [Tooltip("Prerequisite可以有多个，如果满足任意一个则可以触发事件")]
+    public ProjectPrerequisite[] prerequisites; // 前置条件
 }
