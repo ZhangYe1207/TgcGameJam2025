@@ -21,8 +21,8 @@ public class ProjectHandler : MonoBehaviour
             Debug.LogError("Project not found: " + projectId);
         }
         locationGO = gameObject.transform.parent.gameObject;
-        projectInvestmentUI = GameObject.Find("Canvas").transform.Find("ProjectInvestmentPanel").gameObject;
-        Debug.Log("projectInvestmentUI: " + projectInvestmentUI);
+        // projectInvestmentUI = GameObject.Find("Canvas").transform.Find("ProjectInvestmentPanel").gameObject;
+        // Debug.Log("projectInvestmentUI: " + projectInvestmentUI);
     }
 
     public void Update() {
@@ -66,8 +66,8 @@ public class ProjectHandler : MonoBehaviour
         // }
 
         // TODO: 项目投资UI界面&交互逻辑
-        projectInvestmentUI.GetComponent<InvestmentUIManager>().SetProjectAndInit(this);
-        projectInvestmentUI.SetActive(true);
+        // projectInvestmentUI.GetComponent<InvestmentUIManager>().SetProjectAndInit(this);
+        // projectInvestmentUI.SetActive(true);
         waitingForConfirm = true;
         PlayerController playerController = GameManager.Instance.playerGO.GetComponent<PlayerController>();
         playerController.isLocked = true;
@@ -78,7 +78,7 @@ public class ProjectHandler : MonoBehaviour
         // PlayerManager.Instance.UseActionPoint();
         
         waitingForConfirm = false;
-        projectInvestmentUI.SetActive(false);
+        // projectInvestmentUI.SetActive(false);
         Debug.Log($"项目投资{projectId}已确认, 退出UI");
         GameManager.Instance.playerGO.GetComponent<PlayerController>().isLocked = false;
         isFinished = true;
