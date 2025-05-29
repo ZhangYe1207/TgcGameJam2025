@@ -59,12 +59,6 @@ public class ProjectHandler : MonoBehaviour
     }
 
     private void HandleProject() {
-        // TODO: 检查是否有足够的行动点
-        // if (!PlayerManager.Instance.HasActionPoints()) {
-        //     Debug.Log("行动点不足，无法进行项目投资");
-        //     return;
-        // }
-
         // TODO: 项目投资UI界面&交互逻辑
         // projectInvestmentUI.GetComponent<InvestmentUIManager>().SetProjectAndInit(this);
         // projectInvestmentUI.SetActive(true);
