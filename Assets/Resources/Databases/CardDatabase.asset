@@ -19,5 +19,5 @@ MonoBehaviour:
     cardType: 1
     cardImage: {fileID: 21300000, guid: f1a09b7f0fade6d44935c96cc19438ce, type: 3}
     cardEffects:
-    - effectCode: Dices += 2
+    - effectCode: HaveDices += 2
       explanation: 

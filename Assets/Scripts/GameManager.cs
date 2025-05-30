@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,9 +17,15 @@ public class GameManager : MonoBehaviour
     public List<string> ProjectFinished;
     public List<string> Friends;
     public GameObject playerGO;
+    public List<Card> currentPlacedCards;
+    public bool isOnProjectUI;
+
+    [Header("UI References")]
     public GameObject mainUI;
     public GameObject ActionPointUI;
     public GameObject HandCardUI;
+    public ProjectUIManager ProjectUI;
+    public PromptUIManager PromptUI;
 
     [Header("UI Prefabs")]
     [SerializeField] private GameObject cardUIPrefab;
@@ -91,6 +98,10 @@ public class GameManager : MonoBehaviour
         return baseGameProperties.Find(property => property.propertyName == propertyName).minValue;
     }
 
+    public void SetPropertyCurrentValue(string propertyName, int value) {
+        baseGameProperties.Find(property => property.propertyName == propertyName).currentValue = value;
+    }
+    
     private void UpdateMainUI() {
         // TODO: 更新主界面
         UpdateActionPointUI();
@@ -103,7 +114,7 @@ public class GameManager : MonoBehaviour
         ActionPointUI.transform.Find("ActionPointText").GetComponent<TextMeshProUGUI>().text = $"<size=130%><b>{currentActionPoint}</b></size>/{maxActionPoint}";
     }
 
-    private void UpdateHandCardUI() {
+    public void UpdateHandCardUI() {
         // Get the ScrollView content
         Transform content = HandCardUI.transform.Find("HandCardScrollView/Viewport/Content");
         if (content == null) {
@@ -122,7 +133,7 @@ public class GameManager : MonoBehaviour
             if (cardData != null) {
                 // Instantiate card UI
                 GameObject cardGO = Instantiate(cardUIPrefab, content);
-                
+
                 // Set card image
                 Image cardImage = cardGO.GetComponent<Image>();
                 if (cardImage != null && cardData.cardImage != null) {
@@ -131,12 +142,75 @@ public class GameManager : MonoBehaviour
                     float randomRotation = Random.Range(-5f, 5f);
                     cardImage.transform.rotation = Quaternion.Euler(0, 0, randomRotation);
                 }
+                
+                // Set card data
+                CardDataHolder cardDataHolder = cardGO.GetComponent<CardDataHolder>();
+                cardDataHolder.cardData = cardData;
+
+                // Set card button
+                Button cardButton = cardGO.GetComponent<Button>();
+                cardButton.onClick.RemoveAllListeners();
+                if (!isOnProjectUI) {
+                    cardButton.onClick.AddListener(displayCardDetail);
+                } else {
+                    cardButton.onClick.AddListener(placeCard);
+                }
             }
         }
     }
 
-    private void OnCardClicked(Card card) {
-        // TODO: Implement card click handling
-        Debug.Log($"Card clicked: {card.cardName}");
+    private void displayCardDetail() {
+        Debug.Log("display card detail");
+    }
+
+    private void placeCard() {
+        Debug.Log("place card");
+        // Get the clicked card data
+        CardDataHolder cardDataHolder = EventSystem.current.currentSelectedGameObject.GetComponent<CardDataHolder>();
+        if (cardDataHolder == null || cardDataHolder.cardData == null) return;
+
+        // Remove card from hand
+        string cardId = cardDataHolder.cardData.cardId;
+        if (HandCards.Contains(cardId)) {
+            HandCards.Remove(cardId);
+            
+            // Find first empty card slot
+            Transform cardSlots = ProjectUI.transform.Find("CardSlots");
+            if (cardSlots != null) {
+                bool hasEmptySlot = false;
+                foreach (Transform slot in cardSlots) {
+                    if (slot.GetComponent<CardDataHolder>().cardData == null && slot.gameObject.activeSelf) {
+                        slot.GetComponent<CardDataHolder>().cardData = cardDataHolder.cardData;
+                        currentPlacedCards.Add(cardDataHolder.cardData);
+                        // Update hand card UI
+                        hasEmptySlot = true;
+                        break;
+                    } 
+                }
+                if (!hasEmptySlot) {
+                    // TODO: [bug] 这个提示框弹不出来，后面再DEBUG下
+                    Debug.Log("No more empty card slots!");
+                    PromptUI.ShowOkPrompt("No more empty card slots!", () => {
+                        Debug.Log("After show prompt");
+                    });
+                    return;
+                }
+                // 每次放置卡牌后，重新把所有放置的卡牌结算一遍
+                ProjectUI.ResetDicesAndCardSlots();
+                ExecuteCardEffects();
+                ProjectUI.UpdateCardSlotUI();
+                ProjectUI.UpdateDicesUI();
+                UpdateHandCardUI();
+
+            }
+        }
+    }
+
+    public void ExecuteCardEffects() {
+        foreach (Card card in currentPlacedCards) {
+            foreach (EffectData effect in card.cardEffects) {
+                EffectExecutor.ExecuteEffect(effect.effectCode);
+            }
+        }
     }
 }

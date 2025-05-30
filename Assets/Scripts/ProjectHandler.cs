@@ -9,9 +9,8 @@ public class ProjectHandler : MonoBehaviour
     public Project projectData;
     public float eventTriggerRadius = 5f;
 
-    private GameObject projectInvestmentUI;
+    private ProjectUIManager projectUI;
     private GameObject locationGO;
-    private bool waitingForConfirm = false;
     private bool isFinished = false;
 
     void Start()
@@ -21,16 +20,13 @@ public class ProjectHandler : MonoBehaviour
             Debug.LogError("Project not found: " + projectId);
         }
         locationGO = gameObject.transform.parent.gameObject;
-        // projectInvestmentUI = GameObject.Find("Canvas").transform.Find("ProjectInvestmentPanel").gameObject;
-        // Debug.Log("projectInvestmentUI: " + projectInvestmentUI);
+        projectUI = GameObject.Find("Canvas").transform.Find("ProjectUI").GetComponent<ProjectUIManager>();
     }
 
     public void Update() {
-        if (waitingForConfirm) {
-            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape)) {
-                ConfirmInvestment();
-                return;
-            }
+        if (projectUI.gameObject.activeInHierarchy) {
+            // 交给ProjectUI来处理
+            return;
         }
         if (IsPlayerNearby() || MouseHovering()) {
             // TODO: 显示预览UI
@@ -40,7 +36,7 @@ public class ProjectHandler : MonoBehaviour
         }
         if (IsPlayerNearby()) {
             if (Input.GetKeyDown(KeyCode.E)) {
-                HandleProject();
+                ShowProjectUI();
             }
         }
     }
@@ -59,20 +55,16 @@ public class ProjectHandler : MonoBehaviour
     }
 
     private void HandleProject() {
-        // TODO: 项目投资UI界面&交互逻辑
-        // projectInvestmentUI.GetComponent<InvestmentUIManager>().SetProjectAndInit(this);
-        // projectInvestmentUI.SetActive(true);
-        waitingForConfirm = true;
         PlayerController playerController = GameManager.Instance.playerGO.GetComponent<PlayerController>();
         playerController.isLocked = true;
     }
+
+    private void ShowProjectUI() {
+        projectUI.SetProjectHandler(this);
+        projectUI.ShowProject();
+    }
     
     public void ConfirmInvestment() {
-        // TODO: 消耗行动点
-        // PlayerManager.Instance.UseActionPoint();
-        
-        waitingForConfirm = false;
-        // projectInvestmentUI.SetActive(false);
         Debug.Log($"项目投资{projectId}已确认, 退出UI");
         GameManager.Instance.playerGO.GetComponent<PlayerController>().isLocked = false;
         isFinished = true;

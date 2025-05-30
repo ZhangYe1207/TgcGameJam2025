@@ -11,7 +11,6 @@ public class RandomEventHandler : MonoBehaviour
     private PromptUIManager promptUI;
     private GameObject locationGO;
     private PlayerController playerController;
-    private bool waitingForConfirm = false;
     private bool isFinished = false;
     
     public void Start() {
@@ -30,12 +29,6 @@ public class RandomEventHandler : MonoBehaviour
     public void Update() {
         if (promptUI.gameObject.activeInHierarchy) {
             return; // 如果PromptUI显示中，等待PromptUI来处理
-        }
-        if (waitingForConfirm) {
-            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape)) {
-                ConfirmEvent();
-                return;
-            }
         }
         if (IsPlayerNearby() || MouseHovering()) {
             // TODO: 显示预览UI
@@ -61,13 +54,11 @@ public class RandomEventHandler : MonoBehaviour
         foreach (EventPrerequisite prerequisite in eventData.prerequisites) {
             foreach (ConditionData condition in prerequisite.conditions) {
                 if (!ConditionEvaluator.EvaluateCondition(condition.conditionCode)) {
-                    waitingForConfirm = true;
                     playerController.isLocked = true;
                     Debug.Log($"事件{eventId}的前置条件{condition.conditionCode}不满足，无法触发事件");
                     promptUI.ShowOkPrompt(
                         condition.failedMessage,
                         () => {
-                            waitingForConfirm = false;
                             playerController.isLocked = false;
                             return;
                         }
@@ -80,7 +71,6 @@ public class RandomEventHandler : MonoBehaviour
     }
 
     public void ConfirmEvent() {
-        waitingForConfirm = false;
         resourceEventUI.HideEvent();
         Debug.Log($"事件{eventId}已确认, 退出UI");
         GameManager.Instance.playerGO.GetComponent<PlayerController>().isLocked = false;

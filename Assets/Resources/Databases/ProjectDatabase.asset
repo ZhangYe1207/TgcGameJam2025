@@ -19,28 +19,14 @@ MonoBehaviour:
     projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     isPreviewable: 1
     results:
-    - resultBrief: Success
-      description: Great Success!
-      moneyChange: 20000
-      reputationChange: 2
-      addCardIds: 
-      removeCardIds: 
-      numLevelsToTakeEffect: 0
-      nextProjectId: 
-    prerequisite:
-      minReputation: 0
-      maxReputation: 0
-      minMoney: 0
-      maxMoney: 0
-      minLevel: 0
-      maxLevel: 0
-      requiredProjectIds: []
-    minInvestment: 5000
-    baseSuccessRate: 0.45
-    formulaType: 0
-    formulaParamA: 0.00002
-    formulaParamB: 0.02
-    showBaseSuccessRate: 0.5
-    showFormulaType: 0
-    showFormulaParamA: 0.0001
-    showFormulaParamB: 0.01
+    - description: Great Success!
+      effects: []
+    mustPlaceCards:
+    - money_small
+    initNeedDices: 2
+    initCardSlots: 3
+    prerequisites:
+    - description: 
+      conditions:
+      - conditionCode: ActionPoints >= 1
+        failedMessage: You don't have enough Action Points!

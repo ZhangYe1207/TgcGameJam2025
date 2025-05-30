@@ -38,6 +38,7 @@ public class PromptUIManager : MonoBehaviour
         cancelButton.gameObject.SetActive(false);
 
         promptPanel.SetActive(true);
+        Debug.Log("ShowOkPrompt");
     }
 
     public void ShowConfirmCancelPrompt(string message, Action onConfirm = null, Action onCancel = null)
