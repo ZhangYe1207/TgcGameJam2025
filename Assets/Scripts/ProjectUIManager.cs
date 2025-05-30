@@ -16,7 +16,6 @@ public class ProjectUIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI projectTitleText;
     [SerializeField] private Image projectImage;
     [SerializeField] private GameObject cardSlots;
-    [SerializeField] private Project projectData;
     [SerializeField] private Sprite cardSlotSprite;
 
     private ProjectHandler projectHandler;
@@ -24,12 +23,16 @@ public class ProjectUIManager : MonoBehaviour
     [Header("UI Prefabs")]
     [SerializeField] private GameObject cardUIPrefab;
 
+    [SerializeField] private Project projectData;
+
     private void Awake() {
-        // projectUI.SetActive(false);
+        projectUI.SetActive(false);
         Button[] cardSlotButtons = cardSlots.GetComponentsInChildren<Button>();
         foreach (Button cardSlotButton in cardSlotButtons) {
             cardSlotButton.onClick.AddListener(removeCard);
         }
+        investButton.onClick.AddListener(Invest);
+        laterButton.onClick.AddListener(Later);
     }
 
     public void SetProjectHandler(ProjectHandler handler) {
@@ -104,6 +107,7 @@ public class ProjectUIManager : MonoBehaviour
             }
         }
     }
+
     private void removeCard() {
         // Get the clicked slot
         Button clickedButton = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
@@ -112,13 +116,8 @@ public class ProjectUIManager : MonoBehaviour
         // Check if slot has a card
         CardDataHolder cardDataHolder = clickedButton.GetComponent<CardDataHolder>();
         if (cardDataHolder != null && cardDataHolder.cardData != null) {
-            // Add card back to hand
-            GameManager.Instance.HandCards.Add(cardDataHolder.cardData.cardId);
-            
-            // Remove card from slot
-            GameManager.Instance.currentPlacedCards.Remove(cardDataHolder.cardData);
-            cardDataHolder.cardData = null;
-            
+            RemoveCardFromSlot(cardDataHolder);
+                
             // 每次移除卡牌后，重新把所有放置的卡牌结算一遍
             ResetDicesAndCardSlots();
             GameManager.Instance.ExecuteCardEffects();
@@ -126,5 +125,41 @@ public class ProjectUIManager : MonoBehaviour
             UpdateDicesUI();
             GameManager.Instance.UpdateHandCardUI();
         }   
+    }
+
+    private void RemoveCardFromSlot(CardDataHolder cardDataHolder) {
+        // Add card back to hand
+        GameManager.Instance.HandCards.Add(cardDataHolder.cardData.cardId);
+        // Remove card from slot
+        GameManager.Instance.currentPlacedCards.Remove(cardDataHolder.cardData);
+        cardDataHolder.cardData = null;
+    }
+
+    private void Invest() {
+        // TODO: 投资项目
+        // 检查是否满足投资条件
+        // 如果满足，则进行骰骰子模拟
+        // 获取结果
+        // 执行结果
+        // 更新UI
+    }
+
+    private void Later() {
+        // 清空卡槽，返还手牌
+        foreach (Transform slot in cardSlots.transform) {
+            if (slot.GetComponent<CardDataHolder>().cardData != null) {
+                RemoveCardFromSlot(slot.GetComponent<CardDataHolder>());
+            }
+        }
+        ResetDicesAndCardSlots();
+        UpdateCardSlotUI();
+        UpdateDicesUI();
+        GameManager.Instance.UpdateHandCardUI();
+        GameManager.Instance.currentPlacedCards.Clear();
+        
+        // 关闭UI
+        projectUI.SetActive(false);
+        GameManager.Instance.isOnProjectUI = false;
+        GameManager.Instance.playerGO.GetComponent<PlayerController>().isLocked = false;
     }
 }

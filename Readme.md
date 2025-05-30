@@ -97,3 +97,6 @@
 [x] 主界面行动点UI绘制 & 功能  
 [x] Effect and Condition System & 数据配置框架  
 [x] Resource Event UI & 功能  
+
+## Bug List
+* 卡槽满了之后继续点击手牌，然后点击later之后，溢出的手牌未返还

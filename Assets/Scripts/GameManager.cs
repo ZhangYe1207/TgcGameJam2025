@@ -175,7 +175,10 @@ public class GameManager : MonoBehaviour
         Debug.Log("place card");
         // Get the clicked card data
         CardDataHolder cardDataHolder = EventSystem.current.currentSelectedGameObject.GetComponent<CardDataHolder>();
-        if (cardDataHolder == null || cardDataHolder.cardData == null) return;
+        if (cardDataHolder == null || cardDataHolder.cardData == null) {
+            Debug.Log("cardDataHolder is null or cardData is null");
+            return;
+        }
 
         // Remove card from hand
         string cardId = cardDataHolder.cardData.cardId;
