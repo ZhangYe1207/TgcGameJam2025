@@ -137,7 +137,14 @@ public class ProjectUIManager : MonoBehaviour
 
     private void Invest() {
         // TODO: 投资项目
-        // 检查是否满足投资条件
+        // 检查是否满足投资条件, mustPlaceCards中的卡牌是否都放置了
+        foreach (string cardId in projectData.mustPlaceCards) {
+            if (!GameManager.Instance.currentPlacedCards.Exists(card => card.cardId == cardId)) {
+                Card card = DatabaseManager.Instance.cardDatabase.GetCardById(cardId);
+                GameManager.Instance.PromptUI.ShowOkPrompt("You must place the card \"" + card.cardName + "\" to invest in this project.");
+                return;
+            }
+        }
         // 如果满足，则进行骰骰子模拟
         // 获取结果
         // 执行结果
@@ -156,7 +163,7 @@ public class ProjectUIManager : MonoBehaviour
         UpdateDicesUI();
         GameManager.Instance.UpdateHandCardUI();
         GameManager.Instance.currentPlacedCards.Clear();
-        
+
         // 关闭UI
         projectUI.SetActive(false);
         GameManager.Instance.isOnProjectUI = false;

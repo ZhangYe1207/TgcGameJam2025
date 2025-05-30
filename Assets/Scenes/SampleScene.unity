@@ -2255,6 +2255,9 @@ MonoBehaviour:
   projectTitleText: {fileID: 1947648043}
   projectImage: {fileID: 1963801262}
   cardSlots: {fileID: 115184834}
+  cardSlotSprite: {fileID: 21300020, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+  cardUIPrefab: {fileID: 7507374330508939489, guid: b1abd18d220cdea4ebdb419c59309497,
+    type: 3}
   projectData:
     projectId: 
     title: 
@@ -2266,9 +2269,6 @@ MonoBehaviour:
     initNeedDices: 0
     initCardSlots: 0
     prerequisites: []
-  cardSlotSprite: {fileID: 21300020, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
-  cardUIPrefab: {fileID: 7507374330508939489, guid: b1abd18d220cdea4ebdb419c59309497,
-    type: 3}
 --- !u!1 &558966126
 GameObject:
   m_ObjectHideFlags: 0
@@ -8090,7 +8090,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2010804104
 RectTransform:
   m_ObjectHideFlags: 0
