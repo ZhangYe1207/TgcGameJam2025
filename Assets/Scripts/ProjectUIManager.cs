@@ -52,6 +52,9 @@ public class ProjectUIManager : MonoBehaviour
     }
 
     public void ShowProject() {
+        // disable resultUI
+        resultUI.SetActive(false);
+        resultConfirmButton.gameObject.SetActive(false);
         // set project info
         projectTitleText.text = projectData.title;
         descriptionText.text = projectData.description;
@@ -85,6 +88,12 @@ public class ProjectUIManager : MonoBehaviour
     }
 
     public void UpdateDicesUI() {
+        if (!needDicesText.gameObject.activeSelf) {
+            needDicesText.gameObject.SetActive(true);
+        }
+        if (!haveDicesText.gameObject.activeSelf) {
+            haveDicesText.gameObject.SetActive(true);
+        }
         needDicesText.text = $"Need <size=130%><b>{GameManager.Instance.GetPropertyCurrentValue("NeedDices")}</b></size>";
         haveDicesText.text = $"Have <size=130%><b>{GameManager.Instance.GetPropertyCurrentValue("HaveDices")}</b></size>";
     }
@@ -161,9 +170,17 @@ public class ProjectUIManager : MonoBehaviour
         // 更新UI
         resultUI.SetActive(true);
         resultUI.transform.GetComponentsInChildren<TextMeshProUGUI>(true)[0].text = result.description;
+        Image resultImage = resultUI.transform.GetComponentsInChildren<Image>(true)[1];
+        if (result.resultImage != null) {
+            resultImage.sprite = result.resultImage;
+        } else {
+            resultImage.gameObject.SetActive(false);
+        }
         GameManager.Instance.OnGameDataChanged();
         resultConfirmButton.gameObject.SetActive(true);
         laterButton.gameObject.SetActive(false);
+        needDicesText.gameObject.SetActive(false);
+        haveDicesText.gameObject.SetActive(false);
     }
 
     private void ResultConfirm() {

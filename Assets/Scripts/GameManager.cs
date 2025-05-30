@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
     [Header("UI References")]
     public GameObject mainUI;
     public GameObject ActionPointUI;
+    public GameObject ProfessionalityUI;
+    public GameObject GenerosityUI;
     public GameObject HandCardUI;
     public ProjectUIManager ProjectUI;
     public PromptUIManager PromptUI;
@@ -113,6 +115,8 @@ public class GameManager : MonoBehaviour
     private void UpdateMainUI() {
         // TODO: 更新主界面
         UpdateActionPointUI();
+        UpdateProfessionalityUI();
+        UpdateGenerosityUI();
         UpdateHandCardUI();
     }
 
@@ -120,6 +124,18 @@ public class GameManager : MonoBehaviour
         int currentActionPoint = GetPropertyCurrentValue("ActionPoints");
         int maxActionPoint = GetPropertyMaxValue("ActionPoints");
         ActionPointUI.transform.Find("ActionPointText").GetComponent<TextMeshProUGUI>().text = $"<size=130%><b>{currentActionPoint}</b></size>/{maxActionPoint}";
+    }
+
+    private void UpdateProfessionalityUI() {
+        int currentProfessionality = GetPropertyCurrentValue("Professionality");
+        int maxProfessionality = GetPropertyMaxValue("Professionality");
+        ProfessionalityUI.transform.Find("AttrText").GetComponent<TextMeshProUGUI>().text = $"{currentProfessionality}";
+    }
+
+    private void UpdateGenerosityUI() {
+        int currentGenerosity = GetPropertyCurrentValue("Generosity");
+        int maxGenerosity = GetPropertyMaxValue("Generosity");
+        GenerosityUI.transform.Find("AttrText").GetComponent<TextMeshProUGUI>().text = $"{currentGenerosity}";
     }
 
     public void UpdateHandCardUI() {
