@@ -16,6 +16,8 @@ public class ProjectUIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI projectTitleText;
     [SerializeField] private Image projectImage;
     [SerializeField] private GameObject cardSlots;
+    [SerializeField] private GameObject resultUI;
+    [SerializeField] private Button resultConfirmButton;
     [SerializeField] private Sprite cardSlotSprite;
 
     private ProjectHandler projectHandler;
@@ -33,6 +35,7 @@ public class ProjectUIManager : MonoBehaviour
         }
         investButton.onClick.AddListener(Invest);
         laterButton.onClick.AddListener(Later);
+        resultConfirmButton.onClick.AddListener(ResultConfirm);
     }
 
     public void SetProjectHandler(ProjectHandler handler) {
@@ -146,9 +149,33 @@ public class ProjectUIManager : MonoBehaviour
             }
         }
         // 如果满足，则进行骰骰子模拟
+        int[] dices = GameManager.Instance.RollDices();
         // 获取结果
+        int resultIndex = GameManager.Instance.GetProjectResultIndex(dices);
+        ProjectResult result = projectData.results[resultIndex];
+        Debug.Log("Invest result: " + result.description);
         // 执行结果
+        foreach (EffectData effect in result.effects) {
+            EffectExecutor.ExecuteEffect(effect.effectCode);
+        }
         // 更新UI
+        resultUI.SetActive(true);
+        resultUI.transform.GetComponentsInChildren<TextMeshProUGUI>(true)[0].text = result.description;
+        GameManager.Instance.OnGameDataChanged();
+        resultConfirmButton.gameObject.SetActive(true);
+        laterButton.gameObject.SetActive(false);
+    }
+
+    private void ResultConfirm() {
+        Debug.Log("ResultConfirm");
+        // 关闭UI
+        resultUI.SetActive(false);
+        resultConfirmButton.gameObject.SetActive(false);
+        laterButton.gameObject.SetActive(true);
+        projectUI.SetActive(false);
+        GameManager.Instance.isOnProjectUI = false;
+        GameManager.Instance.playerGO.GetComponent<PlayerController>().isLocked = false;
+        // TODO 缓存数据清理，比如当前放置的卡牌，骰子数量，卡槽数量等
     }
 
     private void Later() {

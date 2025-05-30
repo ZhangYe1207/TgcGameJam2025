@@ -225,4 +225,29 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    public int[] RollDices() {
+        int[] dices = new int[GetPropertyCurrentValue("HaveDices")];
+        for (int i = 0; i < dices.Length; i++) {
+            dices[i] = Random.Range(0, 2);
+        }
+        Debug.Log("RollDices result: " + string.Join(", ", dices));
+        return dices;
+    }
+
+    public int GetProjectResultIndex(int[] dices) {
+        // TODO: 根据骰子结果获取项目结果
+        int sum = 0;
+        foreach (int dice in dices) {
+            sum += dice;
+        }
+        int needDices = GetPropertyCurrentValue("NeedDices");
+        if (sum >= needDices) {
+            Debug.Log("NeedDices: " + needDices + " sum: " + sum + " ProjectResultIndex: 1");
+            return 1; // 成功
+        } else {
+            Debug.Log("NeedDices: " + needDices + " sum: " + sum + " ProjectResultIndex: 0");
+            return 0; // 失败
+        }
+    }
 }

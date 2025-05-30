@@ -150,7 +150,7 @@ public class Project
     public string description;
     public Sprite projectImage;
     public bool isPreviewable;     // 是否可预览
-    [Tooltip("当前结果0为成功，结果1为失败，后面的预留，未实现")]
+    [Tooltip("当前结果0为失败，结果1为成功，后面的预留，未实现")]
     public ProjectResult[] results;  // 可选结果
     public List<string> mustPlaceCards; // 必须放置的卡牌ID
     public int initNeedDices; // 初始需要的正面骰子数
