@@ -95,7 +95,7 @@ public enum EventType
 [System.Serializable]
 public class EventResult
 {
-    public string description;     // 结果描述
+    [TextArea] public string description;     // 结果描述
     public Sprite resultImage;
     public List<EffectData> eventEffects;
 }
@@ -128,8 +128,9 @@ public class RandomEvent
 [System.Serializable]
 public class ProjectResult
 {
-    public string description;     // 结果描述
+    [TextArea] public string description;     // 结果描述
     public EffectData[] effects;
+    public Sprite resultImage;
 }
 
 // 项目前置条件

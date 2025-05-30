@@ -25,7 +25,7 @@ public class ProjectUIManager : MonoBehaviour
     [SerializeField] private GameObject cardUIPrefab;
 
     private void Awake() {
-        projectUI.SetActive(false);
+        // projectUI.SetActive(false);
         Button[] cardSlotButtons = cardSlots.GetComponentsInChildren<Button>();
         foreach (Button cardSlotButton in cardSlotButtons) {
             cardSlotButton.onClick.AddListener(removeCard);

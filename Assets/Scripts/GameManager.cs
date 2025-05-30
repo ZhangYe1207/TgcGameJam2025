@@ -12,10 +12,18 @@ public class GameManager : MonoBehaviour
     // 这一轮结算时需要结算的项目结果
     public List<ProjectResult> projectResults = new List<ProjectResult>();
     public List<GameProperty> baseGameProperties;
+    [Header("List Game Properties. Can be used in Effects and Conditions")]
     public List<string> HandCards;
     public List<string> EventsFinished;
     public List<string> ProjectFinished;
     public List<string> Friends;
+    [Header("Delayed Effects. 0: 当前轮次, 1: 下一轮次, 2: 下下轮次, 3: 下下下轮次")]
+    public List<EffectData> DelayedEffects0;
+    public List<EffectData> DelayedEffects1;
+    public List<EffectData> DelayedEffects2;
+    public List<EffectData> DelayedEffects3;
+
+    [Header("Game States")]
     public GameObject playerGO;
     public List<Card> currentPlacedCards;
     public bool isOnProjectUI;

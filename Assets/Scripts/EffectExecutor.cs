@@ -39,7 +39,10 @@ public class EffectExecutor : MonoBehaviour
         listGameProperties["EventsFinished"] = typeof(GameManager).GetField("EventsFinished");
         listGameProperties["ProjectFinished"] = typeof(GameManager).GetField("ProjectFinished");
         listGameProperties["Friends"] = typeof(GameManager).GetField("Friends");
-
+        listGameProperties["DelayedEffects0"] = typeof(GameManager).GetField("DelayedEffects0");
+        listGameProperties["DelayedEffects1"] = typeof(GameManager).GetField("DelayedEffects1");
+        listGameProperties["DelayedEffects2"] = typeof(GameManager).GetField("DelayedEffects2");
+        listGameProperties["DelayedEffects3"] = typeof(GameManager).GetField("DelayedEffects3");
         // foreach (var property in baseGameProperties) {
         //     Debug.Log(property.Key + ": " + property.Value);
         // }
