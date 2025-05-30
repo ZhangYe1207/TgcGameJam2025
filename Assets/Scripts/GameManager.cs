@@ -188,10 +188,11 @@ public class GameManager : MonoBehaviour
                     } 
                 }
                 if (!hasEmptySlot) {
-                    // TODO: [bug] 这个提示框弹不出来，后面再DEBUG下
+                    // TODO: [bug] 这个提示框弹出之后，如果继续点卡牌会报错，后面再DEBUG下
                     Debug.Log("No more empty card slots!");
                     PromptUI.ShowOkPrompt("No more empty card slots!", () => {
                         Debug.Log("After show prompt");
+                        return;
                     });
                     return;
                 }

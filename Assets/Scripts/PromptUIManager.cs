@@ -18,8 +18,7 @@ public class PromptUIManager : MonoBehaviour
 
     private void Awake()
     {
-        // Hide the panel initially
-        promptPanel.SetActive(false);
+        promptPanel.SetActive(true);
 
         // Add button listeners
         okButton.onClick.AddListener(OnOkClicked);
