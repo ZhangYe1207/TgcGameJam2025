@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     public GameObject HandCardUI;
     public ProjectUIManager ProjectUI;
     public PromptUIManager PromptUI;
+    public Button NextDayButton;
 
     [Header("UI Prefabs")]
     [SerializeField] private GameObject cardUIPrefab;
