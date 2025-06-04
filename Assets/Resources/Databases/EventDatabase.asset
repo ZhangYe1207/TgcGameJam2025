@@ -29,6 +29,8 @@ MonoBehaviour:
         explanation: 
       - effectCode: EventsFinished:add:insight_card_event
         explanation: 
+      - effectCode: Generosity += 1
+        explanation: 
     - description: Money Small x1
       resultImage: {fileID: 21300042, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
       eventEffects:

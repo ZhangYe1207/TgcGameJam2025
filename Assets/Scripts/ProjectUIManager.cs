@@ -45,8 +45,9 @@ public class ProjectUIManager : MonoBehaviour
     }
 
     public void ResetDicesAndCardSlots() {
-        // 设置手上的骰子数量，当前写死2个
+        // 初始骰子和慷慨值挂钩，公式固定为2+n
         GameManager.Instance.SetPropertyCurrentValue("HaveDices", 2);
+        EffectExecutor.ExecuteEffect($"HaveDices += {GameManager.Instance.GetPropertyCurrentValue("Generosity")}");
         GameManager.Instance.SetPropertyCurrentValue("NeedDices", projectData.initNeedDices);
         GameManager.Instance.SetPropertyCurrentValue("CardSlots", projectData.initCardSlots);
     }
