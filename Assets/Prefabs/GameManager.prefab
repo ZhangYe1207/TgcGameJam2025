@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1967279606532599158
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6353341837666485099}
+  - component: {fileID: 1761213648540929374}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6353341837666485099
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1967279606532599158}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1761213648540929374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1967279606532599158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bac1e82b2b552484c813061895acc617, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLevel: 0
+  projectResults: []
+  baseGameProperties:
+  - propertyName: ActionPoints
+    currentValue: 5
+    maxValue: 5
+    minValue: 0
+    outOfRangeHandlePolicy: 1
+    explanation: "\u884C\u52A8\u70B9"
+  - propertyName: HaveDices
+    currentValue: 2
+    maxValue: 20
+    minValue: 0
+    outOfRangeHandlePolicy: 0
+    explanation: "\u5F53\u524D\u53EF\u7528\u7684\u9AB0\u5B50\u6570"
+  - propertyName: NeedDices
+    currentValue: 2
+    maxValue: 20
+    minValue: 0
+    outOfRangeHandlePolicy: 0
+    explanation: "\u5224\u5B9A\u6210\u529F\u9700\u8981\u7684\u9AB0\u5B50\u6570"
+  - propertyName: CardSlots
+    currentValue: 0
+    maxValue: 8
+    minValue: 0
+    outOfRangeHandlePolicy: 0
+    explanation: "\u53EF\u7528\u5361\u69FD\u6570"
+  - propertyName: Generosity
+    currentValue: -3
+    maxValue: 20
+    minValue: -20
+    outOfRangeHandlePolicy: 0
+    explanation: 
+  - propertyName: Professionality
+    currentValue: 0
+    maxValue: 20
+    minValue: -20
+    outOfRangeHandlePolicy: 0
+    explanation: 
+  HandCards:
+  - insight_card
+  - money_small
+  EventsFinished: []
+  ProjectFinished: []
+  Friends: []
+  DelayedEffects0: []
+  DelayedEffects1: []
+  DelayedEffects2: []
+  DelayedEffects3: []
+  playerGO: {fileID: 0}
+  currentPlacedCards: []
+  isOnProjectUI: 0
+  mainUI: {fileID: 0}
+  ActionPointUI: {fileID: 0}
+  ProfessionalityUI: {fileID: 0}
+  GenerosityUI: {fileID: 0}
+  HandCardUI: {fileID: 0}
+  ProjectUI: {fileID: 0}
+  PromptUI: {fileID: 0}
+  NextDayButton: {fileID: 0}
+  cardUIPrefab: {fileID: 7507374330508939489, guid: b1abd18d220cdea4ebdb419c59309497,
+    type: 3}
