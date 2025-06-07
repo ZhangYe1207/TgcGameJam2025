@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public List<EffectData> DelayedEffects1;
     public List<EffectData> DelayedEffects2;
     public List<EffectData> DelayedEffects3;
+    public List<List<EffectData>> DelayedEffectsList;
 
     [Header("Game States")]
     public GameObject playerGO;
@@ -63,6 +64,11 @@ public class GameManager : MonoBehaviour
             if (Friends == null) {
                 Friends = new List<string>();
             }
+            DelayedEffectsList = new List<List<EffectData>>();
+            DelayedEffectsList.Add(DelayedEffects0);
+            DelayedEffectsList.Add(DelayedEffects1);
+            DelayedEffectsList.Add(DelayedEffects2);
+            DelayedEffectsList.Add(DelayedEffects3);
         }
         else
         {
@@ -75,6 +81,7 @@ public class GameManager : MonoBehaviour
         EffectsCheck();
         ConditionsCheck();
         UpdateMainUI();
+        NextDayButton.onClick.AddListener(NextDay);
     }
 
     private void EffectsCheck() {
@@ -84,6 +91,27 @@ public class GameManager : MonoBehaviour
     private void ConditionsCheck() {
         // 检查数据库中配置的所有条件是否符合格式
     }   
+
+    private void NextDay() {
+        // Delay Effects处理
+        // 结算当前轮次需要生效的效果
+        foreach (EffectData e in DelayedEffectsList[0]) {
+            EffectExecutor.ExecuteEffect(e.effectCode);
+        }
+        // 不知道C#的垃圾回收机制，要不要显式清理List0
+        // 其他轮次往前挪
+        for (int i = 1; i < DelayedEffectsList.Count; i++) {
+            DelayedEffectsList[i-1] = DelayedEffectsList[i];
+        }
+        DelayedEffectsList[DelayedEffectsList.Count-1] = new List<EffectData>();
+
+        // 结算ui展示
+        // 清理本轮的缓存数据，如果有？
+        // 下一轮数据生成&更新
+        // 地图boundary更新？
+    }
+
+
 
     // 开始新的一轮
     public void StartNewLevel()
