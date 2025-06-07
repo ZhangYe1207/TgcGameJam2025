@@ -13,9 +13,33 @@ MonoBehaviour:
   m_Name: CardDatabase
   m_EditorClassIdentifier: 
   allCards:
-  - cardName: InsightCard
-    cardId: insight_card
-    description: Insight Card
+  - cardName: DiceMinusOne
+    cardId: dice_minus_one
+    description: Dice Minus One
+    cardType: 1
+    cardImage: {fileID: 21300000, guid: f1a09b7f0fade6d44935c96cc19438ce, type: 3}
+    cardEffects:
+    - effectCode: HaveDices -= 1
+      explanation: 
+  - cardName: DiceMinusTwo
+    cardId: dice_minus_two
+    description: Dice Minus Two
+    cardType: 1
+    cardImage: {fileID: 21300000, guid: f1a09b7f0fade6d44935c96cc19438ce, type: 3}
+    cardEffects:
+    - effectCode: HaveDices -= 2
+      explanation: 
+  - cardName: DicePlusOne
+    cardId: dice_plus_one
+    description: Dice Plus One
+    cardType: 1
+    cardImage: {fileID: 21300000, guid: f1a09b7f0fade6d44935c96cc19438ce, type: 3}
+    cardEffects:
+    - effectCode: HaveDices += 1
+      explanation: 
+  - cardName: DicePlusTwo
+    cardId: dice_plus_two
+    description: Dice Plus Two
     cardType: 1
     cardImage: {fileID: 21300000, guid: f1a09b7f0fade6d44935c96cc19438ce, type: 3}
     cardEffects:
@@ -24,6 +48,6 @@ MonoBehaviour:
   - cardName: MoneySmall
     cardId: money_small
     description: Small amount of Money
-    cardType: 1
+    cardType: 0
     cardImage: {fileID: 21300042, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     cardEffects: []
