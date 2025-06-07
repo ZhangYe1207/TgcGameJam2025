@@ -44,4 +44,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca713dfe947044af7bc0975c7aff5d24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClips: []
+  audioClips:
+  - name: BGM
+    clip: {fileID: 8300000, guid: aa608d75faff246b78bea21ba4120745, type: 3}
+  - name: BGM1
+    clip: {fileID: 0}
+  - name: SetCardInSlot
+    clip: {fileID: 8300000, guid: ada7f17878f5f433ea3c616564fdfc06, type: 3}
+  - name: NextDay
+    clip: {fileID: 8300000, guid: 33740f081d31a4084ae3c45c785ed187, type: 3}
+  - name: Invest
+    clip: {fileID: 8300000, guid: c48c26ce026784b33b7db5234066fb1e, type: 3}
+  - name: Later
+    clip: {fileID: 8300000, guid: 990409f11eefd424e9336ad9343b92dd, type: 3}
+  - name: InvestSuccess
+    clip: {fileID: 8300000, guid: 67a5cb244ad254ba69e1a311beb77c28, type: 3}
+  - name: InvestFail
+    clip: {fileID: 8300000, guid: d0a0f69c6554946ad95faa8d73516457, type: 3}
+  - name: EnterEvent
+    clip: {fileID: 0}
+  - name: Touchtyping
+    clip: {fileID: 8300000, guid: 67a5cb244ad254ba69e1a311beb77c28, type: 3}
+  - name: RollDice
+    clip: {fileID: 8300000, guid: 67a5cb244ad254ba69e1a311beb77c28, type: 3}
+  - name: Bibobibo
+    clip: {fileID: 8300000, guid: 4bee65a02cc2043c28c5dd77fd74710d, type: 3}
+  - name: MapExtend
+    clip: {fileID: 8300000, guid: 68fec8d83540844478987cb24ba3a0a4, type: 3}
