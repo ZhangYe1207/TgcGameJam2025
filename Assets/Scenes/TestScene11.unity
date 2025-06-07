@@ -2921,6 +2921,33 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3952126045904825637, guid: d332e64ed6a6d43e9b74499f105facf3,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 75.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3952126045904825637, guid: d332e64ed6a6d43e9b74499f105facf3,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: dd4d17ffdc37d4c168d44027ad2639f7,
+        type: 2}
+    - target: {fileID: 3952126045904825637, guid: d332e64ed6a6d43e9b74499f105facf3,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 75.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3952126045904825637, guid: d332e64ed6a6d43e9b74499f105facf3,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 5483103616078829354, guid: dd4d17ffdc37d4c168d44027ad2639f7,
+        type: 2}
+    - target: {fileID: 3952126045904825637, guid: d332e64ed6a6d43e9b74499f105facf3,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4047166236957046780, guid: d332e64ed6a6d43e9b74499f105facf3,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -2990,6 +3017,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121119331376906277, guid: d332e64ed6a6d43e9b74499f105facf3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -363
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121119331376906277, guid: d332e64ed6a6d43e9b74499f105facf3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 395
       objectReference: {fileID: 0}
     - target: {fileID: 8478446732741463855, guid: d332e64ed6a6d43e9b74499f105facf3,
         type: 3}
@@ -3150,86 +3187,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1292028351057249317, guid: 215b876b6ab5c4fa68d8bc7c6601628c,
-        type: 3}
-      propertyPath: audioClips.Array.size
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 1292028351057249317, guid: 215b876b6ab5c4fa68d8bc7c6601628c,
-        type: 3}
-      propertyPath: audioClips.Array.data[0].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: aa608d75faff246b78bea21ba4120745, type: 3}
-    - target: {fileID: 1292028351057249317, guid: 215b876b6ab5c4fa68d8bc7c6601628c,
-        type: 3}
-      propertyPath: audioClips.Array.data[2].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: ada7f17878f5f433ea3c616564fdfc06, type: 3}
-    - target: {fileID: 1292028351057249317, guid: 215b876b6ab5c4fa68d8bc7c6601628c,
-        type: 3}
-      propertyPath: audioClips.Array.data[3].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 33740f081d31a4084ae3c45c785ed187, type: 3}
-    - target: {fileID: 1292028351057249317, guid: 215b876b6ab5c4fa68d8bc7c6601628c,
-        type: 3}
-      propertyPath: audioClips.Array.data[4].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: c48c26ce026784b33b7db5234066fb1e, type: 3}
-    - target: {fileID: 1292028351057249317, guid: 215b876b6ab5c4fa68d8bc7c6601628c,
-        type: 3}
-      propertyPath: audioClips.Array.data[5].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 990409f11eefd424e9336ad9343b92dd, type: 3}
-    - target: {fileID: 1292028351057249317, guid: 215b876b6ab5c4fa68d8bc7c6601628c,
-        type: 3}
-      propertyPath: audioClips.Array.data[6].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 67a5cb244ad254ba69e1a311beb77c28, type: 3}
-    - target: {fileID: 1292028351057249317, guid: 215b876b6ab5c4fa68d8bc7c6601628c,
-        type: 3}
-      propertyPath: audioClips.Array.data[7].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: d0a0f69c6554946ad95faa8d73516457, type: 3}
-    - target: {fileID: 1292028351057249317, guid: 215b876b6ab5c4fa68d8bc7c6601628c,
-        type: 3}
-      propertyPath: audioClips.Array.data[9].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 67a5cb244ad254ba69e1a311beb77c28, type: 3}
-    - target: {fileID: 1292028351057249317, guid: 215b876b6ab5c4fa68d8bc7c6601628c,
-        type: 3}
-      propertyPath: audioClips.Array.data[9].name
-      value: Touchtyping
-      objectReference: {fileID: 0}
-    - target: {fileID: 1292028351057249317, guid: 215b876b6ab5c4fa68d8bc7c6601628c,
-        type: 3}
-      propertyPath: audioClips.Array.data[10].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 67a5cb244ad254ba69e1a311beb77c28, type: 3}
-    - target: {fileID: 1292028351057249317, guid: 215b876b6ab5c4fa68d8bc7c6601628c,
-        type: 3}
-      propertyPath: audioClips.Array.data[10].name
-      value: RollDice
-      objectReference: {fileID: 0}
-    - target: {fileID: 1292028351057249317, guid: 215b876b6ab5c4fa68d8bc7c6601628c,
-        type: 3}
-      propertyPath: audioClips.Array.data[11].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 4bee65a02cc2043c28c5dd77fd74710d, type: 3}
-    - target: {fileID: 1292028351057249317, guid: 215b876b6ab5c4fa68d8bc7c6601628c,
-        type: 3}
-      propertyPath: audioClips.Array.data[11].name
-      value: Bibobibo
-      objectReference: {fileID: 0}
-    - target: {fileID: 1292028351057249317, guid: 215b876b6ab5c4fa68d8bc7c6601628c,
-        type: 3}
-      propertyPath: audioClips.Array.data[12].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 68fec8d83540844478987cb24ba3a0a4, type: 3}
-    - target: {fileID: 1292028351057249317, guid: 215b876b6ab5c4fa68d8bc7c6601628c,
-        type: 3}
-      propertyPath: audioClips.Array.data[12].name
-      value: MapExtend
-      objectReference: {fileID: 0}
     - target: {fileID: 2692176354373263008, guid: 215b876b6ab5c4fa68d8bc7c6601628c,
         type: 3}
       propertyPath: m_LocalPosition.x
