@@ -17,12 +17,8 @@ public class GameManager : MonoBehaviour
     public List<string> EventsFinished;
     public List<string> ProjectFinished;
     public List<string> Friends;
-    [Header("Delayed Effects. 0: 当前轮次, 1: 下一轮次, 2: 下下轮次, 3: 下下下轮次")]
-    public List<EffectData> DelayedEffects0;
-    public List<EffectData> DelayedEffects1;
-    public List<EffectData> DelayedEffects2;
-    public List<EffectData> DelayedEffects3;
-    public List<List<EffectData>> DelayedEffectsList;
+    [Header("Delayed Effects. 延迟生效的效果，每一轮结束后结算")]
+    public List<DelayedEffectData> DelayedEffects;
 
     [Header("Game States")]
     public GameObject playerGO;
@@ -38,6 +34,7 @@ public class GameManager : MonoBehaviour
     public ProjectUIManager ProjectUI;
     public PromptUIManager PromptUI;
     public Button NextDayButton;
+    public GameObject DailyReportUI;
 
     [Header("UI Prefabs")]
     [SerializeField] private GameObject cardUIPrefab;
@@ -64,11 +61,9 @@ public class GameManager : MonoBehaviour
             if (Friends == null) {
                 Friends = new List<string>();
             }
-            DelayedEffectsList = new List<List<EffectData>>();
-            DelayedEffectsList.Add(DelayedEffects0);
-            DelayedEffectsList.Add(DelayedEffects1);
-            DelayedEffectsList.Add(DelayedEffects2);
-            DelayedEffectsList.Add(DelayedEffects3);
+            if (DelayedEffects == null) {
+                DelayedEffects = new List<DelayedEffectData>();
+            }
         }
         else
         {
@@ -82,6 +77,7 @@ public class GameManager : MonoBehaviour
         ConditionsCheck();
         UpdateMainUI();
         NextDayButton.onClick.AddListener(NextDay);
+        DailyReportUI.SetActive(false);
     }
 
     private void EffectsCheck() {
@@ -94,21 +90,25 @@ public class GameManager : MonoBehaviour
 
     private void NextDay() {
         // Delay Effects处理
-        // 结算当前轮次需要生效的效果
-        foreach (EffectData e in DelayedEffectsList[0]) {
-            EffectExecutor.ExecuteEffect(e.effectCode);
+        for (int i = DelayedEffects.Count - 1; i >= 0; i--) {
+            DelayedEffectData effect = DelayedEffects[i];
+            if (effect.delayedLevel == 0) {
+                EffectExecutor.ExecuteEffect(effect.effectCode);
+                DelayedEffects.RemoveAt(i);
+            } else {
+                effect.delayedLevel--;
+            }
         }
-        // 不知道C#的垃圾回收机制，要不要显式清理List0
-        // 其他轮次往前挪
-        for (int i = 1; i < DelayedEffectsList.Count; i++) {
-            DelayedEffectsList[i-1] = DelayedEffectsList[i];
-        }
-        DelayedEffectsList[DelayedEffectsList.Count-1] = new List<EffectData>();
-
         // 结算ui展示
+        DailyReportUI.SetActive(true);
+        SetupDailyReportUI();
         // 清理本轮的缓存数据，如果有？
         // 下一轮数据生成&更新
         // 地图boundary更新？
+    }
+
+    private void SetupDailyReportUI() {
+        // TODO: 设置每日报告UI
     }
 
 

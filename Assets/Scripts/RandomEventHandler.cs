@@ -93,8 +93,11 @@ public class RandomEventHandler : MonoBehaviour
     
     public void HandleResourceEvent(EventResult result) {
         // 按顺序执行效果
-        foreach (EffectData effect in result.eventEffects) {
+        foreach (EffectData effect in result.immediateEffects) {
             EffectExecutor.ExecuteEffect(effect.effectCode);
+        }
+        foreach (DelayedEffectData effect in result.delayedEffects) {
+            GameManager.Instance.DelayedEffects.Add(effect);
         }
         GameManager.Instance.OnGameDataChanged();
     }

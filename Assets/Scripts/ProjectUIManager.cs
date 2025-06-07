@@ -149,7 +149,6 @@ public class ProjectUIManager : MonoBehaviour
     }
 
     private void Invest() {
-        // TODO: 投资项目
         // 检查是否满足投资条件, mustPlaceCards中的卡牌是否都放置了
         foreach (string cardId in projectData.mustPlaceCards) {
             if (!GameManager.Instance.currentPlacedCards.Exists(card => card.cardId == cardId)) {
@@ -165,8 +164,11 @@ public class ProjectUIManager : MonoBehaviour
         ProjectResult result = projectData.results[resultIndex];
         Debug.Log("Invest result: " + result.description);
         // 执行结果
-        foreach (EffectData effect in result.effects) {
+        foreach (EffectData effect in result.immediateEffects) {
             EffectExecutor.ExecuteEffect(effect.effectCode);
+        }
+        foreach (DelayedEffectData effect in result.delayedEffects) {
+            GameManager.Instance.DelayedEffects.Add(effect);
         }
         // 更新UI
         resultUI.SetActive(true);

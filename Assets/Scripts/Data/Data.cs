@@ -27,7 +27,14 @@ public class EffectData
 {
     public string effectCode;
     [TextArea] public string explanation;
-}   
+}
+
+[System.Serializable]
+public class DelayedEffectData : EffectData
+{
+    [Tooltip("延迟等级，0为立即生效，1为下一回合生效，2为下下回合生效，以此类推")]
+    public int delayedLevel;
+}
 
 [System.Serializable]
 public class ConditionData
@@ -97,7 +104,10 @@ public class EventResult
 {
     [TextArea] public string description;     // 结果描述
     public Sprite resultImage;
-    public List<EffectData> eventEffects;
+    [Header("立即生效的Effect")]
+    public List<EffectData> immediateEffects;
+    [Header("延迟生效的Effect")]
+    public List<DelayedEffectData> delayedEffects;
 }
 
 // 事件前置条件
@@ -129,8 +139,11 @@ public class RandomEvent
 public class ProjectResult
 {
     [TextArea] public string description;     // 结果描述
-    public EffectData[] effects;
     public Sprite resultImage;
+    [Header("立即生效的Effect")]
+    public List<EffectData> immediateEffects;
+    [Header("延迟生效的Effect")]
+    public List<DelayedEffectData> delayedEffects;
 }
 
 // 项目前置条件
