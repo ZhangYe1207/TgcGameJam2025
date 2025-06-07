@@ -12,6 +12,9 @@ Thumbs.db
 [Uu]ser[Pp]references/
 [Uu]serSettings/
 
+# git backup files
+*.orig
+
 # Visual Studio files
 *.sln
 *.csproj
