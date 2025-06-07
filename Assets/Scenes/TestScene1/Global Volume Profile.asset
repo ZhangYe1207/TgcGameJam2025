@@ -1,0 +1,352 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5683569254853568140
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea9c8c715a5f6cc4e9f3a027afa712d8, type: 3}
+  m_Name: ASCIIVolume
+  m_EditorClassIdentifier: 
+  active: 0
+  _asciiTex:
+    m_OverrideState: 1
+    m_Value: {fileID: 2800000, guid: 6017f374382d64245a0a4aab668e6f38, type: 3}
+    dimension: 1
+  _edgeTex:
+    m_OverrideState: 1
+    m_Value: {fileID: 2800000, guid: 0f8fa14b3731cda4e947062e734d5e1e, type: 3}
+    dimension: 1
+  _gaussianKernelSize:
+    m_OverrideState: 1
+    m_Value: 2
+  _stdev:
+    m_OverrideState: 1
+    m_Value: 2
+  _stdevScale:
+    m_OverrideState: 1
+    m_Value: 1.6
+  _tau:
+    m_OverrideState: 1
+    m_Value: 1
+  _threshold:
+    m_OverrideState: 1
+    m_Value: 0.005
+  _edgeThreshold:
+    m_OverrideState: 1
+    m_Value: 8
+  _exposure:
+    m_OverrideState: 1
+    m_Value: 1
+  _attenuation:
+    m_OverrideState: 1
+    m_Value: 1
+  _invert:
+    m_OverrideState: 1
+    m_Value: 0
+  _viewDog:
+    m_OverrideState: 1
+    m_Value: 0
+  _viewSobel:
+    m_OverrideState: 1
+    m_Value: 0
+  _viewGrid:
+    m_OverrideState: 1
+    m_Value: 0
+  _debugEdges:
+    m_OverrideState: 1
+    m_Value: 0
+  _viewUncompressedEdges:
+    m_OverrideState: 1
+    m_Value: 0
+  _viewQuantizedSobel:
+    m_OverrideState: 1
+    m_Value: 0
+  _noEdges:
+    m_OverrideState: 1
+    m_Value: 0
+  _noFill:
+    m_OverrideState: 1
+    m_Value: 0
+--- !u!114 &-4908371926198245415
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c5750ff4653c934a962320f10978767, type: 3}
+  m_Name: VignetteVolume
+  m_EditorClassIdentifier: 
+  active: 0
+  _vignetteColor:
+    m_OverrideState: 1
+    m_Value: {r: 0, g: 0.025779486, b: 1, a: 1}
+  _vignetteOffset:
+    m_OverrideState: 1
+    m_Value: {x: 0.07, y: 0}
+  _vignetteSize:
+    m_OverrideState: 1
+    m_Value: {x: 1, y: 1}
+  _intensity:
+    m_OverrideState: 1
+    m_Value: 1.45
+  _roundness:
+    m_OverrideState: 1
+    m_Value: 2.73
+  _smoothness:
+    m_OverrideState: 1
+    m_Value: 8.82
+--- !u!114 &-2208989399477618815
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7baaabdc0cb99459834632167eefc3, type: 3}
+  m_Name: DitheringVolume
+  m_EditorClassIdentifier: 
+  active: 1
+  _spread:
+    m_OverrideState: 1
+    m_Value: 0.282
+  _redColorCount:
+    m_OverrideState: 1
+    m_Value: 4
+  _greenColorCount:
+    m_OverrideState: 1
+    m_Value: 5
+  _blueColorCount:
+    m_OverrideState: 1
+    m_Value: 7
+  _bayerLevel:
+    m_OverrideState: 1
+    m_Value: 0
+  _downSamples:
+    m_OverrideState: 1
+    m_Value: 1
+--- !u!114 &-1546154500929419264
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 463dc7bc0a4332b4e8e5084f29309062, type: 3}
+  m_Name: HalftoneVolume
+  m_EditorClassIdentifier: 
+  active: 0
+  _printCyan:
+    m_OverrideState: 1
+    m_Value: 1
+  _cyanDotSize:
+    m_OverrideState: 1
+    m_Value: 3
+  _cyanBias:
+    m_OverrideState: 1
+    m_Value: 0.16
+  _cyanOffset:
+    m_OverrideState: 1
+    m_Value: {x: 0, y: 0}
+  _printMagenta:
+    m_OverrideState: 1
+    m_Value: 1
+  _magentaDotSize:
+    m_OverrideState: 1
+    m_Value: 2.78
+  _magentaBias:
+    m_OverrideState: 1
+    m_Value: -0.29
+  _magentaOffset:
+    m_OverrideState: 1
+    m_Value: {x: 0, y: 0}
+  _printYellow:
+    m_OverrideState: 1
+    m_Value: 1
+  _yellowDotSize:
+    m_OverrideState: 1
+    m_Value: 1
+  _yellowBias:
+    m_OverrideState: 1
+    m_Value: 0
+  _yellowOffset:
+    m_OverrideState: 1
+    m_Value: {x: 0, y: 0}
+  _printBlack:
+    m_OverrideState: 1
+    m_Value: 0
+  _blackDotSize:
+    m_OverrideState: 1
+    m_Value: 1
+  _blackBias:
+    m_OverrideState: 1
+    m_Value: 0
+  _blackOffset:
+    m_OverrideState: 1
+    m_Value: {x: 0, y: 0}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
+  m_Name: Global Volume Profile
+  m_EditorClassIdentifier: 
+  components:
+  - {fileID: 4172514926231194316}
+  - {fileID: 5200501137860688288}
+  - {fileID: 8248373297597583507}
+  - {fileID: 8739119900566290713}
+  - {fileID: -5683569254853568140}
+  - {fileID: 3793187093563700130}
+  - {fileID: -1546154500929419264}
+  - {fileID: -2208989399477618815}
+  - {fileID: 1451943796542544496}
+  - {fileID: -4908371926198245415}
+--- !u!114 &1451943796542544496
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7c01a689d60143aab251588fb023f, type: 3}
+  m_Name: HueShiftVolume
+  m_EditorClassIdentifier: 
+  active: 1
+  _shift:
+    m_OverrideState: 1
+    m_Value: 0
+--- !u!114 &3793187093563700130
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8943a1254475bd43ba652227e9a00c5, type: 3}
+  m_Name: FogVolume
+  m_EditorClassIdentifier: 
+  active: 1
+  _fogColor:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
+  _fogDensity:
+    m_OverrideState: 1
+    m_Value: 0.609
+  _fogOffset:
+    m_OverrideState: 1
+    m_Value: 0
+--- !u!114 &4172514926231194316
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81180773991d8724ab7f2d216912b564, type: 3}
+  m_Name: ChromaticAberration
+  m_EditorClassIdentifier: 
+  active: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.732
+--- !u!114 &5200501137860688288
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70afe9e12c7a7ed47911bb608a23a8ff, type: 3}
+  m_Name: SplitToning
+  m_EditorClassIdentifier: 
+  active: 1
+  shadows:
+    m_OverrideState: 1
+    m_Value: {r: 0.66625136, g: 0.7169812, b: 0.6794332, a: 1}
+  highlights:
+    m_OverrideState: 1
+    m_Value: {r: 0.3207547, g: 0.290459, b: 0.107422575, a: 1}
+  balance:
+    m_OverrideState: 0
+    m_Value: 0
+--- !u!114 &8248373297597583507
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dac663bd3381dca4aaa849998a70e185, type: 3}
+  m_Name: EdgeDetectVolume
+  m_EditorClassIdentifier: 
+  active: 0
+  _borderColor:
+    m_OverrideState: 0
+    m_Value: {r: 0, g: 0, b: 0, a: 1}
+--- !u!114 &8739119900566290713
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 014c36de9c0665e439e043007e93e396, type: 3}
+  m_Name: DifferenceOfGaussiansVolume
+  m_EditorClassIdentifier: 
+  active: 0
+  _gaussianKernelSize:
+    m_OverrideState: 1
+    m_Value: 3
+  _stdev:
+    m_OverrideState: 1
+    m_Value: 2.18
+  _stdevScale:
+    m_OverrideState: 1
+    m_Value: 4.2
+  _tau:
+    m_OverrideState: 1
+    m_Value: 1.45
+  _thresholding:
+    m_OverrideState: 1
+    m_Value: 1
+  _tanh:
+    m_OverrideState: 1
+    m_Value: 0
+  _phi:
+    m_OverrideState: 1
+    m_Value: 85.5
+  _threshold:
+    m_OverrideState: 1
+    m_Value: 0.005
+  _invert:
+    m_OverrideState: 1
+    m_Value: 0
