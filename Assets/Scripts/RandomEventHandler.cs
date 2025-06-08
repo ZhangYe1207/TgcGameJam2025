@@ -16,7 +16,7 @@ public class RandomEventHandler : MonoBehaviour
     public void Start() {
         eventData = DatabaseManager.Instance.eventDatabase.GetEventByID(eventId);
         if (eventData == null) {
-            Debug.LogError("Event not found: " + eventId);
+            Debug.LogWarning("Event not found: " + eventId);
         }
         locationGO = gameObject.transform.parent.gameObject;
         resourceEventUI = GameObject.Find("Canvas").transform.Find("ResourceEventPanel").GetComponent<ResourceEventUIManager>();
@@ -27,6 +27,12 @@ public class RandomEventHandler : MonoBehaviour
     }
 
     public void Update() {
+        if (eventData == null) {
+            eventData = DatabaseManager.Instance.eventDatabase.GetEventByID(eventId);
+            if (eventData == null) {
+                Debug.LogWarning("Event not found: " + eventId);
+            }
+        }
         if (promptUI.gameObject.activeInHierarchy) {
             return; // 如果PromptUI显示中，等待PromptUI来处理
         }
