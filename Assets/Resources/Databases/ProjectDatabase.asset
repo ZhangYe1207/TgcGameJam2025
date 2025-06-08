@@ -13,11 +13,9 @@ MonoBehaviour:
   m_Name: ProjectDatabase
   m_EditorClassIdentifier: 
   allProjects:
-  - projectId: 01_upside_down_therapy_hub
-    title: Upside-Down Therapy Hub
-    description: "Fifteen minutes upside-down is said to ease the soul-crushing despair
-      of work and study. You gave it a shot\u2014and sure enough, you felt totally
-      relaxed\u2026 because you have blacked out."
+  - projectId: project_001
+    title: Inversion Spa
+    description: 
     projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     isPreviewable: 1
     results:
@@ -28,7 +26,7 @@ MonoBehaviour:
         explanation: 
       - effectCode: ActionPoints -= 1
         explanation: 
-      - effectCode: ProjectFinished:add:01_upside_down_therapy_hub
+      - effectCode: ProjectFinished:add:project_001
         explanation: 
       delayedEffects: []
     - description: "Great Success! \nYou gained Money Small x1, Professionality +1\n\n<size=80%>(Note:
@@ -39,12 +37,12 @@ MonoBehaviour:
         explanation: 
       - effectCode: ActionPoints -= 1
         explanation: 
-      - effectCode: ProjectFinished:add:01_upside_down_therapy_hub
+      - effectCode: ProjectFinished:add:project_001
         explanation: 
       delayedEffects:
       - effectCode: HandCards:add:money_small
-        explanation: From Upside-Down Therapy Hub, you gained Money Small x1.
-        delayedLevel: 0
+        explanation: 
+        delayedLevel: 1
     mustPlaceCards:
     - money_small
     initNeedDices: 1
@@ -54,16 +52,21 @@ MonoBehaviour:
       conditions:
       - conditionCode: ActionPoints >= 1
         failedMessage: You don't have enough Action Points!
-  - projectId: 01_meditation_room
+  - projectId: project_002
     title: Meditation Room
-    description: Come here and burn a $100 bill every day, embracing the serenity
-      of watching your fortune slowly drift away.
+    description: 
     projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     isPreviewable: 1
     results:
-    - description: "Big Failure! \nYou lost all your money, but your Generosity +2."
-      resultImage: {fileID: 21300118, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
-      immediateEffects: []
+    - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
+      resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects:
+      - effectCode: Generosity += 2
+        explanation: 
+      - effectCode: ActionPoints -= 1
+        explanation: 
+      - effectCode: ProjectFinished:add:project_002
+        explanation: 
       delayedEffects: []
     mustPlaceCards:
     - money_small
@@ -74,27 +77,626 @@ MonoBehaviour:
       conditions:
       - conditionCode: ActionPoints >= 1
         failedMessage: You don't have enough Action Points!
-  - projectId: 01_boba_tea_de_icer
-    title: Boba Tea De-Icer
-    description: Insert your milk tea, and it precisely extracts the beverage essence,
-      delivering a 100% ice-free experience. So far, it has successfully produced
-      one cup of pure sugar water and one cup of air.
+  - projectId: project_003
+    title: Milk Tea De-icer
+    description: 
     projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     isPreviewable: 1
     results:
-    - description: "Big Failure! \nYou lost all your money, but your Generosity +2."
-      resultImage: {fileID: 21300118, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
-      immediateEffects: []
-      delayedEffects: []
-    - description: "Great Success! \nYou gained Money Small x1, Professionality +2\n\n<size=80%>(Note:
-        Money Card you gained will be delivered at the start of next day)</size>"
+    - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
       resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
-      immediateEffects: []
+      immediateEffects:
+      - effectCode: Generosity += 2
+        explanation: 
+      - effectCode: ActionPoints -= 1
+        explanation: 
+      - effectCode: ProjectFinished:add:project_003
+        explanation: 
+      delayedEffects: []
+    - description: "Great Success! \nYou gained Money Small x1, Professionality +1\n\n<size=80%>(Note:
+        Money Card you gained will be delivered at the start of next day)</size>"
+      resultImage: {fileID: 21300118, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects:
+      - effectCode: Professionality += 2
+        explanation: 
+      - effectCode: ActionPoints -= 1
+        explanation: 
+      - effectCode: ProjectFinished:add:project_001
+        explanation: 
+      delayedEffects:
+      - effectCode: HandCards:add:money_small
+        explanation: 
+        delayedLevel: 1
+    mustPlaceCards:
+    - money_small
+    initNeedDices: 1
+    initCardSlots: 2
+    prerequisites:
+    - description: 
+      conditions:
+      - conditionCode: ActionPoints >= 1
+        failedMessage: You don't have enough Action Points!
+  - projectId: project_004
+    title: Jerks Around You
+    description: 
+    projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    isPreviewable: 1
+    results:
+    - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
+      resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects:
+      - effectCode: Generosity += 2
+        explanation: 
+      - effectCode: ActionPoints -= 1
+        explanation: 
+      - effectCode: ProjectFinished:add:project_004
+        explanation: 
+      delayedEffects: []
+    - description: "Great Success! \nYou gained Money Small x1, Professionality +1\n\n<size=80%>(Note:
+        Money Card you gained will be delivered at the start of next day)</size>"
+      resultImage: {fileID: 21300118, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects:
+      - effectCode: Professionality += 2
+        explanation: 
+      - effectCode: ActionPoints -= 1
+        explanation: 
+      - effectCode: ProjectFinished:add:project_004
+        explanation: 
+      delayedEffects:
+      - effectCode: HandCards:add:medium_small
+        explanation: 
+        delayedLevel: 1
+    mustPlaceCards:
+    - money_small
+    initNeedDices: 7
+    initCardSlots: 2
+    prerequisites:
+    - description: 
+      conditions:
+      - conditionCode: ActionPoints >= 1
+        failedMessage: You don't have enough Action Points!
+  - projectId: project_005
+    title: Cinema Paradiso
+    description: 
+    projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    isPreviewable: 1
+    results:
+    - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
+      resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects:
+      - effectCode: Generosity += 2
+        explanation: 
+      - effectCode: ActionPoints -= 1
+        explanation: 
+      - effectCode: ProjectFinished:add:project_005
+        explanation: 
+      delayedEffects: []
+    - description: "Great Success! \nYou gained Money Small x1, Professionality +1\n\n<size=80%>(Note:
+        Money Card you gained will be delivered at the start of next day)</size>"
+      resultImage: {fileID: 21300118, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects:
+      - effectCode: 'Professionality += 1 '
+        explanation: 
+      - effectCode: ActionPoints -= 1
+        explanation: 
+      - effectCode: ProjectFinished:add:project_005
+        explanation: 
+      delayedEffects:
+      - effectCode: HandCards:add:medium_small
+        explanation: 
+        delayedLevel: 1
+    mustPlaceCards:
+    - money_small
+    initNeedDices: 5
+    initCardSlots: 2
+    prerequisites:
+    - description: 
+      conditions:
+      - conditionCode: ActionPoints >= 1
+        failedMessage: You don't have enough Action Points!
+  - projectId: project_006
+    title: Open Mic
+    description: 
+    projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    isPreviewable: 1
+    results:
+    - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
+      resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects:
+      - effectCode: Generosity += 1
+        explanation: 
+      - effectCode: ActionPoints -= 1
+        explanation: 
+      - effectCode: ProjectFinished:add:project_006
+        explanation: 
+      delayedEffects: []
+    - description: "Great Success! \nYou gained Money Small x1, Professionality +1\n\n<size=80%>(Note:
+        Money Card you gained will be delivered at the start of next day)</size>"
+      resultImage: {fileID: 21300118, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects:
+      - effectCode: 'Professionality += 1 '
+        explanation: 
+      - effectCode: ActionPoints -= 1
+        explanation: 
+      - effectCode: ProjectFinished:add:project_006
+        explanation: 
+      delayedEffects:
+      - effectCode: HandCards:add:money_small
+        explanation: 
+        delayedLevel: 1
+    mustPlaceCards:
+    - money_small
+    initNeedDices: 4
+    initCardSlots: 2
+    prerequisites:
+    - description: 
+      conditions:
+      - conditionCode: ActionPoints >= 1
+        failedMessage: You don't have enough Action Points!
+  - projectId: project_007
+    title: Clones of Me
+    description: 
+    projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    isPreviewable: 1
+    results:
+    - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
+      resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects:
+      - effectCode: Generosity += 1
+        explanation: 
+      - effectCode: ActionPoints -= 1
+        explanation: 
+      - effectCode: ProjectFinished:add:project_007
+        explanation: 
+      delayedEffects: []
+    - description: "Great Success! \nYou gained Money Small x1, Professionality +1\n\n<size=80%>(Note:
+        Money Card you gained will be delivered at the start of next day)</size>"
+      resultImage: {fileID: 21300118, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects:
+      - effectCode: 'Professionality += 1 '
+        explanation: 
+      - effectCode: ActionPoints -= 1
+        explanation: 
+      - effectCode: ProjectFinished:add:project_007
+        explanation: 
+      delayedEffects:
+      - effectCode: HandCards:add:money_small
+        explanation: 
+        delayedLevel: 1
+    mustPlaceCards:
+    - money_small
+    initNeedDices: 3
+    initCardSlots: 3
+    prerequisites:
+    - description: 
+      conditions:
+      - conditionCode: ActionPoints >= 1
+        failedMessage: You don't have enough Action Points!
+  - projectId: project_008
+    title: 
+    description: 
+    projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    isPreviewable: 1
+    results:
+    - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
+      resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects:
+      - effectCode: Generosity += 2
+        explanation: 
+      - effectCode: ActionPoints -= 1
+        explanation: 
+      - effectCode: ProjectFinished:add:project_008
+        explanation: 
+      delayedEffects: []
+    - description: "Great Success! \nYou gained Money Small x1, Professionality +1\n\n<size=80%>(Note:
+        Money Card you gained will be delivered at the start of next day)</size>"
+      resultImage: {fileID: 21300118, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects:
+      - effectCode: 'Professionality += 2 '
+        explanation: 
+      - effectCode: ActionPoints -= 1
+        explanation: 
+      - effectCode: ProjectFinished:add:project_008
+        explanation: 
       delayedEffects: []
     mustPlaceCards:
     - money_small
-    initNeedDices: 2
+    initNeedDices: 6
+    initCardSlots: 3
+    prerequisites:
+    - description: 
+      conditions:
+      - conditionCode: ActionPoints >= 1
+        failedMessage: You don't have enough Action Points!
+      - conditionCode: 'HandCards:has:npc_001 '
+        failedMessage: "You haven\u2019t made contact with the Investor yet."
+  - projectId: project_009
+    title: 
+    description: 
+    projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    isPreviewable: 1
+    results:
+    - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
+      resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects:
+      - effectCode: Generosity += 1
+        explanation: 
+      - effectCode: ActionPoints -= 1
+        explanation: 
+      - effectCode: ProjectFinished:add:project_009
+        explanation: 
+      delayedEffects: []
+    - description: "Great Success! \nYou gained Money Small x1, Professionality +1\n\n<size=80%>(Note:
+        Money Card you gained will be delivered at the start of next day)</size>"
+      resultImage: {fileID: 21300118, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects:
+      - effectCode: 'Professionality += 1 '
+        explanation: 
+      - effectCode: ActionPoints -= 1
+        explanation: 
+      - effectCode: ProjectFinished:add:project_009
+        explanation: 
+      delayedEffects:
+      - effectCode: HandCards:add:medium_small
+        explanation: 
+        delayedLevel: 1
+    mustPlaceCards:
+    - money_small
+    initNeedDices: 5
+    initCardSlots: 3
+    prerequisites:
+    - description: 
+      conditions:
+      - conditionCode: ActionPoints >= 1
+        failedMessage: You don't have enough Action Points!
+  - projectId: project_010
+    title: 
+    description: 
+    projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    isPreviewable: 1
+    results:
+    - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
+      resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects:
+      - effectCode: Generosity += 2
+        explanation: 
+      - effectCode: ActionPoints -= 1
+        explanation: 
+      - effectCode: ProjectFinished:add:project_010
+        explanation: 
+      delayedEffects: []
+    - description: "Great Success! \nYou gained Money Small x1, Professionality +1\n\n<size=80%>(Note:
+        Money Card you gained will be delivered at the start of next day)</size>"
+      resultImage: {fileID: 21300118, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects:
+      - effectCode: Professionality += 2
+        explanation: 
+      - effectCode: ActionPoints -= 1
+        explanation: 
+      - effectCode: ProjectFinished:add:project_010
+        explanation: 
+      delayedEffects:
+      - effectCode: HandCards:add:money_small
+        explanation: 
+        delayedLevel: 1
+    mustPlaceCards:
+    - money_small
+    initNeedDices: 11
+    initCardSlots: 3
+    prerequisites:
+    - description: 
+      conditions:
+      - conditionCode: ActionPoints >= 1
+        failedMessage: You don't have enough Action Points!
+  - projectId: project_011
+    title: 
+    description: 
+    projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    isPreviewable: 1
+    results:
+    - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
+      resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects:
+      - effectCode: Generosity += 2
+        explanation: 
+      - effectCode: ActionPoints -= 1
+        explanation: 
+      - effectCode: ProjectFinished:add:project_011
+        explanation: 
+      delayedEffects: []
+    - description: "Great Success! \nYou gained Money Small x1, Professionality +1\n\n<size=80%>(Note:
+        Money Card you gained will be delivered at the start of next day)</size>"
+      resultImage: {fileID: 21300118, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects:
+      - effectCode: 'Professionality += 1 '
+        explanation: 
+      - effectCode: ActionPoints -= 1
+        explanation: 
+      - effectCode: ProjectFinished:add:project_011
+        explanation: 
+      delayedEffects:
+      - effectCode: HandCards:add:medium_small
+        explanation: 
+        delayedLevel: 1
+    mustPlaceCards:
+    - money_small
+    initNeedDices: 1
     initCardSlots: 2
+    prerequisites:
+    - description: 
+      conditions:
+      - conditionCode: ActionPoints >= 1
+        failedMessage: You don't have enough Action Points!
+  - projectId: project_012
+    title: 
+    description: 
+    projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    isPreviewable: 1
+    results:
+    - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
+      resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects:
+      - effectCode: Generosity += 1
+        explanation: 
+      - effectCode: ActionPoints -= 1
+        explanation: 
+      - effectCode: ProjectFinished:add:project_012
+        explanation: 
+      delayedEffects: []
+    - description: "Great Success! \nYou gained Money Small x1, Professionality +1\n\n<size=80%>(Note:
+        Money Card you gained will be delivered at the start of next day)</size>"
+      resultImage: {fileID: 21300118, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects:
+      - effectCode: 'Professionality += 1 '
+        explanation: 
+      - effectCode: ActionPoints -= 1
+        explanation: 
+      - effectCode: ProjectFinished:add:project_012
+        explanation: 
+      delayedEffects:
+      - effectCode: HandCards:add:money_small
+        explanation: 
+        delayedLevel: 1
+    mustPlaceCards:
+    - money_small
+    initNeedDices: 7
+    initCardSlots: 3
+    prerequisites:
+    - description: 
+      conditions:
+      - conditionCode: ActionPoints >= 1
+        failedMessage: You don't have enough Action Points!
+  - projectId: project_013
+    title: 
+    description: 
+    projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    isPreviewable: 1
+    results:
+    - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
+      resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects:
+      - effectCode: Generosity += 3
+        explanation: 
+      - effectCode: ActionPoints -= 1
+        explanation: 
+      - effectCode: ProjectFinished:add:project_013
+        explanation: 
+      delayedEffects: []
+    - description: "Great Success! \nYou gained Money Small x1, Professionality +1\n\n<size=80%>(Note:
+        Money Card you gained will be delivered at the start of next day)</size>"
+      resultImage: {fileID: 21300118, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects:
+      - effectCode: Professionality += 2
+        explanation: 
+      - effectCode: ActionPoints -= 1
+        explanation: 
+      - effectCode: ProjectFinished:add:project_013
+        explanation: 
+      delayedEffects:
+      - effectCode: HandCards:add:money_large
+        explanation: 
+        delayedLevel: 1
+    mustPlaceCards:
+    - money_small
+    initNeedDices: 10
+    initCardSlots: 4
+    prerequisites:
+    - description: 
+      conditions:
+      - conditionCode: ActionPoints >= 1
+        failedMessage: You don't have enough Action Points!
+      - conditionCode: HandCards:has:npc_003
+        failedMessage: "You haven\u2019t made contact with The Duo yet."
+  - projectId: project_014
+    title: 
+    description: 
+    projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    isPreviewable: 1
+    results:
+    - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
+      resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects:
+      - effectCode: Generosity += 1
+        explanation: 
+      - effectCode: ActionPoints -= 1
+        explanation: 
+      - effectCode: ProjectFinished:add:project_014
+        explanation: 
+      delayedEffects: []
+    - description: "Great Success! \nYou gained Money Small x1, Professionality +1\n\n<size=80%>(Note:
+        Money Card you gained will be delivered at the start of next day)</size>"
+      resultImage: {fileID: 21300118, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects:
+      - effectCode: Professionality += 2
+        explanation: 
+      - effectCode: ActionPoints -= 1
+        explanation: 
+      - effectCode: ProjectFinished:add:project_014
+        explanation: 
+      delayedEffects:
+      - effectCode: HandCards:add:money_medium
+        explanation: 
+        delayedLevel: 1
+    mustPlaceCards:
+    - money_small
+    initNeedDices: 9
+    initCardSlots: 3
+    prerequisites:
+    - description: 
+      conditions:
+      - conditionCode: ActionPoints >= 1
+        failedMessage: You don't have enough Action Points!
+  - projectId: project_015
+    title: 
+    description: 
+    projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    isPreviewable: 1
+    results:
+    - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
+      resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects:
+      - effectCode: Generosity += 3
+        explanation: 
+      - effectCode: ActionPoints -= 1
+        explanation: 
+      - effectCode: ProjectFinished:add:project_015
+        explanation: 
+      delayedEffects: []
+    - description: "Great Success! \nYou gained Money Small x1, Professionality +1\n\n<size=80%>(Note:
+        Money Card you gained will be delivered at the start of next day)</size>"
+      resultImage: {fileID: 21300118, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects:
+      - effectCode: Professionality += 3
+        explanation: 
+      - effectCode: ActionPoints -= 1
+        explanation: 
+      - effectCode: ProjectFinished:add:project_015
+        explanation: 
+      delayedEffects:
+      - effectCode: HandCards:add:money_small
+        explanation: 
+        delayedLevel: 1
+    mustPlaceCards:
+    - money_small
+    initNeedDices: 12
+    initCardSlots: 3
+    prerequisites:
+    - description: 
+      conditions:
+      - conditionCode: ActionPoints >= 1
+        failedMessage: You don't have enough Action Points!
+  - projectId: project_016
+    title: 
+    description: 
+    projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    isPreviewable: 1
+    results:
+    - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
+      resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects:
+      - effectCode: Generosity += 2
+        explanation: 
+      - effectCode: ActionPoints -= 1
+        explanation: 
+      - effectCode: ProjectFinished:add:project_016
+        explanation: 
+      delayedEffects: []
+    - description: "Great Success! \nYou gained Money Small x1, Professionality +1\n\n<size=80%>(Note:
+        Money Card you gained will be delivered at the start of next day)</size>"
+      resultImage: {fileID: 21300118, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects:
+      - effectCode: 'Professionality += 1 '
+        explanation: 
+      - effectCode: ActionPoints -= 1
+        explanation: 
+      - effectCode: ProjectFinished:add:project_016
+        explanation: 
+      delayedEffects:
+      - effectCode: HandCards:add:money_small
+        explanation: 
+        delayedLevel: 1
+    mustPlaceCards:
+    - money_small
+    initNeedDices: 11
+    initCardSlots: 3
+    prerequisites:
+    - description: 
+      conditions:
+      - conditionCode: ActionPoints >= 1
+        failedMessage: You don't have enough Action Points!
+  - projectId: project_017
+    title: 
+    description: 
+    projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    isPreviewable: 1
+    results:
+    - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
+      resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects:
+      - effectCode: Generosity += 3
+        explanation: 
+      - effectCode: ActionPoints -= 1
+        explanation: 
+      - effectCode: ProjectFinished:add:project_017
+        explanation: 
+      delayedEffects: []
+    - description: "Great Success! \nYou gained Money Small x1, Professionality +1\n\n<size=80%>(Note:
+        Money Card you gained will be delivered at the start of next day)</size>"
+      resultImage: {fileID: 21300118, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects:
+      - effectCode: 'Professionality += 1 '
+        explanation: 
+      - effectCode: ActionPoints -= 1
+        explanation: 
+      - effectCode: ProjectFinished:add:project_017
+        explanation: 
+      delayedEffects:
+      - effectCode: HandCards:add:money_large
+        explanation: 
+        delayedLevel: 1
+    mustPlaceCards:
+    - money_small
+    initNeedDices: 11
+    initCardSlots: 4
+    prerequisites:
+    - description: 
+      conditions:
+      - conditionCode: ActionPoints >= 1
+        failedMessage: You don't have enough Action Points!
+  - projectId: project_018
+    title: 
+    description: 
+    projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    isPreviewable: 1
+    results:
+    - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
+      resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects:
+      - effectCode: Generosity += 2
+        explanation: 
+      - effectCode: ActionPoints -= 1
+        explanation: 
+      - effectCode: ProjectFinished:add:project_018
+        explanation: 
+      delayedEffects: []
+    - description: "Great Success! \nYou gained Money Small x1, Professionality +1\n\n<size=80%>(Note:
+        Money Card you gained will be delivered at the start of next day)</size>"
+      resultImage: {fileID: 21300118, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects:
+      - effectCode: 'Professionality += 1 '
+        explanation: 
+      - effectCode: ActionPoints -= 1
+        explanation: 
+      - effectCode: ProjectFinished:add:project_018
+        explanation: 
+      delayedEffects:
+      - effectCode: HandCards:add:money_small
+        explanation: 
+        delayedLevel: 1
+    mustPlaceCards:
+    - money_small
+    initNeedDices: 11
+    initCardSlots: 4
     prerequisites:
     - description: 
       conditions:

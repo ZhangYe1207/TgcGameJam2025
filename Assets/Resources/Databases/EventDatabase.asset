@@ -22,13 +22,8 @@ MonoBehaviour:
     results:
     - description: Dice Minus One x1
       resultImage: {fileID: 21300000, guid: f1a09b7f0fade6d44935c96cc19438ce, type: 3}
-      eventEffects:
-      - effectCode: ActionPoints -=1
-        explanation: 
-      - effectCode: HandCards:add:dice_minus_one
-        explanation: 
-      - effectCode: EventsFinished:add:dice_minus_one
-        explanation: 
+      immediateEffects: []
+      delayedEffects: []
     prerequisites:
     - description: 
       conditions:
@@ -43,13 +38,8 @@ MonoBehaviour:
     results:
     - description: Dice Minus Two x1
       resultImage: {fileID: 21300000, guid: f1a09b7f0fade6d44935c96cc19438ce, type: 3}
-      eventEffects:
-      - effectCode: ActionPoints -=1
-        explanation: 
-      - effectCode: HandCards:add:dice_minus_two
-        explanation: 
-      - effectCode: EventsFinished:add:dice_minus_two
-        explanation: 
+      immediateEffects: []
+      delayedEffects: []
     prerequisites:
     - description: 
       conditions:
@@ -64,13 +54,8 @@ MonoBehaviour:
     results:
     - description: Dice Plus One x1
       resultImage: {fileID: 21300000, guid: f1a09b7f0fade6d44935c96cc19438ce, type: 3}
-      eventEffects:
-      - effectCode: ActionPoints -=1
-        explanation: 
-      - effectCode: HandCards:add:dice_plus_one
-        explanation: 
-      - effectCode: EventsFinished:add:dice_plus_one
-        explanation: 
+      immediateEffects: []
+      delayedEffects: []
     prerequisites:
     - description: 
       conditions:
@@ -85,13 +70,8 @@ MonoBehaviour:
     results:
     - description: Dice Plus Two x1
       resultImage: {fileID: 21300000, guid: f1a09b7f0fade6d44935c96cc19438ce, type: 3}
-      eventEffects:
-      - effectCode: ActionPoints -=1
-        explanation: 
-      - effectCode: HandCards:add:dice_plus_two
-        explanation: 
-      - effectCode: EventsFinished:add:dice_plus_two
-        explanation: 
+      immediateEffects: []
+      delayedEffects: []
     prerequisites:
     - description: 
       conditions:
