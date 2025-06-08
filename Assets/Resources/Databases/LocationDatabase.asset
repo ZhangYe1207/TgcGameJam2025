@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d50aa11dc46e5f345aa94f9432b442a7, type: 3}
   m_Name: LocationDatabase
   m_EditorClassIdentifier: 
-  locations: []
+  locations:
+  - position: {x: 1.36, y: 1, z: -20.84}
+    level: 0
