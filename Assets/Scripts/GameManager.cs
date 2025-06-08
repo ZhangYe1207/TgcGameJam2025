@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     public int currentLevel = 0;
     // 这一轮结算时需要结算的项目结果
     public List<ProjectResult> projectResults = new List<ProjectResult>();
+    [Header("每一关的初始行动点")]
+    public List<int> initActionPoints;
+    [Header("基本的游戏数值属性")]
     public List<GameProperty> baseGameProperties;
     [Header("List Game Properties. Can be used in Effects and Conditions")]
     public List<string> HandCards;
@@ -35,9 +38,11 @@ public class GameManager : MonoBehaviour
     public PromptUIManager PromptUI;
     public Button NextDayButton;
     public GameObject DailyReportUI;
+    public Button DailyReportConfirmButton;
 
     [Header("UI Prefabs")]
     [SerializeField] private GameObject cardUIPrefab;
+    [SerializeField] private GameObject dailyResultItemPrefab;
 
     private void Awake()
     {
@@ -77,6 +82,7 @@ public class GameManager : MonoBehaviour
         ConditionsCheck();
         UpdateMainUI();
         NextDayButton.onClick.AddListener(NextDay);
+        DailyReportConfirmButton.onClick.AddListener(DailyReportConfirm);
         DailyReportUI.SetActive(false);
     }
 
@@ -88,12 +94,18 @@ public class GameManager : MonoBehaviour
         // 检查数据库中配置的所有条件是否符合格式
     }   
 
+    private void DailyReportConfirm() {
+        DailyReportUI.SetActive(false);
+    }
+
     private void NextDay() {
         // Delay Effects处理
+        List<string> descriptions = new List<string>();
         for (int i = DelayedEffects.Count - 1; i >= 0; i--) {
             DelayedEffectData effect = DelayedEffects[i];
             if (effect.delayedLevel == 0) {
                 EffectExecutor.ExecuteEffect(effect.effectCode);
+                descriptions.Add(effect.explanation);
                 DelayedEffects.RemoveAt(i);
             } else {
                 effect.delayedLevel--;
@@ -101,14 +113,29 @@ public class GameManager : MonoBehaviour
         }
         // 结算ui展示
         DailyReportUI.SetActive(true);
-        SetupDailyReportUI();
+        SetupDailyReportUI(descriptions);
         // 清理本轮的缓存数据，如果有？
         // 下一轮数据生成&更新
-        // 地图boundary更新？
+        currentLevel++;
+        SetPropertyCurrentValue("ActionPoints", initActionPoints[currentLevel]);
+        SetPropertyMaxValue("ActionPoints", initActionPoints[currentLevel]);
+        UpdateMainUI();
+        // TODO 地图boundary更新？调用nextlevelcontroller
     }
 
-    private void SetupDailyReportUI() {
-        // TODO: 设置每日报告UI
+    private void SetupDailyReportUI(List<string> descriptions) {
+        // 先清空
+        var content = DailyReportUI.GetComponent<ScrollRect>().content;
+        var textList = content.GetComponentsInChildren<TextMeshProUGUI>();
+        foreach (var t in textList) {
+            Destroy(t.gameObject);
+        }
+        // 再生成新的text
+        foreach (string t in descriptions) {
+            GameObject GO = Instantiate(dailyResultItemPrefab, content);
+            GO.GetComponent<TextMeshProUGUI>().text = t;
+        }
+        DailyReportConfirmButton.gameObject.SetActive(true);
     }
 
 
@@ -139,6 +166,10 @@ public class GameManager : MonoBehaviour
 
     public void SetPropertyCurrentValue(string propertyName, int value) {
         baseGameProperties.Find(property => property.propertyName == propertyName).currentValue = value;
+    }
+
+    public void SetPropertyMaxValue(string propertyName, int value) {
+        baseGameProperties.Find(property => property.propertyName == propertyName).maxValue = value;
     }
     
     private void UpdateMainUI() {

@@ -22,22 +22,29 @@ MonoBehaviour:
     isPreviewable: 1
     results:
     - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
-      effects:
+      resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects:
       - effectCode: Generosity += 1
         explanation: 
       - effectCode: ActionPoints -= 1
         explanation: 
-      resultImage: {fileID: 21300118, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      - effectCode: ProjectFinished:add:01_upside_down_therapy_hub
+        explanation: 
+      delayedEffects: []
     - description: "Great Success! \nYou gained Money Small x1, Professionality +1\n\n<size=80%>(Note:
         Money Card you gained will be delivered at the start of next day)</size>"
-      effects:
-      - effectCode: DelayedEffects0:add:money_small
-        explanation: This Text will show up when this delay effect takes effect.
-      - effectCode: Professionality += 1
+      resultImage: {fileID: 21300118, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects:
+      - effectCode: 'Professionality += 1 '
         explanation: 
       - effectCode: ActionPoints -= 1
         explanation: 
-      resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      - effectCode: ProjectFinished:add:01_upside_down_therapy_hub
+        explanation: 
+      delayedEffects:
+      - effectCode: HandCards:add:money_small
+        explanation: From Upside-Down Therapy Hub, you gained Money Small x1.
+        delayedLevel: 0
     mustPlaceCards:
     - money_small
     initNeedDices: 1
@@ -55,14 +62,9 @@ MonoBehaviour:
     isPreviewable: 1
     results:
     - description: "Big Failure! \nYou lost all your money, but your Generosity +2."
-      effects:
-      - effectCode: Generosity += 2
-        explanation: 
-      - effectCode: Professionality -= 1
-        explanation: 
-      - effectCode: ActionPoints -= 1
-        explanation: 
       resultImage: {fileID: 21300118, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects: []
+      delayedEffects: []
     mustPlaceCards:
     - money_small
     initNeedDices: 5
@@ -81,22 +83,14 @@ MonoBehaviour:
     isPreviewable: 1
     results:
     - description: "Big Failure! \nYou lost all your money, but your Generosity +2."
-      effects:
-      - effectCode: Generosity += 2
-        explanation: 
-      - effectCode: ActionPoints -= 1
-        explanation: 
       resultImage: {fileID: 21300118, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects: []
+      delayedEffects: []
     - description: "Great Success! \nYou gained Money Small x1, Professionality +2\n\n<size=80%>(Note:
         Money Card you gained will be delivered at the start of next day)</size>"
-      effects:
-      - effectCode: DelayedEffects0:add:money_small
-        explanation: This Text will show up when this delay effect takes effect.
-      - effectCode: Professionality += 2
-        explanation: 
-      - effectCode: ActionPoints -= 1
-        explanation: 
       resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+      immediateEffects: []
+      delayedEffects: []
     mustPlaceCards:
     - money_small
     initNeedDices: 2
