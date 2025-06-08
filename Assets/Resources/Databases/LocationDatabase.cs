@@ -13,14 +13,14 @@ public class LocationDatabase : ScriptableObject
     }
 
     // 获取当前level的locations
-    public List<Location> GetLocationsForLevel(int currentLevel) {
+    public List<Location> GetLocationsByLevel(int currentLevel) {
         return locations.Where(l => l.level == currentLevel).ToList();
     }
 
     // 随机获取Locations
-    public List<Location> GetRandomLocationsForLevel(int currentLevel, int count)
+    public List<Location> GetRandomLocationsByLevel(int currentLevel, int count)
     {
-        return ListRandomizer.RandomSelectWithoutRepeat<Location>(GetLocationsForLevel(currentLevel), count);
+        return ListRandomizer.RandomSelectWithoutRepeat<Location>(GetLocationsByLevel(currentLevel), count);
     }
 
     public void AddLocation(Location location) {

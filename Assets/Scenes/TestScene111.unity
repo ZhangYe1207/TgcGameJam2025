@@ -783,6 +783,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f1ce3dff878b4f3c91958ae4611e226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &532626108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 532626109}
+  m_Layer: 0
+  m_Name: NewLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &532626109
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532626108}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 15.14}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1123913394}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &585178729
 GameObject:
   m_ObjectHideFlags: 0
@@ -834,6 +865,7 @@ MonoBehaviour:
     description: 
     projectImage: {fileID: 0}
     isPreviewable: 0
+    level: 0
     results: []
     mustPlaceCards: []
     initNeedDices: 0
@@ -1218,6 +1250,7 @@ MonoBehaviour:
     description: 
     projectImage: {fileID: 0}
     isPreviewable: 0
+    level: 0
     results: []
     mustPlaceCards: []
     initNeedDices: 0
@@ -1378,6 +1411,7 @@ MonoBehaviour:
     isPreviewable: 0
     eventImage: {fileID: 0}
     results: []
+    level: 0
     prerequisites: []
   eventTriggerRadius: 5
 --- !u!1 &983951740
@@ -1638,6 +1672,7 @@ Transform:
   - {fileID: 880405950}
   - {fileID: 901217714}
   - {fileID: 1224215496}
+  - {fileID: 532626109}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1150900755
@@ -2192,6 +2227,7 @@ MonoBehaviour:
     description: 
     projectImage: {fileID: 0}
     isPreviewable: 0
+    level: 0
     results: []
     mustPlaceCards: []
     initNeedDices: 0
@@ -2257,6 +2293,7 @@ MonoBehaviour:
     isPreviewable: 0
     eventImage: {fileID: 0}
     results: []
+    level: 0
     prerequisites: []
   eventTriggerRadius: 5
 --- !u!1 &1503332093
@@ -2345,6 +2382,7 @@ MonoBehaviour:
     isPreviewable: 0
     eventImage: {fileID: 0}
     results: []
+    level: 0
     prerequisites: []
   eventTriggerRadius: 5
 --- !u!1 &1546487153
@@ -2582,6 +2620,7 @@ MonoBehaviour:
     isPreviewable: 0
     eventImage: {fileID: 0}
     results: []
+    level: 0
     prerequisites: []
   eventTriggerRadius: 5
 --- !u!1 &1694118837
@@ -2862,7 +2901,7 @@ Transform:
   m_GameObject: {fileID: 1886151751}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.69, y: 2.86, z: -0.4264679}
+  m_LocalPosition: {x: 25.65, y: 2.86, z: -0.4264679}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3439,7 +3478,7 @@ PrefabInstance:
     - target: {fileID: 293966430398138601, guid: d332e64ed6a6d43e9b74499f105facf3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -25.000027
+      value: -24.999926
       objectReference: {fileID: 0}
     - target: {fileID: 452141845565357378, guid: d332e64ed6a6d43e9b74499f105facf3,
         type: 3}
