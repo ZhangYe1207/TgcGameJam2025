@@ -18,6 +18,7 @@ MonoBehaviour:
     description: 
     projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     isPreviewable: 1
+    level: 0
     results:
     - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
       resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
@@ -43,8 +44,8 @@ MonoBehaviour:
       - effectCode: HandCards:add:money_small
         explanation: 
         delayedLevel: 1
-    mustPlaceCards:
-    - money_small
+    mustPlaceCards: []
+    needMoney: 10
     initNeedDices: 1
     initCardSlots: 2
     prerequisites:
@@ -57,6 +58,7 @@ MonoBehaviour:
     description: 
     projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     isPreviewable: 1
+    level: 0
     results:
     - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
       resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
@@ -68,8 +70,8 @@ MonoBehaviour:
       - effectCode: ProjectFinished:add:project_002
         explanation: 
       delayedEffects: []
-    mustPlaceCards:
-    - money_small
+    mustPlaceCards: []
+    needMoney: 10
     initNeedDices: 5
     initCardSlots: 2
     prerequisites:
@@ -82,6 +84,7 @@ MonoBehaviour:
     description: 
     projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     isPreviewable: 1
+    level: 0
     results:
     - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
       resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
@@ -107,8 +110,8 @@ MonoBehaviour:
       - effectCode: HandCards:add:money_small
         explanation: 
         delayedLevel: 1
-    mustPlaceCards:
-    - money_small
+    mustPlaceCards: []
+    needMoney: 10
     initNeedDices: 1
     initCardSlots: 2
     prerequisites:
@@ -121,6 +124,7 @@ MonoBehaviour:
     description: 
     projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     isPreviewable: 1
+    level: 1
     results:
     - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
       resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
@@ -146,8 +150,8 @@ MonoBehaviour:
       - effectCode: HandCards:add:medium_small
         explanation: 
         delayedLevel: 1
-    mustPlaceCards:
-    - money_small
+    mustPlaceCards: []
+    needMoney: 20
     initNeedDices: 7
     initCardSlots: 2
     prerequisites:
@@ -160,6 +164,7 @@ MonoBehaviour:
     description: 
     projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     isPreviewable: 1
+    level: 1
     results:
     - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
       resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
@@ -185,8 +190,8 @@ MonoBehaviour:
       - effectCode: HandCards:add:medium_small
         explanation: 
         delayedLevel: 1
-    mustPlaceCards:
-    - money_small
+    mustPlaceCards: []
+    needMoney: 20
     initNeedDices: 5
     initCardSlots: 2
     prerequisites:
@@ -199,6 +204,7 @@ MonoBehaviour:
     description: 
     projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     isPreviewable: 1
+    level: 1
     results:
     - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
       resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
@@ -224,8 +230,8 @@ MonoBehaviour:
       - effectCode: HandCards:add:money_small
         explanation: 
         delayedLevel: 1
-    mustPlaceCards:
-    - money_small
+    mustPlaceCards: []
+    needMoney: 10
     initNeedDices: 4
     initCardSlots: 2
     prerequisites:
@@ -238,6 +244,7 @@ MonoBehaviour:
     description: 
     projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     isPreviewable: 1
+    level: 1
     results:
     - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
       resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
@@ -263,8 +270,8 @@ MonoBehaviour:
       - effectCode: HandCards:add:money_small
         explanation: 
         delayedLevel: 1
-    mustPlaceCards:
-    - money_small
+    mustPlaceCards: []
+    needMoney: 10
     initNeedDices: 3
     initCardSlots: 3
     prerequisites:
@@ -277,6 +284,7 @@ MonoBehaviour:
     description: 
     projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     isPreviewable: 1
+    level: 2
     results:
     - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
       resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
@@ -300,7 +308,8 @@ MonoBehaviour:
         explanation: 
       delayedEffects: []
     mustPlaceCards:
-    - money_small
+    - npc_001
+    needMoney: 20
     initNeedDices: 6
     initCardSlots: 3
     prerequisites:
@@ -315,6 +324,7 @@ MonoBehaviour:
     description: 
     projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     isPreviewable: 1
+    level: 2
     results:
     - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
       resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
@@ -340,8 +350,8 @@ MonoBehaviour:
       - effectCode: HandCards:add:medium_small
         explanation: 
         delayedLevel: 1
-    mustPlaceCards:
-    - money_small
+    mustPlaceCards: []
+    needMoney: 10
     initNeedDices: 5
     initCardSlots: 3
     prerequisites:
@@ -354,6 +364,7 @@ MonoBehaviour:
     description: 
     projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     isPreviewable: 1
+    level: 2
     results:
     - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
       resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
@@ -379,8 +390,8 @@ MonoBehaviour:
       - effectCode: HandCards:add:money_small
         explanation: 
         delayedLevel: 1
-    mustPlaceCards:
-    - money_small
+    mustPlaceCards: []
+    needMoney: 20
     initNeedDices: 11
     initCardSlots: 3
     prerequisites:
@@ -393,6 +404,7 @@ MonoBehaviour:
     description: 
     projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     isPreviewable: 1
+    level: 2
     results:
     - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
       resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
@@ -418,8 +430,8 @@ MonoBehaviour:
       - effectCode: HandCards:add:medium_small
         explanation: 
         delayedLevel: 1
-    mustPlaceCards:
-    - money_small
+    mustPlaceCards: []
+    needMoney: 30
     initNeedDices: 1
     initCardSlots: 2
     prerequisites:
@@ -432,6 +444,7 @@ MonoBehaviour:
     description: 
     projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     isPreviewable: 1
+    level: 2
     results:
     - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
       resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
@@ -457,8 +470,8 @@ MonoBehaviour:
       - effectCode: HandCards:add:money_small
         explanation: 
         delayedLevel: 1
-    mustPlaceCards:
-    - money_small
+    mustPlaceCards: []
+    needMoney: 10
     initNeedDices: 7
     initCardSlots: 3
     prerequisites:
@@ -466,11 +479,14 @@ MonoBehaviour:
       conditions:
       - conditionCode: ActionPoints >= 1
         failedMessage: You don't have enough Action Points!
+      - conditionCode: Professionality >= 1
+        failedMessage: You don't have enough Professionality!
   - projectId: project_013
     title: 
     description: 
     projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     isPreviewable: 1
+    level: 3
     results:
     - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
       resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
@@ -497,7 +513,8 @@ MonoBehaviour:
         explanation: 
         delayedLevel: 1
     mustPlaceCards:
-    - money_small
+    - npc_003
+    needMoney: 40
     initNeedDices: 10
     initCardSlots: 4
     prerequisites:
@@ -512,6 +529,7 @@ MonoBehaviour:
     description: 
     projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     isPreviewable: 1
+    level: 3
     results:
     - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
       resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
@@ -537,8 +555,8 @@ MonoBehaviour:
       - effectCode: HandCards:add:money_medium
         explanation: 
         delayedLevel: 1
-    mustPlaceCards:
-    - money_small
+    mustPlaceCards: []
+    needMoney: 20
     initNeedDices: 9
     initCardSlots: 3
     prerequisites:
@@ -551,6 +569,7 @@ MonoBehaviour:
     description: 
     projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     isPreviewable: 1
+    level: 3
     results:
     - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
       resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
@@ -576,8 +595,8 @@ MonoBehaviour:
       - effectCode: HandCards:add:money_small
         explanation: 
         delayedLevel: 1
-    mustPlaceCards:
-    - money_small
+    mustPlaceCards: []
+    needMoney: 20
     initNeedDices: 12
     initCardSlots: 3
     prerequisites:
@@ -590,6 +609,7 @@ MonoBehaviour:
     description: 
     projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     isPreviewable: 1
+    level: 3
     results:
     - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
       resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
@@ -615,8 +635,8 @@ MonoBehaviour:
       - effectCode: HandCards:add:money_small
         explanation: 
         delayedLevel: 1
-    mustPlaceCards:
-    - money_small
+    mustPlaceCards: []
+    needMoney: 10
     initNeedDices: 11
     initCardSlots: 3
     prerequisites:
@@ -629,6 +649,7 @@ MonoBehaviour:
     description: 
     projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     isPreviewable: 1
+    level: 3
     results:
     - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
       resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
@@ -654,8 +675,8 @@ MonoBehaviour:
       - effectCode: HandCards:add:money_large
         explanation: 
         delayedLevel: 1
-    mustPlaceCards:
-    - money_small
+    mustPlaceCards: []
+    needMoney: 40
     initNeedDices: 11
     initCardSlots: 4
     prerequisites:
@@ -668,6 +689,7 @@ MonoBehaviour:
     description: 
     projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     isPreviewable: 1
+    level: 3
     results:
     - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
       resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
@@ -693,8 +715,8 @@ MonoBehaviour:
       - effectCode: HandCards:add:money_small
         explanation: 
         delayedLevel: 1
-    mustPlaceCards:
-    - money_small
+    mustPlaceCards: []
+    needMoney: 20
     initNeedDices: 11
     initCardSlots: 4
     prerequisites:
@@ -702,3 +724,5 @@ MonoBehaviour:
       conditions:
       - conditionCode: ActionPoints >= 1
         failedMessage: You don't have enough Action Points!
+      - conditionCode: Professionality >= 3
+        failedMessage: You don't have enough Professionality!

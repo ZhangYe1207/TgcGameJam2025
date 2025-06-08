@@ -22,8 +22,13 @@ MonoBehaviour:
     results:
     - description: Dice Minus One x1
       resultImage: {fileID: 21300000, guid: f1a09b7f0fade6d44935c96cc19438ce, type: 3}
-      immediateEffects: []
+      immediateEffects:
+      - effectCode: HandCards:add:dice_minus_one
+        explanation: 
+      - effectCode: ActionPoints -= 1
+        explanation: 
       delayedEffects: []
+    level: 0
     prerequisites:
     - description: 
       conditions:
@@ -40,6 +45,7 @@ MonoBehaviour:
       resultImage: {fileID: 21300000, guid: f1a09b7f0fade6d44935c96cc19438ce, type: 3}
       immediateEffects: []
       delayedEffects: []
+    level: 0
     prerequisites:
     - description: 
       conditions:
@@ -56,6 +62,7 @@ MonoBehaviour:
       resultImage: {fileID: 21300000, guid: f1a09b7f0fade6d44935c96cc19438ce, type: 3}
       immediateEffects: []
       delayedEffects: []
+    level: 0
     prerequisites:
     - description: 
       conditions:
@@ -72,6 +79,7 @@ MonoBehaviour:
       resultImage: {fileID: 21300000, guid: f1a09b7f0fade6d44935c96cc19438ce, type: 3}
       immediateEffects: []
       delayedEffects: []
+    level: 0
     prerequisites:
     - description: 
       conditions:
