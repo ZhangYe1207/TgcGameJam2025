@@ -623,6 +623,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &328270153 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3631415871786974299, guid: d332e64ed6a6d43e9b74499f105facf3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1066476273}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &333163259
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1608,7 +1620,7 @@ PrefabInstance:
         type: 3}
       propertyPath: DailyReportConfirmButton
       value: 
-      objectReference: {fileID: 155680507}
+      objectReference: {fileID: 328270153}
     - target: {fileID: 1761213648540929374, guid: f7930041eecb54178bbc4ed240b8b129,
         type: 3}
       propertyPath: initActionPoints.Array.size

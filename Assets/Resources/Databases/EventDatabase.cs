@@ -18,7 +18,7 @@ public class EventDatabase : ScriptableObject
     }
 
     public List<RandomEvent> GetEventsByLevel(int level) {
-        return allEvents.Where(e => e.level == level).ToList();
+        return allEvents.Where(e => e.levels.Contains(level)).ToList();
     }
 
     private void InitEvents() {

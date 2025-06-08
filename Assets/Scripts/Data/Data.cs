@@ -132,7 +132,7 @@ public class RandomEvent
     public Sprite eventImage;      // 事件图片
     public EventResult[] results;  // 可选结果
     [Tooltip("事件出现的关卡，第一关是0，第二关是1， 依次类推")]
-    public int level = 0;              // 事件出现的关卡
+    public List<int> levels;              // 事件出现的关卡
     [Tooltip("Prerequisite可以有多个，如果满足任意一个则可以触发事件")]
     public EventPrerequisite[] prerequisites; // 前置条件
 }
