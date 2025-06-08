@@ -15,7 +15,7 @@ MonoBehaviour:
   m_Active: 0
   settings:
     renderPassEvent: 550
-    shader: {fileID: 0}
+    shader: {fileID: 4800000, guid: 05e2dc4309431674788ac723824b4394, type: 3}
     computeShader: {fileID: 0}
 --- !u!114 &-8094761684907572592
 MonoBehaviour:
@@ -32,7 +32,7 @@ MonoBehaviour:
   m_Active: 0
   settings:
     renderPassEvent: 550
-    shader: {fileID: 0}
+    shader: {fileID: 4800000, guid: af7e94d688cd47148955789e6b96c404, type: 3}
 --- !u!114 &-6674624088128217403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Active: 0
   settings:
     renderPassEvent: 550
-    shader: {fileID: 0}
+    shader: {fileID: 4800000, guid: dcc9a14e24651c146a247607dadae0a3, type: 3}
 --- !u!114 &-6500828678969230412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Active: 0
   settings:
     renderPassEvent: 550
-    shader: {fileID: 0}
+    shader: {fileID: 4800000, guid: f40c0c8c768162248a4463c3ac5c5661, type: 3}
 --- !u!114 &-3755544553582919130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Active: 1
   settings:
     renderPassEvent: 550
-    shader: {fileID: 4800000, guid: 8f12a26f4fc308f4caaf678a77c55042, type: 3}
+    shader: {fileID: 4800000, guid: b4be4bf86abb2d24aa0fc5962943bd44, type: 3}
 --- !u!114 &-2719213219740623600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Active: 0
   settings:
     renderPassEvent: 550
-    shader: {fileID: 0}
+    shader: {fileID: 4800000, guid: c2fc6d8f977a11c479460dea9153fda2, type: 3}
 --- !u!114 &-2443430847001801556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Active: 0
   settings:
     renderPassEvent: 550
-    shader: {fileID: 0}
+    shader: {fileID: 4800000, guid: 55a32cb25d8ec804f9d7400129ce1ee6, type: 3}
 --- !u!114 &-2350468782675280387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,7 +283,7 @@ MonoBehaviour:
   m_Active: 0
   settings:
     RenderPassEvent: 550
-    shader: {fileID: 0}
+    shader: {fileID: 4800000, guid: ebfa7fb6957ec5147baa4b81bc0a532e, type: 3}
 --- !u!114 &1227619013872965272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,7 +299,7 @@ MonoBehaviour:
   m_Active: 1
   settings:
     RenderPassEvent: 550
-    shader: {fileID: 4800000, guid: 8f12a26f4fc308f4caaf678a77c55042, type: 3}
+    shader: {fileID: 4800000, guid: 6757b42a776877743a62f41d9f8b99a2, type: 3}
 --- !u!114 &1548424807625317846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,7 +315,7 @@ MonoBehaviour:
   m_Active: 0
   settings:
     renderPassEvent: 550
-    shader: {fileID: 0}
+    shader: {fileID: 4800000, guid: d8c11919c8100d946b6a858ebbb0f8ef, type: 3}
 --- !u!114 &3504911378531384366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Active: 0
   settings:
     renderPassEvent: 550
-    shader: {fileID: 0}
+    shader: {fileID: 4800000, guid: 8f12a26f4fc308f4caaf678a77c55042, type: 3}
 --- !u!114 &3668418772820104958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,7 +347,7 @@ MonoBehaviour:
   m_Active: 0
   settings:
     renderPassEvent: 550
-    shader: {fileID: 0}
+    shader: {fileID: 4800000, guid: 0ce2682057ecb944297f9485d12e591c, type: 3}
 --- !u!114 &6065107461455680196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,7 +363,7 @@ MonoBehaviour:
   m_Active: 0
   settings:
     renderPassEvent: 550
-    shader: {fileID: 0}
+    shader: {fileID: 4800000, guid: f5b12e8d8104e7a4786c6ea677a0cb23, type: 3}
 --- !u!114 &8312837281948555541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,4 +379,4 @@ MonoBehaviour:
   m_Active: 0
   settings:
     renderPassEvent: 550
-    shader: {fileID: 0}
+    shader: {fileID: 4800000, guid: 432ebb288551b6f49a329dd70a982cdf, type: 3}

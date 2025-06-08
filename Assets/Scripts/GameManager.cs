@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public GameObject locationsGO;
     [Header("每一关的初始行动点")]
     public List<int> initActionPoints;
+    [Header("每一关的初始手牌, 卡牌ID之间用逗号分隔")]
+    public List<string> initHandCards;
     [Header("基本的游戏数值属性")]
     public List<GameProperty> baseGameProperties;
     [Header("List Game Properties. Can be used in Effects and Conditions")]
@@ -30,6 +32,7 @@ public class GameManager : MonoBehaviour
     public bool isOnProjectUI;
 
     [Header("UI References")]
+    public GameObject MainCanvas;
     public GameObject mainUI;
     public GameObject ActionPointUI;
     public GameObject ProfessionalityUI;
@@ -83,6 +86,7 @@ public class GameManager : MonoBehaviour
 
     public void Start() {
         playerGO = GameObject.FindWithTag("Player");
+        MainCanvas.SetActive(true);
         EffectsCheck();
         ConditionsCheck();
         SetupNewLevel();
@@ -132,6 +136,17 @@ public class GameManager : MonoBehaviour
         // 行动点设置
         SetPropertyCurrentValue("ActionPoints", initActionPoints[currentLevel]);
         SetPropertyMaxValue("ActionPoints", initActionPoints[currentLevel]);
+        // 初始卡牌发放
+        string s = initHandCards[currentLevel];
+        Debug.Log($"Adding init cards: {s}");
+        if (s != null && s != "") {
+            string[] cIds = s.Split(",");
+            foreach (string cId in cIds) {
+                HandCards.Add(cId.Trim());
+                Debug.Log($"Added {cId} to HandCards.");
+            }
+        }
+        
         // 捞取当前关卡所有事件/项目
         List<RandomEvent> events = DatabaseManager.Instance.eventDatabase.GetEventsByLevel(currentLevel);
         List<Project> projects = DatabaseManager.Instance.projectDatabase.GetProjectsByLevel(currentLevel);
