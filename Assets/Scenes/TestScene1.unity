@@ -2042,6 +2042,24 @@ PrefabInstance:
       objectReference: {fileID: 1066476277}
     - target: {fileID: 1761213648540929374, guid: f7930041eecb54178bbc4ed240b8b129,
         type: 3}
+      propertyPath: eventLocationPrefab
+      value: 
+      objectReference: {fileID: 1123224890232391769, guid: d9991f742c46112438855c59c6853300,
+        type: 3}
+    - target: {fileID: 1761213648540929374, guid: f7930041eecb54178bbc4ed240b8b129,
+        type: 3}
+      propertyPath: dailyResultItemPrefab
+      value: 
+      objectReference: {fileID: 3495963337817191852, guid: dea1595e3bf79e3479c799a59d2d1840,
+        type: 3}
+    - target: {fileID: 1761213648540929374, guid: f7930041eecb54178bbc4ed240b8b129,
+        type: 3}
+      propertyPath: projectLocationPrefab
+      value: 
+      objectReference: {fileID: 3447567763919114013, guid: 35d0dd33d650ea0449b824a9c87d7903,
+        type: 3}
+    - target: {fileID: 1761213648540929374, guid: f7930041eecb54178bbc4ed240b8b129,
+        type: 3}
       propertyPath: DailyReportConfirmButton
       value: 
       objectReference: {fileID: 155680507}

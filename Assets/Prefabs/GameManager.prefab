@@ -46,6 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLevel: 0
   projectResults: []
+  locationsGO: {fileID: 0}
+  initActionPoints: 0500000008000000
   baseGameProperties:
   - propertyName: ActionPoints
     currentValue: 5
@@ -89,10 +91,7 @@ MonoBehaviour:
   EventsFinished: []
   ProjectFinished: []
   Friends: []
-  DelayedEffects0: []
-  DelayedEffects1: []
-  DelayedEffects2: []
-  DelayedEffects3: []
+  DelayedEffects: []
   playerGO: {fileID: 0}
   currentPlacedCards: []
   isOnProjectUI: 0
@@ -104,5 +103,10 @@ MonoBehaviour:
   ProjectUI: {fileID: 0}
   PromptUI: {fileID: 0}
   NextDayButton: {fileID: 0}
+  DailyReportUI: {fileID: 0}
+  DailyReportConfirmButton: {fileID: 0}
   cardUIPrefab: {fileID: 7507374330508939489, guid: b1abd18d220cdea4ebdb419c59309497,
     type: 3}
+  dailyResultItemPrefab: {fileID: 0}
+  eventLocationPrefab: {fileID: 0}
+  projectLocationPrefab: {fileID: 0}
