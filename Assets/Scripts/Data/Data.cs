@@ -11,6 +11,7 @@ public class Card
     public CardType cardType;
     public Sprite cardImage;
     public List<EffectData> cardEffects;
+    public int amount;
     // 其他卡牌属性...
 }
 
@@ -130,6 +131,8 @@ public class RandomEvent
     public bool isPreviewable;     // 是否可预览
     public Sprite eventImage;      // 事件图片
     public EventResult[] results;  // 可选结果
+    [Tooltip("事件出现的关卡，第一关是0，第二关是1， 依次类推")]
+    public int level = 0;              // 事件出现的关卡
     [Tooltip("Prerequisite可以有多个，如果满足任意一个则可以触发事件")]
     public EventPrerequisite[] prerequisites; // 前置条件
 }
@@ -163,9 +166,13 @@ public class Project
     public string description;
     public Sprite projectImage;
     public bool isPreviewable;     // 是否可预览
+    [Tooltip("事件出现的关卡，第一关是0，第二关是1， 依次类推")]
+    public int level = 0;     
     [Tooltip("当前结果0为失败，结果1为成功，后面的预留，未实现")]
     public ProjectResult[] results;  // 可选结果
     public List<string> mustPlaceCards; // 必须放置的卡牌ID
+    [Tooltip("至少需要的钱，所有放置的money card的amount之和要大于等于这个值")]
+    public int needMoney;
     public int initNeedDices; // 初始需要的正面骰子数
     public int initCardSlots; // 初始卡槽数
     [Tooltip("Prerequisite可以有多个，如果满足任意一个则可以触发事件")]

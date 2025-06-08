@@ -150,6 +150,15 @@ public class ProjectUIManager : MonoBehaviour
 
     private void Invest() {
         // 检查是否满足投资条件, mustPlaceCards中的卡牌是否都放置了
+        int placeAmount = 0;
+        foreach (Card c in GameManager.Instance.currentPlacedCards) {
+            if (c.cardType == CardType.Money) {
+                placeAmount += c.amount;
+            }
+        }
+        if (placeAmount < projectData.needMoney) {
+            GameManager.Instance.PromptUI.ShowOkPrompt("You must place at least \"" + projectData.needMoney + "million money\" to invest in this project.");
+        }
         foreach (string cardId in projectData.mustPlaceCards) {
             if (!GameManager.Instance.currentPlacedCards.Exists(card => card.cardId == cardId)) {
                 Card card = DatabaseManager.Instance.cardDatabase.GetCardById(cardId);

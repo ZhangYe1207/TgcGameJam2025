@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public int currentLevel = 0;
     // 这一轮结算时需要结算的项目结果
     public List<ProjectResult> projectResults = new List<ProjectResult>();
+    public GameObject locationsGO;
     [Header("每一关的初始行动点")]
     public List<int> initActionPoints;
     [Header("基本的游戏数值属性")]
@@ -43,6 +44,8 @@ public class GameManager : MonoBehaviour
     [Header("UI Prefabs")]
     [SerializeField] private GameObject cardUIPrefab;
     [SerializeField] private GameObject dailyResultItemPrefab;
+    [SerializeField] private GameObject locationPrefab;
+
 
     private void Awake()
     {
@@ -117,10 +120,38 @@ public class GameManager : MonoBehaviour
         // 清理本轮的缓存数据，如果有？
         // 下一轮数据生成&更新
         currentLevel++;
-        SetPropertyCurrentValue("ActionPoints", initActionPoints[currentLevel]);
-        SetPropertyMaxValue("ActionPoints", initActionPoints[currentLevel]);
+        SetupNewLevel();
         UpdateMainUI();
         // TODO 地图boundary更新？调用nextlevelcontroller
+    }
+
+    private void SetupNewLevel() {
+        // 行动点设置
+        SetPropertyCurrentValue("ActionPoints", initActionPoints[currentLevel]);
+        SetPropertyMaxValue("ActionPoints", initActionPoints[currentLevel]);
+        // 捞取当前关卡所有事件/项目
+        List<RandomEvent> events = DatabaseManager.Instance.eventDatabase.GetEventsByLevel(currentLevel);
+        List<Project> projects = DatabaseManager.Instance.projectDatabase.GetProjectsByLevel(currentLevel);
+        int cnt = events.Count + projects.Count;
+        // 随机获取location
+        List<Location> locations = DatabaseManager.Instance.locationDatabase.GetRandomLocationsByLevel(currentLevel, cnt);
+        for (int i = 0; i < cnt; i++) {
+            if (i < events.Count) {
+                SetupEventLocation(events[i], locations[i]);
+            } else {
+                SetupProjectLocation(projects[i - events.Count], locations[i]);
+            }
+        }
+    }
+
+    private void SetupEventLocation(RandomEvent e, Location location) {
+        GameObject locGO = Instantiate(locationPrefab, locationsGO.transform);
+        locGO.transform.position = location.position;
+    }
+
+    private void SetupProjectLocation(Project project, Location location) {
+        GameObject locGO = Instantiate(locationPrefab, locationsGO.transform);
+        locGO.transform.position = location.position;
     }
 
     private void SetupDailyReportUI(List<string> descriptions) {
