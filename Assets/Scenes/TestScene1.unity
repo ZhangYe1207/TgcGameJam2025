@@ -1335,6 +1335,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 215b876b6ab5c4fa68d8bc7c6601628c, type: 3}
+--- !u!1 &718601077 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5834059095281323638, guid: d332e64ed6a6d43e9b74499f105facf3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1066476273}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &722077640
 GameObject:
   m_ObjectHideFlags: 0
@@ -1588,6 +1594,11 @@ PrefabInstance:
       propertyPath: ActionPointUI
       value: 
       objectReference: {fileID: 1066476279}
+    - target: {fileID: 1761213648540929374, guid: f7930041eecb54178bbc4ed240b8b129,
+        type: 3}
+      propertyPath: DailyReportUI
+      value: 
+      objectReference: {fileID: 718601077}
     - target: {fileID: 1761213648540929374, guid: f7930041eecb54178bbc4ed240b8b129,
         type: 3}
       propertyPath: NextDayButton
