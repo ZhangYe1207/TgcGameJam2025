@@ -12,20 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d50aa11dc46e5f345aa94f9432b442a7, type: 3}
   m_Name: LocationDatabase
   m_EditorClassIdentifier: 
-  locations:
-  - position: {x: -936.6, y: -504.1033, z: -5.4315133}
-    level: 0
-  - position: {x: -943.9, y: -504.1033, z: -5.4315133}
-    level: 0
-  - position: {x: -946.3, y: -504.1033, z: -5.4315133}
-    level: 0
-  - position: {x: -948.1, y: -504.1033, z: -5.4315133}
-    level: 0
-  - position: {x: -951.4, y: -504.1033, z: -5.4315133}
-    level: 0
-  - position: {x: -954.4, y: -504.1033, z: -5.4315133}
-    level: 0
-  - position: {x: -955, y: -504.1033, z: -5.4315133}
-    level: 0
-  - position: {x: -958.3, y: -504.1033, z: -5.4315133}
-    level: 0
+  locations: []

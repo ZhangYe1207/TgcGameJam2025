@@ -60,3 +60,4 @@ cacheserver/
 
 # Crashlytics generated files
 com.crashlytics/
+Assets/Resources/Databases/LocationDatabase.asset

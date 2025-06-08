@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CardDatabase
   m_EditorClassIdentifier: 
   allCards:
-  - cardName: DiceMinusOne
+  - cardName: Shady Recommendation Letter
     cardId: dice_minus_one
     description: Available Dice -1
     cardType: 1
@@ -22,7 +22,7 @@ MonoBehaviour:
     - effectCode: HaveDices -= 1
       explanation: 
     amount: 0
-  - cardName: DiceMinusTwo
+  - cardName: Outdated Industry Report
     cardId: dice_minus_two
     description: Available Dice -2
     cardType: 1
@@ -31,7 +31,7 @@ MonoBehaviour:
     - effectCode: HaveDices -= 2
       explanation: 
     amount: 0
-  - cardName: DiceMinusThree
+  - cardName: Long-Winded Consultant
     cardId: dice_minus_three
     description: Available Dice -3
     cardType: 1
@@ -40,7 +40,7 @@ MonoBehaviour:
     - effectCode: HaveDices -= 2
       explanation: 
     amount: 0
-  - cardName: DicePlusOne
+  - cardName: "The Hustler\u2019s Journal"
     cardId: dice_plus_one
     description: Available Dice +1
     cardType: 1
@@ -49,7 +49,7 @@ MonoBehaviour:
     - effectCode: HaveDices += 1
       explanation: 
     amount: 0
-  - cardName: DicePlusTwo
+  - cardName: Polished Pitch Deck Template
     cardId: dice_plus_two
     description: Available Dice +2
     cardType: 1
@@ -58,7 +58,7 @@ MonoBehaviour:
     - effectCode: HaveDices += 2
       explanation: 
     amount: 0
-  - cardName: DicePlusThree
+  - cardName: Adorably Fluffy Husky
     cardId: dice_plus_three
     description: Available Dice +3
     cardType: 1

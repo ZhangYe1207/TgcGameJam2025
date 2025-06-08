@@ -20,7 +20,8 @@ MonoBehaviour:
     isPreviewable: 1
     eventImage: {fileID: 21300042, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     results:
-    - description: Dice Minus One x1
+    - description: "Shady Recommendation Letter x1\n\nThe recommender? Your mom\u2019s
+        cousin\u2019s neighbour. "
       resultImage: {fileID: 21300000, guid: f1a09b7f0fade6d44935c96cc19438ce, type: 3}
       immediateEffects:
       - effectCode: HandCards:add:dice_minus_one
@@ -28,7 +29,7 @@ MonoBehaviour:
       - effectCode: ActionPoints -= 1
         explanation: 
       delayedEffects: []
-    level: 0
+    levels: 0000000004000000
     prerequisites:
     - description: 
       conditions:
@@ -41,7 +42,11 @@ MonoBehaviour:
     isPreviewable: 1
     eventImage: {fileID: 21300042, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     results:
-    - description: Dice Minus Two x1
+    - description: 'Outdated Industry Report x1
+
+
+        A decade-old market report
+        with keywords like "millennials as disruptors" inside.'
       resultImage: {fileID: 21300000, guid: f1a09b7f0fade6d44935c96cc19438ce, type: 3}
       immediateEffects:
       - effectCode: HandCards:add:dice_minus_two
@@ -49,7 +54,7 @@ MonoBehaviour:
       - effectCode: ActionPoints -= 1
         explanation: 
       delayedEffects: []
-    level: 0
+    levels: 0000000001000000
     prerequisites:
     - description: 
       conditions:
@@ -62,7 +67,8 @@ MonoBehaviour:
     isPreviewable: 1
     eventImage: {fileID: 21300042, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     results:
-    - description: Dice Minus Three x2
+    - description: "Long-Winded Consultant x2\n\nAsk him how to approach a project,
+        and he\u2019ll start with the story of Genesis. Literally."
       resultImage: {fileID: 21300000, guid: f1a09b7f0fade6d44935c96cc19438ce, type: 3}
       immediateEffects:
       - effectCode: HandCards:add:dice_minus_three
@@ -72,7 +78,7 @@ MonoBehaviour:
       - effectCode: ActionPoints -= 1
         explanation: 
       delayedEffects: []
-    level: 0
+    levels: 03000000
     prerequisites:
     - description: 
       conditions:
@@ -85,7 +91,8 @@ MonoBehaviour:
     isPreviewable: 1
     eventImage: {fileID: 21300042, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     results:
-    - description: Dice Plus One x1
+    - description: "The Hustler\u2019s Journal x1\n\nLeather-bound. Lined pages.
+        First line reads: \u201CYour fate changes the moment you go all in.\u201D"
       resultImage: {fileID: 21300000, guid: f1a09b7f0fade6d44935c96cc19438ce, type: 3}
       immediateEffects:
       - effectCode: HandCards:add:dice_plus_one
@@ -93,7 +100,7 @@ MonoBehaviour:
       - effectCode: ActionPoints -= 1
         explanation: 
       delayedEffects: []
-    level: 0
+    levels: 000000000100000002000000
     prerequisites:
     - description: 
       conditions:
@@ -106,7 +113,11 @@ MonoBehaviour:
     isPreviewable: 1
     eventImage: {fileID: 21300042, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     results:
-    - description: Dice Plus Two x1
+    - description: 'Polished Pitch Deck Template x1
+
+
+        20 slides of sleek
+        gradients and just enough buzzwords to distract from the lack of a real product.'
       resultImage: {fileID: 21300000, guid: f1a09b7f0fade6d44935c96cc19438ce, type: 3}
       immediateEffects:
       - effectCode: HandCards:add:dice_plus_two
@@ -114,7 +125,7 @@ MonoBehaviour:
       - effectCode: ActionPoints -= 1
         explanation: 
       delayedEffects: []
-    level: 0
+    levels: 000000000100000002000000
     prerequisites:
     - description: 
       conditions:
@@ -127,7 +138,11 @@ MonoBehaviour:
     isPreviewable: 1
     eventImage: {fileID: 21300042, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     results:
-    - description: Dice Plus Three x1
+    - description: 'Adorably Fluffy Husky x1
+
+
+        Loved by all employees. Also
+        directly responsible for a 30% increase in unpaid overtime.'
       resultImage: {fileID: 21300000, guid: f1a09b7f0fade6d44935c96cc19438ce, type: 3}
       immediateEffects:
       - effectCode: HandCards:add:dice_plus_three
@@ -135,7 +150,7 @@ MonoBehaviour:
       - effectCode: ActionPoints -= 1
         explanation: 
       delayedEffects: []
-    level: 0
+    levels: 03000000
     prerequisites:
     - description: 
       conditions:
@@ -148,7 +163,8 @@ MonoBehaviour:
     isPreviewable: 1
     eventImage: {fileID: 21300042, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     results:
-    - description: Dice Minus One x2
+    - description: "Shady Recommendation Letter x2\n\nThe recommender? Your mom\u2019s
+        cousin\u2019s neighbour. "
       resultImage: {fileID: 21300000, guid: f1a09b7f0fade6d44935c96cc19438ce, type: 3}
       immediateEffects:
       - effectCode: HandCards:add:dice_minus_one
@@ -158,7 +174,7 @@ MonoBehaviour:
       - effectCode: ActionPoints -= 1
         explanation: 
       delayedEffects: []
-    level: 0
+    levels: 010000000200000003000000
     prerequisites:
     - description: 
       conditions:
@@ -171,7 +187,11 @@ MonoBehaviour:
     isPreviewable: 1
     eventImage: {fileID: 21300042, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     results:
-    - description: Dice Minus Two x2
+    - description: 'Outdated Industry Report x2
+
+
+        A decade-old market report
+        with keywords like "millennials as disruptors" inside.'
       resultImage: {fileID: 21300000, guid: f1a09b7f0fade6d44935c96cc19438ce, type: 3}
       immediateEffects:
       - effectCode: HandCards:add:dice_minus_two
@@ -181,7 +201,7 @@ MonoBehaviour:
       - effectCode: ActionPoints -= 1
         explanation: 
       delayedEffects: []
-    level: 0
+    levels: 0200000003000000
     prerequisites:
     - description: 
       conditions:
@@ -194,7 +214,11 @@ MonoBehaviour:
     isPreviewable: 1
     eventImage: {fileID: 21300042, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     results:
-    - description: Dice Minus Two x2
+    - description: 'Outdated Industry Report x2
+
+
+        A decade-old market report
+        with keywords like "millennials as disruptors" inside.'
       resultImage: {fileID: 21300000, guid: f1a09b7f0fade6d44935c96cc19438ce, type: 3}
       immediateEffects:
       - effectCode: HandCards:add:dice_minus_two
@@ -204,7 +228,7 @@ MonoBehaviour:
       - effectCode: ActionPoints -= 1
         explanation: 
       delayedEffects: []
-    level: 0
+    levels: 03000000
     prerequisites:
     - description: 
       conditions:
