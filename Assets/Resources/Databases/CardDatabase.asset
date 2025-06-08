@@ -15,39 +15,103 @@ MonoBehaviour:
   allCards:
   - cardName: DiceMinusOne
     cardId: dice_minus_one
-    description: Dice Minus One
+    description: Available Dice -1
     cardType: 1
     cardImage: {fileID: 21300000, guid: f1a09b7f0fade6d44935c96cc19438ce, type: 3}
     cardEffects:
     - effectCode: HaveDices -= 1
       explanation: 
+    amount: 0
   - cardName: DiceMinusTwo
     cardId: dice_minus_two
-    description: Dice Minus Two
+    description: Available Dice -2
     cardType: 1
     cardImage: {fileID: 21300000, guid: f1a09b7f0fade6d44935c96cc19438ce, type: 3}
     cardEffects:
     - effectCode: HaveDices -= 2
       explanation: 
+    amount: 0
+  - cardName: DiceMinusThree
+    cardId: dice_minus_three
+    description: Available Dice -3
+    cardType: 1
+    cardImage: {fileID: 21300000, guid: f1a09b7f0fade6d44935c96cc19438ce, type: 3}
+    cardEffects:
+    - effectCode: HaveDices -= 2
+      explanation: 
+    amount: 0
   - cardName: DicePlusOne
     cardId: dice_plus_one
-    description: Dice Plus One
+    description: Available Dice +1
     cardType: 1
     cardImage: {fileID: 21300000, guid: f1a09b7f0fade6d44935c96cc19438ce, type: 3}
     cardEffects:
     - effectCode: HaveDices += 1
       explanation: 
+    amount: 0
   - cardName: DicePlusTwo
     cardId: dice_plus_two
-    description: Dice Plus Two
+    description: Available Dice +2
     cardType: 1
     cardImage: {fileID: 21300000, guid: f1a09b7f0fade6d44935c96cc19438ce, type: 3}
     cardEffects:
     - effectCode: HaveDices += 2
       explanation: 
-  - cardName: MoneySmall
+    amount: 0
+  - cardName: DicePlusThree
+    cardId: dice_plus_three
+    description: Available Dice +3
+    cardType: 1
+    cardImage: {fileID: 21300000, guid: f1a09b7f0fade6d44935c96cc19438ce, type: 3}
+    cardEffects:
+    - effectCode: HaveDices += 2
+      explanation: 
+    amount: 0
+  - cardName: Small Pile of Money
     cardId: money_small
-    description: Small amount of Money
+    description: 10 million
     cardType: 0
     cardImage: {fileID: 21300042, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     cardEffects: []
+    amount: 10
+  - cardName: Medium Pile of Money
+    cardId: money_medium
+    description: 20 million
+    cardType: 0
+    cardImage: {fileID: 21300042, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    cardEffects: []
+    amount: 20
+  - cardName: Large Pile of Money
+    cardId: money_large
+    description: 40 million
+    cardType: 0
+    cardImage: {fileID: 21300042, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    cardEffects: []
+    amount: 40
+  - cardName: Investor
+    cardId: npc_001
+    description: 
+    cardType: 2
+    cardImage: {fileID: 21300042, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    cardEffects:
+    - effectCode: ReturnMoneyCard:clear
+      explanation: 
+    amount: 0
+  - cardName: Lilian
+    cardId: npc_001
+    description: +=
+    cardType: 2
+    cardImage: {fileID: 21300042, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    cardEffects:
+    - effectCode: CardSlot += 2
+      explanation: 
+    amount: 0
+  - cardName: The Duo
+    cardId: npc_001
+    description: 
+    cardType: 2
+    cardImage: {fileID: 21300042, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    cardEffects:
+    - effectCode: FunctionCard:Revers
+      explanation: 
+    amount: 0
