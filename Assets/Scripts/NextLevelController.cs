@@ -111,13 +111,26 @@ public class NextLevelController : MonoBehaviour
         followCam.gameObject.SetActive(target == followCam);
     }
 
+
+
+
+
+
     public void ApplyLevelExtras(int index)
     {
         if (mainLight != null)
         {
             mainLight.position = levels[index].mainLightPosition;
             mainLight.rotation = Quaternion.Euler(levels[index].mainLightRotation);
+
+            Light lightComponent = mainLight.GetComponent<Light>();
+            if (lightComponent != null)
+            {
+                lightComponent.intensity = levels[index].mainLightIntensity;
+                lightComponent.range = levels[index].mainLightRange;
+            }
         }
+
 
         for (int i = 0; i < levels.Length; i++)
         {
@@ -174,23 +187,36 @@ public class NextLevelController : MonoBehaviour
         data.position = overviewCam.transform.position;
         data.rotation = overviewCam.transform.eulerAngles;
         EditorUtility.SetDirty(this);
-        Debug.Log($"✅ 记录 Overview 虚机快照（关卡 {currentLevelIndex}）成功");
+        Debug.Log($"记录 Overview 虚机快照（关卡 {currentLevelIndex}）成功");
     }
+
+  
+
 
     public void RecordMainLight(Transform light)
     {
         EnsureLevelExists();
+
         levels[currentLevelIndex].mainLightPosition = light.position;
         levels[currentLevelIndex].mainLightRotation = light.eulerAngles;
+
+        Light lightComponent = light.GetComponent<Light>();
+        if (lightComponent != null)
+        {
+            levels[currentLevelIndex].mainLightIntensity = lightComponent.intensity;
+            levels[currentLevelIndex].mainLightRange = lightComponent.range;
+        }
+
+        Debug.Log($" 记录主灯光位置 + 强度 + 范围成功（关卡 {currentLevelIndex}）");
         EditorUtility.SetDirty(this);
-        Debug.Log($"💡 记录主灯光位置成功（关卡 {currentLevelIndex}）");
     }
+
 
     public void ClearAllLevels()
     {
         levels = new CinemachineLevelData[0];
         EditorUtility.SetDirty(this);
-        Debug.Log("🧹 清空所有关卡数据");
+        Debug.Log("清空所有关卡数据");
     }
 
     private void EnsureLevelExists()

@@ -19,6 +19,9 @@ public class CinemachineLevelData
     [Header("Main Light Settings")]
     public Vector3 mainLightPosition = Vector3.zero;
     public Vector3 mainLightRotation = Vector3.zero;
+    public float mainLightIntensity = 1f;
+    public float mainLightRange = 10f;
+
 
     [Header("Air Wall Reference")]
     public GameObject airWallRoot;
