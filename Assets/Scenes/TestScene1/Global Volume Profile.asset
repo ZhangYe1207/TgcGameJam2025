@@ -118,13 +118,13 @@ MonoBehaviour:
   active: 1
   _spread:
     m_OverrideState: 1
-    m_Value: 0.282
+    m_Value: 0.249
   _redColorCount:
     m_OverrideState: 1
-    m_Value: 4
+    m_Value: 10
   _greenColorCount:
     m_OverrideState: 1
-    m_Value: 5
+    m_Value: 9
   _blueColorCount:
     m_OverrideState: 1
     m_Value: 7
@@ -287,10 +287,10 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {r: 0.66625136, g: 0.7169812, b: 0.6794332, a: 1}
+    m_Value: {r: 0.7311321, g: 1, b: 0.7931785, a: 1}
   highlights:
     m_OverrideState: 1
-    m_Value: {r: 0.3207547, g: 0.290459, b: 0.107422575, a: 1}
+    m_Value: {r: 0, g: 0, b: 0, a: 1}
   balance:
     m_OverrideState: 0
     m_Value: 0
