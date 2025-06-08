@@ -16,7 +16,7 @@ MonoBehaviour:
   - projectId: project_001
     title: Inversion Spa
     description: 
-    projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    projectImage: {fileID: 21300000, guid: ce7b5596be81747d8a74a815e3f6bc0a, type: 3}
     isPreviewable: 1
     level: 0
     results:
@@ -56,7 +56,7 @@ MonoBehaviour:
   - projectId: project_002
     title: Meditation Room
     description: 
-    projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    projectImage: {fileID: 21300000, guid: 6719befafd2e342dea2403028e0ca120, type: 3}
     isPreviewable: 1
     level: 0
     results:
@@ -82,7 +82,7 @@ MonoBehaviour:
   - projectId: project_003
     title: Milk Tea De-icer
     description: 
-    projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    projectImage: {fileID: 21300000, guid: 6c2d42afd50834349ba0b2346528d4f8, type: 3}
     isPreviewable: 1
     level: 0
     results:
@@ -122,7 +122,7 @@ MonoBehaviour:
   - projectId: project_004
     title: Jerks Around You
     description: 
-    projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    projectImage: {fileID: 21300000, guid: dccf5d31001e54feda66b66084aaf310, type: 3}
     isPreviewable: 1
     level: 1
     results:
@@ -162,7 +162,7 @@ MonoBehaviour:
   - projectId: project_005
     title: Cinema Paradiso
     description: 
-    projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    projectImage: {fileID: 21300000, guid: e2fc164a02c6a4f308f007687a2c9e6e, type: 3}
     isPreviewable: 1
     level: 1
     results:
@@ -202,7 +202,7 @@ MonoBehaviour:
   - projectId: project_006
     title: Open Mic
     description: 
-    projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    projectImage: {fileID: 21300000, guid: 4be72550ae0a84ab28930f45d613ccbc, type: 3}
     isPreviewable: 1
     level: 1
     results:
@@ -242,7 +242,7 @@ MonoBehaviour:
   - projectId: project_007
     title: Clones of Me
     description: 
-    projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    projectImage: {fileID: 21300000, guid: ecfeb066b2dd948cc9691518b0563b12, type: 3}
     isPreviewable: 1
     level: 1
     results:
@@ -360,9 +360,9 @@ MonoBehaviour:
       - conditionCode: ActionPoints >= 1
         failedMessage: You don't have enough Action Points!
   - projectId: project_010
-    title: 
+    title: Sense Exchange
     description: 
-    projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    projectImage: {fileID: 21300000, guid: 67dcd30a800f84ae582dae179350ceb3, type: 3}
     isPreviewable: 1
     level: 2
     results:
@@ -400,9 +400,9 @@ MonoBehaviour:
       - conditionCode: ActionPoints >= 1
         failedMessage: You don't have enough Action Points!
   - projectId: project_011
-    title: 
+    title: Meditation Room 2.0
     description: 
-    projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    projectImage: {fileID: 21300000, guid: 6719befafd2e342dea2403028e0ca120, type: 3}
     isPreviewable: 1
     level: 2
     results:
@@ -525,9 +525,9 @@ MonoBehaviour:
       - conditionCode: HandCards:has:npc_003
         failedMessage: "You haven\u2019t made contact with The Duo yet."
   - projectId: project_014
-    title: 
+    title: Pink Town
     description: 
-    projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    projectImage: {fileID: 21300000, guid: 57242136c743a4bc99a0b6e2f5ee8de3, type: 3}
     isPreviewable: 1
     level: 3
     results:
@@ -565,9 +565,9 @@ MonoBehaviour:
       - conditionCode: ActionPoints >= 1
         failedMessage: You don't have enough Action Points!
   - projectId: project_015
-    title: 
+    title: Super Shower City
     description: 
-    projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    projectImage: {fileID: 21300000, guid: 78950fe5b0daa479086bcaaa5699cc24, type: 3}
     isPreviewable: 1
     level: 3
     results:
@@ -605,9 +605,9 @@ MonoBehaviour:
       - conditionCode: ActionPoints >= 1
         failedMessage: You don't have enough Action Points!
   - projectId: project_016
-    title: 
+    title: Inversion Spa 2.0 - Inversion Retreat
     description: 
-    projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    projectImage: {fileID: 21300000, guid: ce7b5596be81747d8a74a815e3f6bc0a, type: 3}
     isPreviewable: 1
     level: 3
     results:
@@ -645,9 +645,9 @@ MonoBehaviour:
       - conditionCode: ActionPoints >= 1
         failedMessage: You don't have enough Action Points!
   - projectId: project_017
-    title: 
+    title: Fake Your Funeral
     description: 
-    projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    projectImage: {fileID: 21300000, guid: c498f281431494c2ebce6aa6913d8ebe, type: 3}
     isPreviewable: 1
     level: 3
     results:
@@ -685,9 +685,9 @@ MonoBehaviour:
       - conditionCode: ActionPoints >= 1
         failedMessage: You don't have enough Action Points!
   - projectId: project_018
-    title: 
+    title: Cinema Paradiso 2.0
     description: 
-    projectImage: {fileID: 21300010, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    projectImage: {fileID: 21300000, guid: e2fc164a02c6a4f308f007687a2c9e6e, type: 3}
     isPreviewable: 1
     level: 3
     results:
