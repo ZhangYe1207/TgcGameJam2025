@@ -19,7 +19,7 @@ public class ProjectHandler : MonoBehaviour
     {
         projectData = DatabaseManager.Instance.projectDatabase.GetProjectByID(projectId);
         if (projectData == null) {
-            Debug.LogError("Project not found: " + projectId);
+            Debug.LogWarning("Project not found: " + projectId);
         }
         locationGO = gameObject.transform.parent.gameObject;
         projectUI = GameObject.Find("Canvas").transform.Find("ProjectUI").GetComponent<ProjectUIManager>();
@@ -28,6 +28,12 @@ public class ProjectHandler : MonoBehaviour
     }
 
     public void Update() {
+        if (projectData == null) {
+            projectData = DatabaseManager.Instance.projectDatabase.GetProjectByID(projectId);
+            if (projectData == null) {
+                Debug.LogWarning("Project not found: " + projectId);
+            }
+        }
         if (projectUI.gameObject.activeInHierarchy) {
             // 交给ProjectUI来处理
             return;

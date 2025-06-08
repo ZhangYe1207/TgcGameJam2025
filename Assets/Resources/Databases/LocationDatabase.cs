@@ -20,7 +20,11 @@ public class LocationDatabase : ScriptableObject
     // 随机获取Locations
     public List<Location> GetRandomLocationsByLevel(int currentLevel, int count)
     {
-        return ListRandomizer.RandomSelectWithoutRepeat<Location>(GetLocationsByLevel(currentLevel), count);
+        List<Location> locs = GetLocationsByLevel(currentLevel);
+        if (locs.Count < count) {
+            Debug.LogWarning("Not Enough Locations!");
+        }
+        return ListRandomizer.RandomSelectWithoutRepeat<Location>(locs, count);
     }
 
     public void AddLocation(Location location) {

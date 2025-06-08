@@ -44,7 +44,9 @@ public class GameManager : MonoBehaviour
     [Header("UI Prefabs")]
     [SerializeField] private GameObject cardUIPrefab;
     [SerializeField] private GameObject dailyResultItemPrefab;
-    [SerializeField] private GameObject locationPrefab;
+    [Header("Location Prefabs")]
+    [SerializeField] private GameObject eventLocationPrefab;
+    [SerializeField] private GameObject projectLocationPrefab;
 
 
     private void Awake()
@@ -83,6 +85,7 @@ public class GameManager : MonoBehaviour
         playerGO = GameObject.FindWithTag("Player");
         EffectsCheck();
         ConditionsCheck();
+        SetupNewLevel();
         UpdateMainUI();
         NextDayButton.onClick.AddListener(NextDay);
         DailyReportConfirmButton.onClick.AddListener(DailyReportConfirm);
@@ -135,23 +138,32 @@ public class GameManager : MonoBehaviour
         int cnt = events.Count + projects.Count;
         // 随机获取location
         List<Location> locations = DatabaseManager.Instance.locationDatabase.GetRandomLocationsByLevel(currentLevel, cnt);
-        for (int i = 0; i < cnt; i++) {
-            if (i < events.Count) {
-                SetupEventLocation(events[i], locations[i]);
-            } else {
-                SetupProjectLocation(projects[i - events.Count], locations[i]);
+        if (locations.Count < cnt) {
+            Debug.LogWarning("This level doesn't have enough locations, will random pick events and projects.");
+            // TODO 随机选择
+        } else {
+            for (int i = 0; i < cnt; i++) {
+                if (i < events.Count) {
+                    SetupEventLocation(events[i], locations[i]);
+                } else {
+                    SetupProjectLocation(projects[i - events.Count], locations[i]);
+                }
             }
         }
     }
 
     private void SetupEventLocation(RandomEvent e, Location location) {
-        GameObject locGO = Instantiate(locationPrefab, locationsGO.transform);
+        GameObject locGO = Instantiate(eventLocationPrefab, locationsGO.transform);
         locGO.transform.position = location.position;
+        var handler = locGO.transform.Find("Event").GetComponent<RandomEventHandler>();
+        handler.eventId = e.eventId;
     }
 
     private void SetupProjectLocation(Project project, Location location) {
-        GameObject locGO = Instantiate(locationPrefab, locationsGO.transform);
+        GameObject locGO = Instantiate(projectLocationPrefab, locationsGO.transform);
         locGO.transform.position = location.position;
+        var handler = locGO.transform.Find("Project").GetComponent<ProjectHandler>();
+        handler.projectId = project.projectId;
     }
 
     private void SetupDailyReportUI(List<string> descriptions) {
@@ -167,16 +179,6 @@ public class GameManager : MonoBehaviour
             GO.GetComponent<TextMeshProUGUI>().text = t;
         }
         DailyReportConfirmButton.gameObject.SetActive(true);
-    }
-
-
-
-    // 开始新的一轮
-    public void StartNewLevel()
-    {
-        currentLevel++;
-        // TODO: 刷新玩家行动点
-        // TODO: 其他每轮开始时的逻辑
     }
 
     public void OnGameDataChanged() {   
@@ -204,7 +206,6 @@ public class GameManager : MonoBehaviour
     }
     
     private void UpdateMainUI() {
-        // TODO: 更新主界面
         UpdateActionPointUI();
         UpdateProfessionalityUI();
         UpdateGenerosityUI();
