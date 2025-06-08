@@ -19,8 +19,6 @@ public class LocationRecorder : MonoBehaviour
 #if UNITY_EDITOR
     public void RecordPlayerLocation()
     {
-
-
         Location cur = new Location();
         cur.position = playerGO.transform.position;
         cur.level = GameManager.Instance.currentLevel;
