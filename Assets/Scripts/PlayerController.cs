@@ -6,36 +6,48 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 15f;
     public float maxSpeed = 30f;
-    public float decelerationForce = 10f; // Force applied when no input
+    public float decelerationForce = 10f;
     public bool isLocked = false;
-    private Rigidbody rb;
 
-    // Start is called before the first frame update
+    private Rigidbody rb;
+    public Transform spriteChild;
+
+    private bool facingRight = false; // 默认朝右
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
-        // 如果玩家被锁定，则不移动
-        if (isLocked) {
+        if (isLocked)
+        {
             rb.velocity = Vector3.zero;
             return;
         }
 
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
-        
-        // Check if there's any input
+
+        //  自动左右翻转逻辑
+        if (spriteChild != null)
+        {
+            if (moveX > 0.1f && !facingRight)
+            {
+                Flip();
+            }
+            else if (moveX < -0.1f && facingRight)
+            {
+                Flip();
+            }
+        }
+
+      
         if (Mathf.Abs(moveX) < 0.1f && Mathf.Abs(moveZ) < 0.1f)
         {
-            // Apply deceleration force in the opposite direction of current velocity
             if (rb.velocity.magnitude > 0.1f)
-            {
                 rb.AddForce(-rb.velocity.normalized * decelerationForce, ForceMode.Force);
-            }
         }
         else
         {
@@ -44,8 +56,17 @@ public class PlayerController : MonoBehaviour
         }
 
         if (rb.velocity.magnitude > maxSpeed)
-        {
             rb.velocity = rb.velocity.normalized * maxSpeed;
-        }
+    }
+
+    void Flip()
+    {
+        // 切换方向状态
+        facingRight = !facingRight;
+
+        // 将 X 轴缩放乘以 -1 实现镜像翻转
+        Vector3 scale = spriteChild.localScale;
+        scale.x *= -1;
+        spriteChild.localScale = scale;
     }
 }
