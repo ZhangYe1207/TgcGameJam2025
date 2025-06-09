@@ -15,12 +15,17 @@ MonoBehaviour:
   allProjects:
   - projectId: project_001
     title: Inversion Spa
-    description: 
+    description: "\u201CFifteen minutes of inversion a day will cure your workplace
+      despair,\u201D claimed the founder. You gave it a go. It worked\u2014because
+      you blacked out."
     projectImage: {fileID: 21300000, guid: ce7b5596be81747d8a74a815e3f6bc0a, type: 3}
     isPreviewable: 1
     level: 0
     results:
-    - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
+    - description: "Big Failure! \n\nTwenty participants reported severe dizziness.
+        Thirty couldn't stop vomiting. All investment funds were promptly rerouted
+        by the founder\u2014for compensation and barf cleanup.\n\nYou lost all your
+        money, but your Generosity +1."
       resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
       immediateEffects:
       - effectCode: Generosity += 1
@@ -30,8 +35,11 @@ MonoBehaviour:
       - effectCode: ProjectFinished:add:project_001
         explanation: 
       delayedEffects: []
-    - description: "Great Success! \nYou gained Money Small x1, Professionality +1\n\n<size=80%>(Note:
-        Money Card you gained will be delivered at the start of next day)</size>"
+    - description: "Great Success! \n\nQueues for Inversion Spa have become a new
+        urban spectacle.\nSociologists argue it has \"reconstructed vertical cognition,\"
+        and the #UpsideDownLiving challenge is now trending on social media.\n\n\nYou
+        gained Money Small x1, Professionality +1\n\n<size=80%>(Note: Money Card
+        you gained will be delivered at the start of next day)</size>"
       resultImage: {fileID: 21300118, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
       immediateEffects:
       - effectCode: 'Professionality += 1 '
@@ -56,7 +64,8 @@ MonoBehaviour:
         failedMessage: You don't have enough Action Points!
   - projectId: project_002
     title: Meditation Room
-    description: 
+    description: Burn a $100 bill each day, feel the quiet peace of your wealth slipping
+      away.
     projectImage: {fileID: 21300000, guid: 6719befafd2e342dea2403028e0ca120, type: 3}
     isPreviewable: 1
     level: 0
@@ -83,12 +92,15 @@ MonoBehaviour:
         failedMessage: You don't have enough Action Points!
   - projectId: project_003
     title: Milk Tea De-icer
-    description: 
+    description: "Insert your milk tea, and it precisely extracts the drink\u2019s
+      essence\u2014delivering a 100% ice-free experience."
     projectImage: {fileID: 21300000, guid: 6c2d42afd50834349ba0b2346528d4f8, type: 3}
     isPreviewable: 1
     level: 0
     results:
-    - description: "Big Failure! \nYou lost all your money, but your Generosity +1."
+    - description: "Big Failure! \n\nAfter two years of development, it has successfully
+        produced one cup of pure sugar water and one cup of air.\n\nYou lost all
+        your money, but your Generosity +1."
       resultImage: {fileID: 21300120, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
       immediateEffects:
       - effectCode: Generosity += 2
@@ -98,8 +110,10 @@ MonoBehaviour:
       - effectCode: ProjectFinished:add:project_003
         explanation: 
       delayedEffects: []
-    - description: "Great Success! \nYou gained Money Small x1, Professionality +1\n\n<size=80%>(Note:
-        Money Card you gained will be delivered at the start of next day)</size>"
+    - description: "Great Success! \n\nUpon release, it was met with overwhelming
+        praise\u2014zero-ice milk tea quickly became a symbol of prestige and indulgence.\n\nYou
+        gained Money Small x1, Professionality +1\n\n<size=80%>(Note: Money Card
+        you gained will be delivered at the start of next day)</size>"
       resultImage: {fileID: 21300118, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
       immediateEffects:
       - effectCode: Professionality += 2
