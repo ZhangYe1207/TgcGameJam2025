@@ -18,7 +18,7 @@ MonoBehaviour:
     description: Come and Pick a card!
     eventType: 0
     isPreviewable: 1
-    eventImage: {fileID: 21300042, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    eventImage: {fileID: 21300000, guid: 6b1280602a767413d92f95173273ceb1, type: 3}
     results:
     - description: "Shady Recommendation Letter x1\n\nThe recommender? Your mom\u2019s
         cousin\u2019s neighbour. "
@@ -40,7 +40,7 @@ MonoBehaviour:
     description: Come and Pick a card!
     eventType: 0
     isPreviewable: 1
-    eventImage: {fileID: 21300042, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    eventImage: {fileID: 21300000, guid: cddd2eca8232f4645b7e04c1aea99a2c, type: 3}
     results:
     - description: 'Outdated Industry Report x1
 
@@ -89,7 +89,7 @@ MonoBehaviour:
     description: Come and Pick a card!
     eventType: 0
     isPreviewable: 1
-    eventImage: {fileID: 21300042, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    eventImage: {fileID: 21300000, guid: 8f373e0f52fc84fb48245db71b98c668, type: 3}
     results:
     - description: "The Hustler\u2019s Journal x1\n\nLeather-bound. Lined pages.
         First line reads: \u201CYour fate changes the moment you go all in.\u201D"
@@ -111,7 +111,7 @@ MonoBehaviour:
     description: Come and Pick a card!
     eventType: 0
     isPreviewable: 1
-    eventImage: {fileID: 21300042, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    eventImage: {fileID: 21300000, guid: 71d128795849243fcb9444a961cdf4ba, type: 3}
     results:
     - description: 'Polished Pitch Deck Template x1
 
