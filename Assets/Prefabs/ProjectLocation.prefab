@@ -193,7 +193,7 @@ MonoBehaviour:
     initNeedDices: 0
     initCardSlots: 0
     prerequisites: []
-  eventTriggerRadius: 5
+  eventTriggerRadius: 2
 --- !u!1 &8450086184987044382
 GameObject:
   m_ObjectHideFlags: 0

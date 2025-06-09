@@ -17,7 +17,7 @@ MonoBehaviour:
     cardId: dice_minus_one
     description: Available Dice -1
     cardType: 1
-    cardImage: {fileID: 21300000, guid: f1a09b7f0fade6d44935c96cc19438ce, type: 3}
+    cardImage: {fileID: 21300000, guid: 72c75b3d868da94459e34eba13d756fe, type: 3}
     cardEffects:
     - effectCode: HaveDices -= 1
       explanation: 
@@ -26,7 +26,7 @@ MonoBehaviour:
     cardId: dice_minus_two
     description: Available Dice -2
     cardType: 1
-    cardImage: {fileID: 21300000, guid: f1a09b7f0fade6d44935c96cc19438ce, type: 3}
+    cardImage: {fileID: 21300000, guid: 72c75b3d868da94459e34eba13d756fe, type: 3}
     cardEffects:
     - effectCode: HaveDices -= 2
       explanation: 
@@ -35,7 +35,7 @@ MonoBehaviour:
     cardId: dice_minus_three
     description: Available Dice -3
     cardType: 1
-    cardImage: {fileID: 21300000, guid: f1a09b7f0fade6d44935c96cc19438ce, type: 3}
+    cardImage: {fileID: 21300000, guid: 72c75b3d868da94459e34eba13d756fe, type: 3}
     cardEffects:
     - effectCode: HaveDices -= 2
       explanation: 

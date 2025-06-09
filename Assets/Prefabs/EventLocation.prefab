@@ -263,6 +263,6 @@ MonoBehaviour:
     isPreviewable: 0
     eventImage: {fileID: 0}
     results: []
-    level: 0
+    levels: 
     prerequisites: []
-  eventTriggerRadius: 5
+  eventTriggerRadius: 2

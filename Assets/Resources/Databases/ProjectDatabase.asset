@@ -43,8 +43,9 @@ MonoBehaviour:
       delayedEffects:
       - effectCode: HandCards:add:money_small
         explanation: 
-        delayedLevel: 1
-    mustPlaceCards: []
+        delayedLevel: 0
+    mustPlaceCards:
+    - money_small
     needMoney: 10
     initNeedDices: 1
     initCardSlots: 2
@@ -70,7 +71,8 @@ MonoBehaviour:
       - effectCode: ProjectFinished:add:project_002
         explanation: 
       delayedEffects: []
-    mustPlaceCards: []
+    mustPlaceCards:
+    - money_small
     needMoney: 10
     initNeedDices: 5
     initCardSlots: 2
@@ -110,7 +112,8 @@ MonoBehaviour:
       - effectCode: HandCards:add:money_small
         explanation: 
         delayedLevel: 1
-    mustPlaceCards: []
+    mustPlaceCards:
+    - money_small
     needMoney: 10
     initNeedDices: 1
     initCardSlots: 2
