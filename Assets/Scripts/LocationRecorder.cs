@@ -42,5 +42,22 @@ public class LocationRecorder : MonoBehaviour
         locGO.transform.position = cur.position;
     }
 
+    public void RefreshLocationDatabase() {
+        DatabaseManager.Instance.locationDatabase.ClearLocations();
+
+        Transform parentTransform = gameObject.transform;
+
+        // 遍历直接子节点
+        for (int i = 0; i < parentTransform.childCount; i++)
+        {
+            Transform childTransform = parentTransform.GetChild(i);
+            GameObject childGameObject = childTransform.gameObject;
+            Location cur = new Location();
+            cur.position = childGameObject.transform.position;
+            DatabaseManager.Instance.locationDatabase.AddLocation(cur);
+            Debug.Log("添加location: " + childGameObject.name + ": " + cur.position);
+        }
+    }
+
 #endif
 }

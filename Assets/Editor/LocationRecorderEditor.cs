@@ -25,6 +25,11 @@ public class LocationRecorderEditor : Editor
         {
             controller.RecordRecorderLocation();
         }
+
+        if (GUILayout.Button("根据LocationRecorder刷新Location Database"))
+        {
+            controller.RefreshLocationDatabase();
+        }
     }
 }
 #endif

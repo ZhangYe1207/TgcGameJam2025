@@ -30,6 +30,10 @@ public class LocationDatabase : ScriptableObject
     public void AddLocation(Location location) {
         locations.Add(location);
     }
+
+    public void ClearLocations() {
+        locations.Clear();
+    }
 }
 
 public static class ListRandomizer
