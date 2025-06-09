@@ -2031,6 +2031,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 301992438}
   m_CullTransparentMesh: 1
+--- !u!1 &304714459
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 304714460}
+  m_Layer: 0
+  m_Name: Locations
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &304714460
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304714459}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &314989928
 GameObject:
   m_ObjectHideFlags: 0
@@ -5652,7 +5683,7 @@ PrefabInstance:
         type: 3}
       propertyPath: locationsGO
       value: 
-      objectReference: {fileID: 2072499317}
+      objectReference: {fileID: 304714459}
     - target: {fileID: 1761213648540929374, guid: f7930041eecb54178bbc4ed240b8b129,
         type: 3}
       propertyPath: GenerosityUI
@@ -12545,7 +12576,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 36.5
+  field of view: 11.1
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -12571,8 +12602,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1414728686}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.30058482, y: 0.027045317, z: -0.008527354, w: 0.95333344}
-  m_LocalPosition: {x: -4.64, y: 8.8, z: -0.32999992}
+  m_LocalRotation: {x: 0.3409914, y: 0.07282814, z: -0.026507271, w: 0.9368662}
+  m_LocalPosition: {x: -7.04, y: 59.29, z: -83.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19009,3 +19040,4 @@ SceneRoots:
   - {fileID: 385350191}
   - {fileID: 1724518645}
   - {fileID: 2072499318}
+  - {fileID: 304714460}

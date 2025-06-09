@@ -31,7 +31,7 @@ public class ProjectHandler : MonoBehaviour
         if (projectData == null) {
             projectData = DatabaseManager.Instance.projectDatabase.GetProjectByID(projectId);
             if (projectData == null) {
-                Debug.LogWarning("Project not found: " + projectId);
+                Debug.LogWarning($"Project not found: {projectId}");
             }
         }
         if (projectUI.gameObject.activeInHierarchy) {
