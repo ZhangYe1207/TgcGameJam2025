@@ -95,8 +95,8 @@ public class ProjectUIManager : MonoBehaviour
         if (!haveDicesText.gameObject.activeSelf) {
             haveDicesText.gameObject.SetActive(true);
         }
-        needDicesText.text = $"Need <size=130%><b>{GameManager.Instance.GetPropertyCurrentValue("NeedDices")}</b></size>";
-        haveDicesText.text = $"Have <size=130%><b>{GameManager.Instance.GetPropertyCurrentValue("HaveDices")}</b></size>";
+        needDicesText.text = $"Need Dices: <size=130%><b>{GameManager.Instance.GetPropertyCurrentValue("NeedDices")}</b></size>";
+        haveDicesText.text = $"Have Dices: <size=130%><b>{GameManager.Instance.GetPropertyCurrentValue("HaveDices")}</b></size>";
     }
 
     public void UpdateCardSlotUI() {
