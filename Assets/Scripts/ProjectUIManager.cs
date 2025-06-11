@@ -193,6 +193,7 @@ public class ProjectUIManager : MonoBehaviour
         laterButton.gameObject.SetActive(false);
         needDicesText.gameObject.SetActive(false);
         haveDicesText.gameObject.SetActive(false);
+        // 
     }
 
     private void ResultConfirm() {
@@ -203,8 +204,7 @@ public class ProjectUIManager : MonoBehaviour
         laterButton.gameObject.SetActive(true);
         projectUI.SetActive(false);
         GameManager.Instance.isOnProjectUI = false;
-        GameManager.Instance.playerGO.GetComponent<PlayerController>().isLocked = false;
-        // TODO 缓存数据清理，比如当前放置的卡牌，骰子数量，卡槽数量等
+        projectHandler.ConfirmInvestment();
     }
 
     private void Later() {

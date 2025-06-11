@@ -13,7 +13,7 @@ public class ProjectHandler : MonoBehaviour
     private PromptUIManager promptUI;
     private PlayerController playerController;
     private GameObject locationGO;
-    private bool isFinished = false;
+    public bool isFinished = false;
 
     void Start()
     {

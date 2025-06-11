@@ -169,6 +169,7 @@ public class GameManager : MonoBehaviour
 
     private void SetupEventLocation(RandomEvent e, Location location) {
         GameObject locGO = Instantiate(eventLocationPrefab, locationsGO.transform);
+        locGO.name = e.eventId;
         locGO.transform.position = location.position;
         var handler = locGO.transform.Find("Event").GetComponent<RandomEventHandler>();
         handler.eventId = e.eventId;
@@ -176,6 +177,7 @@ public class GameManager : MonoBehaviour
 
     private void SetupProjectLocation(Project project, Location location) {
         GameObject locGO = Instantiate(projectLocationPrefab, locationsGO.transform);
+        locGO.name = project.title;
         locGO.transform.position = location.position;
         var handler = locGO.transform.Find("Project").GetComponent<ProjectHandler>();
         handler.projectId = project.projectId;
