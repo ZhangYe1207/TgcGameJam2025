@@ -14,6 +14,8 @@ public class ProjectHandler : MonoBehaviour
     private PlayerController playerController;
     private GameObject locationGO;
     public bool isFinished = false;
+    public Image locationSign;
+    private Color maskColor = new Color(80f/255, 80f/255, 80f/255, 128f/255);
 
     void Start()
     {
@@ -98,6 +100,7 @@ public class ProjectHandler : MonoBehaviour
         Debug.Log($"项目投资{projectId}已确认, 退出UI");
         playerController.isLocked = false;
         isFinished = true;
+        locationSign.color = maskColor;
         return;
     }
 }

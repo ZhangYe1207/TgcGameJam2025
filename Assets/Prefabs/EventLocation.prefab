@@ -266,3 +266,5 @@ MonoBehaviour:
     levels: 
     prerequisites: []
   eventTriggerRadius: 2
+  isFinished: 0
+  locationSign: {fileID: 5034456057871922781}

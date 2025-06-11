@@ -194,6 +194,8 @@ MonoBehaviour:
     initCardSlots: 0
     prerequisites: []
   eventTriggerRadius: 2
+  isFinished: 0
+  locationSign: {fileID: 849309044296913416}
 --- !u!1 &8450086184987044382
 GameObject:
   m_ObjectHideFlags: 0

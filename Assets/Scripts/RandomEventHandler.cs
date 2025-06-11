@@ -11,7 +11,10 @@ public class RandomEventHandler : MonoBehaviour
     private PromptUIManager promptUI;
     private GameObject locationGO;
     private PlayerController playerController;
-    private bool isFinished = false;
+    public bool isFinished = false;
+    public Image locationSign;
+    private Color maskColor = new Color(80f/255, 80f/255, 80f/255, 128f/255);
+
     
     public void Start() {
         eventData = DatabaseManager.Instance.eventDatabase.GetEventByID(eventId);
@@ -81,6 +84,7 @@ public class RandomEventHandler : MonoBehaviour
         Debug.Log($"事件{eventId}已确认, 退出UI");
         GameManager.Instance.playerGO.GetComponent<PlayerController>().isLocked = false;
         isFinished = true;
+        locationSign.color = maskColor;
         return;
     }
 
