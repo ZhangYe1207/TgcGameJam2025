@@ -81,7 +81,7 @@ public class NextLevelController : MonoBehaviour
         }
     }
 
-    IEnumerator SwitchWithOverview(int index)
+    public IEnumerator SwitchWithOverview(int index)
     {
         ApplySettingsToCam(overviewCam, levels[index].overview);
         ActivateCamera(overviewCam);

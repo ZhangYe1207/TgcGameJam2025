@@ -5745,118 +5745,14 @@ PrefabInstance:
       objectReference: {fileID: 1066476277}
     - target: {fileID: 1761213648540929374, guid: f7930041eecb54178bbc4ed240b8b129,
         type: 3}
-      propertyPath: eventLocationPrefab
+      propertyPath: nextLevelController
       value: 
-      objectReference: {fileID: 1123224890232391769, guid: d9991f742c46112438855c59c6853300,
-        type: 3}
-    - target: {fileID: 1761213648540929374, guid: f7930041eecb54178bbc4ed240b8b129,
-        type: 3}
-      propertyPath: HandCards.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1761213648540929374, guid: f7930041eecb54178bbc4ed240b8b129,
-        type: 3}
-      propertyPath: dailyResultItemPrefab
-      value: 
-      objectReference: {fileID: 3495963337817191852, guid: dea1595e3bf79e3479c799a59d2d1840,
-        type: 3}
-    - target: {fileID: 1761213648540929374, guid: f7930041eecb54178bbc4ed240b8b129,
-        type: 3}
-      propertyPath: projectLocationPrefab
-      value: 
-      objectReference: {fileID: 3447567763919114013, guid: 35d0dd33d650ea0449b824a9c87d7903,
-        type: 3}
+      objectReference: {fileID: 1106780946}
     - target: {fileID: 1761213648540929374, guid: f7930041eecb54178bbc4ed240b8b129,
         type: 3}
       propertyPath: DailyReportConfirmButton
       value: 
       objectReference: {fileID: 328270153}
-    - target: {fileID: 1761213648540929374, guid: f7930041eecb54178bbc4ed240b8b129,
-        type: 3}
-      propertyPath: initHandCards.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1761213648540929374, guid: f7930041eecb54178bbc4ed240b8b129,
-        type: 3}
-      propertyPath: initActionPoints.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1761213648540929374, guid: f7930041eecb54178bbc4ed240b8b129,
-        type: 3}
-      propertyPath: initHandCards.Array.data[0]
-      value: money_small, money_small, money_small
-      objectReference: {fileID: 0}
-    - target: {fileID: 1761213648540929374, guid: f7930041eecb54178bbc4ed240b8b129,
-        type: 3}
-      propertyPath: initHandCards.Array.data[1]
-      value: money_small, money_small, money_medium, money_medium
-      objectReference: {fileID: 0}
-    - target: {fileID: 1761213648540929374, guid: f7930041eecb54178bbc4ed240b8b129,
-        type: 3}
-      propertyPath: initHandCards.Array.data[2]
-      value: money_small, money_small, money_small, money_medium, money_medium, money_medium
-      objectReference: {fileID: 0}
-    - target: {fileID: 1761213648540929374, guid: f7930041eecb54178bbc4ed240b8b129,
-        type: 3}
-      propertyPath: initHandCards.Array.data[3]
-      value: money_small, money_small, money_small, money_medium, money_medium, money_medium,
-        money_medium, money_large
-      objectReference: {fileID: 0}
-    - target: {fileID: 1761213648540929374, guid: f7930041eecb54178bbc4ed240b8b129,
-        type: 3}
-      propertyPath: initActionPoints.Array.data[0]
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1761213648540929374, guid: f7930041eecb54178bbc4ed240b8b129,
-        type: 3}
-      propertyPath: initActionPoints.Array.data[1]
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1761213648540929374, guid: f7930041eecb54178bbc4ed240b8b129,
-        type: 3}
-      propertyPath: initActionPoints.Array.data[2]
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1761213648540929374, guid: f7930041eecb54178bbc4ed240b8b129,
-        type: 3}
-      propertyPath: initActionPoints.Array.data[3]
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 1761213648540929374, guid: f7930041eecb54178bbc4ed240b8b129,
-        type: 3}
-      propertyPath: baseGameProperties.Array.data[0].maxValue
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1761213648540929374, guid: f7930041eecb54178bbc4ed240b8b129,
-        type: 3}
-      propertyPath: baseGameProperties.Array.data[1].maxValue
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1761213648540929374, guid: f7930041eecb54178bbc4ed240b8b129,
-        type: 3}
-      propertyPath: baseGameProperties.Array.data[2].maxValue
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1761213648540929374, guid: f7930041eecb54178bbc4ed240b8b129,
-        type: 3}
-      propertyPath: baseGameProperties.Array.data[4].maxValue
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1761213648540929374, guid: f7930041eecb54178bbc4ed240b8b129,
-        type: 3}
-      propertyPath: baseGameProperties.Array.data[5].maxValue
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1761213648540929374, guid: f7930041eecb54178bbc4ed240b8b129,
-        type: 3}
-      propertyPath: baseGameProperties.Array.data[0].currentValue
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1761213648540929374, guid: f7930041eecb54178bbc4ed240b8b129,
-        type: 3}
-      propertyPath: baseGameProperties.Array.data[4].currentValue
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1967279606532599158, guid: f7930041eecb54178bbc4ed240b8b129,
         type: 3}
       propertyPath: m_Name
@@ -8479,7 +8375,7 @@ PrefabInstance:
     - target: {fileID: 2922111218915518752, guid: d332e64ed6a6d43e9b74499f105facf3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 177.05579
+      value: 177.05597
       objectReference: {fileID: 0}
     - target: {fileID: 3173367584337807817, guid: d332e64ed6a6d43e9b74499f105facf3,
         type: 3}
@@ -9325,6 +9221,18 @@ MonoBehaviour:
   eventTriggerRadius: 5
   isFinished: 0
   locationSign: {fileID: 0}
+--- !u!114 &1106780946 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5515511923950818012, guid: 9ee2eb754dd8e4b418d2b5a2c17065c9,
+    type: 3}
+  m_PrefabInstance: {fileID: 2521855613063828353}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01f47e4abd2d246fdb21d689679f813a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!21 &1124521193
 Material:
   serializedVersion: 8

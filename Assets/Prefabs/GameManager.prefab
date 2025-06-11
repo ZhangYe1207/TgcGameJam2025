@@ -47,23 +47,29 @@ MonoBehaviour:
   currentLevel: 0
   projectResults: []
   locationsGO: {fileID: 0}
-  initActionPoints: 0500000008000000
+  initActionPoints: 07000000090000000b0000000c000000
+  initHandCards:
+  - money_small, money_small, money_small
+  - money_small, money_small, money_medium, money_medium
+  - money_small, money_small, money_small, money_medium, money_medium, money_medium
+  - money_small, money_small, money_small, money_medium, money_medium, money_medium,
+    money_medium, money_large
   baseGameProperties:
   - propertyName: ActionPoints
-    currentValue: 5
-    maxValue: 5
+    currentValue: 0
+    maxValue: 30
     minValue: 0
     outOfRangeHandlePolicy: 1
     explanation: "\u884C\u52A8\u70B9"
   - propertyName: HaveDices
     currentValue: 2
-    maxValue: 20
+    maxValue: 30
     minValue: 0
     outOfRangeHandlePolicy: 0
     explanation: "\u5F53\u524D\u53EF\u7528\u7684\u9AB0\u5B50\u6570"
   - propertyName: NeedDices
     currentValue: 2
-    maxValue: 20
+    maxValue: 30
     minValue: 0
     outOfRangeHandlePolicy: 0
     explanation: "\u5224\u5B9A\u6210\u529F\u9700\u8981\u7684\u9AB0\u5B50\u6570"
@@ -74,20 +80,18 @@ MonoBehaviour:
     outOfRangeHandlePolicy: 0
     explanation: "\u53EF\u7528\u5361\u69FD\u6570"
   - propertyName: Generosity
-    currentValue: -3
-    maxValue: 20
+    currentValue: 0
+    maxValue: 30
     minValue: -20
     outOfRangeHandlePolicy: 0
     explanation: 
   - propertyName: Professionality
     currentValue: 0
-    maxValue: 20
+    maxValue: 30
     minValue: -20
     outOfRangeHandlePolicy: 0
     explanation: 
-  HandCards:
-  - insight_card
-  - money_small
+  HandCards: []
   EventsFinished: []
   ProjectFinished: []
   Friends: []
@@ -95,6 +99,7 @@ MonoBehaviour:
   playerGO: {fileID: 0}
   currentPlacedCards: []
   isOnProjectUI: 0
+  MainCanvas: {fileID: 0}
   mainUI: {fileID: 0}
   ActionPointUI: {fileID: 0}
   ProfessionalityUI: {fileID: 0}
@@ -107,6 +112,9 @@ MonoBehaviour:
   DailyReportConfirmButton: {fileID: 0}
   cardUIPrefab: {fileID: 7507374330508939489, guid: b1abd18d220cdea4ebdb419c59309497,
     type: 3}
-  dailyResultItemPrefab: {fileID: 0}
-  eventLocationPrefab: {fileID: 0}
-  projectLocationPrefab: {fileID: 0}
+  dailyResultItemPrefab: {fileID: 3495963337817191852, guid: dea1595e3bf79e3479c799a59d2d1840,
+    type: 3}
+  eventLocationPrefab: {fileID: 1123224890232391769, guid: d9991f742c46112438855c59c6853300,
+    type: 3}
+  projectLocationPrefab: {fileID: 3447567763919114013, guid: 35d0dd33d650ea0449b824a9c87d7903,
+    type: 3}

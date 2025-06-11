@@ -51,6 +51,8 @@ public class GameManager : MonoBehaviour
     [Header("Location Prefabs")]
     [SerializeField] private GameObject eventLocationPrefab;
     [SerializeField] private GameObject projectLocationPrefab;
+    [Header("Next Level Controller")]
+    [SerializeField] private NextLevelController nextLevelController;
 
 
     private void Awake()
@@ -107,6 +109,7 @@ public class GameManager : MonoBehaviour
 
     private void DailyReportConfirm() {
         DailyReportUI.SetActive(false);
+        StartCoroutine(nextLevelController.SwitchWithOverview(currentLevel));
     }
 
     private void NextDay() {
@@ -130,7 +133,7 @@ public class GameManager : MonoBehaviour
         currentLevel++;
         SetupNewLevel();
         UpdateMainUI();
-        // TODO 地图boundary更新？调用nextlevelcontroller
+        
     }
 
     private void SetupNewLevel() {
