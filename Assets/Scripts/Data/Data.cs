@@ -31,10 +31,13 @@ public class EffectData
 }
 
 [System.Serializable]
-public class DelayedEffectData : EffectData
+public class DelayedEffectData
 {
-    [Tooltip("延迟等级，0为立即生效，1为下一回合生效，2为下下回合生效，以此类推")]
+    public string effectCode;
+    [Header("延迟等级，0为立即生效，1为下一回合生效，2为下下回合生效，以此类推")]
     public int delayedLevel;
+    [Header("在延迟效果生效时显示的文字，也就是轮次结算时展示的文字")]
+    [TextArea] public string explanation;
 }
 
 [System.Serializable]

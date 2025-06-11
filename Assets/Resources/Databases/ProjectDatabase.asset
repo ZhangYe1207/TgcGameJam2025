@@ -50,8 +50,9 @@ MonoBehaviour:
         explanation: 
       delayedEffects:
       - effectCode: HandCards:add:money_small
-        explanation: 
         delayedLevel: 0
+        explanation: You received <color=yellow> "Money Small" x1 </color> from the
+          project <color=yellow> Inversion Spa  </color>
     mustPlaceCards:
     - money_small
     needMoney: 10
@@ -124,8 +125,8 @@ MonoBehaviour:
         explanation: 
       delayedEffects:
       - effectCode: HandCards:add:money_small
+        delayedLevel: 0
         explanation: 
-        delayedLevel: 1
     mustPlaceCards:
     - money_small
     needMoney: 10
@@ -165,8 +166,8 @@ MonoBehaviour:
         explanation: 
       delayedEffects:
       - effectCode: HandCards:add:medium_small
-        explanation: 
         delayedLevel: 1
+        explanation: 
     mustPlaceCards: []
     needMoney: 20
     initNeedDices: 7
@@ -205,8 +206,8 @@ MonoBehaviour:
         explanation: 
       delayedEffects:
       - effectCode: HandCards:add:medium_small
-        explanation: 
         delayedLevel: 1
+        explanation: 
     mustPlaceCards: []
     needMoney: 20
     initNeedDices: 5
@@ -245,8 +246,8 @@ MonoBehaviour:
         explanation: 
       delayedEffects:
       - effectCode: HandCards:add:money_small
-        explanation: 
         delayedLevel: 1
+        explanation: 
     mustPlaceCards: []
     needMoney: 10
     initNeedDices: 4
@@ -285,8 +286,8 @@ MonoBehaviour:
         explanation: 
       delayedEffects:
       - effectCode: HandCards:add:money_small
-        explanation: 
         delayedLevel: 1
+        explanation: 
     mustPlaceCards: []
     needMoney: 10
     initNeedDices: 3
@@ -365,8 +366,8 @@ MonoBehaviour:
         explanation: 
       delayedEffects:
       - effectCode: HandCards:add:medium_small
-        explanation: 
         delayedLevel: 1
+        explanation: 
     mustPlaceCards: []
     needMoney: 10
     initNeedDices: 5
@@ -405,8 +406,8 @@ MonoBehaviour:
         explanation: 
       delayedEffects:
       - effectCode: HandCards:add:money_small
-        explanation: 
         delayedLevel: 1
+        explanation: 
     mustPlaceCards: []
     needMoney: 20
     initNeedDices: 11
@@ -445,8 +446,8 @@ MonoBehaviour:
         explanation: 
       delayedEffects:
       - effectCode: HandCards:add:medium_small
-        explanation: 
         delayedLevel: 1
+        explanation: 
     mustPlaceCards: []
     needMoney: 30
     initNeedDices: 1
@@ -485,8 +486,8 @@ MonoBehaviour:
         explanation: 
       delayedEffects:
       - effectCode: HandCards:add:money_small
-        explanation: 
         delayedLevel: 1
+        explanation: 
     mustPlaceCards: []
     needMoney: 10
     initNeedDices: 7
@@ -527,8 +528,8 @@ MonoBehaviour:
         explanation: 
       delayedEffects:
       - effectCode: HandCards:add:money_large
-        explanation: 
         delayedLevel: 1
+        explanation: 
     mustPlaceCards:
     - npc_003
     needMoney: 40
@@ -570,8 +571,8 @@ MonoBehaviour:
         explanation: 
       delayedEffects:
       - effectCode: HandCards:add:money_medium
-        explanation: 
         delayedLevel: 1
+        explanation: 
     mustPlaceCards: []
     needMoney: 20
     initNeedDices: 9
@@ -610,8 +611,8 @@ MonoBehaviour:
         explanation: 
       delayedEffects:
       - effectCode: HandCards:add:money_small
-        explanation: 
         delayedLevel: 1
+        explanation: 
     mustPlaceCards: []
     needMoney: 20
     initNeedDices: 12
@@ -650,8 +651,8 @@ MonoBehaviour:
         explanation: 
       delayedEffects:
       - effectCode: HandCards:add:money_small
-        explanation: 
         delayedLevel: 1
+        explanation: 
     mustPlaceCards: []
     needMoney: 10
     initNeedDices: 11
@@ -690,8 +691,8 @@ MonoBehaviour:
         explanation: 
       delayedEffects:
       - effectCode: HandCards:add:money_large
-        explanation: 
         delayedLevel: 1
+        explanation: 
     mustPlaceCards: []
     needMoney: 40
     initNeedDices: 11
@@ -730,8 +731,8 @@ MonoBehaviour:
         explanation: 
       delayedEffects:
       - effectCode: HandCards:add:money_small
-        explanation: 
         delayedLevel: 1
+        explanation: 
     mustPlaceCards: []
     needMoney: 20
     initNeedDices: 11
