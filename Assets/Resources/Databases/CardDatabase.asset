@@ -78,14 +78,14 @@ MonoBehaviour:
     cardId: money_medium
     description: 20 million
     cardType: 0
-    cardImage: {fileID: 21300000, guid: dec57db890fbd4ccda74c9ae64814c53, type: 3}
+    cardImage: {fileID: 21300000, guid: df3ea55c3480e4fd7b2ff5e5199a1e33, type: 3}
     cardEffects: []
     amount: 20
   - cardName: Large Pile of Money
     cardId: money_large
     description: 40 million
     cardType: 0
-    cardImage: {fileID: 21300042, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    cardImage: {fileID: 21300000, guid: dec57db890fbd4ccda74c9ae64814c53, type: 3}
     cardEffects: []
     amount: 40
   - cardName: Investor
@@ -101,7 +101,7 @@ MonoBehaviour:
     cardId: npc_001
     description: +=
     cardType: 2
-    cardImage: {fileID: 21300042, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    cardImage: {fileID: 21300000, guid: 1b16437d242db4d60a326e23c638afbb, type: 3}
     cardEffects:
     - effectCode: CardSlot += 2
       explanation: 
@@ -110,7 +110,7 @@ MonoBehaviour:
     cardId: npc_001
     description: 
     cardType: 2
-    cardImage: {fileID: 21300042, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+    cardImage: {fileID: 21300000, guid: c01d051ec108e4e8ab9b7a4f55f0051b, type: 3}
     cardEffects:
     - effectCode: FunctionCard:Revers
       explanation: 

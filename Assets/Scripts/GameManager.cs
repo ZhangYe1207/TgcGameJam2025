@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -261,33 +262,50 @@ public class GameManager : MonoBehaviour
         }
 
         // Add cards from hand
-        foreach (string cardId in HandCards) {
-            Card cardData = DatabaseManager.Instance.cardDatabase.GetCardById(cardId);
-            if (cardData != null) {
-                // Instantiate card UI
-                GameObject cardGO = Instantiate(cardUIPrefab, content);
+        // count each kind of card
+        var handCardsGroup = HandCards
+                                .GroupBy(s => s)
+                                .Select(g => new { CardId = g.Key, Count = g.Count () })
+                                .ToList();
+        foreach (var item in handCardsGroup) {
+            SetupHandCardUIbyIdAndCnt(item.CardId, item.Count, content);
+        }      
+    }
 
-                // Set card image
-                Image cardImage = cardGO.GetComponent<Image>();
-                if (cardImage != null && cardData.cardImage != null) {
-                    cardImage.sprite = cardData.cardImage;
-                    // Add random rotation
-                    float randomRotation = Random.Range(-5f, 5f);
-                    cardImage.transform.rotation = Quaternion.Euler(0, 0, randomRotation);
-                }
-                
-                // Set card data
-                CardDataHolder cardDataHolder = cardGO.GetComponent<CardDataHolder>();
-                cardDataHolder.cardData = cardData;
+    private void SetupHandCardUIbyIdAndCnt(string cardId, int count, Transform content) {
+        Card cardData = DatabaseManager.Instance.cardDatabase.GetCardById(cardId);
+        if (cardData != null) {
+            // Instantiate card UI
+            GameObject cardGO = Instantiate(cardUIPrefab, content);
 
-                // Set card button
-                Button cardButton = cardGO.GetComponent<Button>();
-                cardButton.onClick.RemoveAllListeners();
-                if (!isOnProjectUI) {
-                    cardButton.onClick.AddListener(displayCardDetail);
-                } else {
-                    cardButton.onClick.AddListener(placeCard);
-                }
+            // Set card image
+            Image cardImage = cardGO.GetComponent<Image>();
+            if (cardImage != null && cardData.cardImage != null) {
+                cardImage.sprite = cardData.cardImage;
+                // Add random rotation
+                float randomRotation = Random.Range(-5f, 5f);
+                cardImage.transform.rotation = Quaternion.Euler(0, 0, randomRotation);
+            }
+
+            // card count ui
+            var numText = cardGO.transform.Find("NumberOfCards").GetComponent<TextMeshProUGUI>();
+            if (count == 1) {
+                numText.gameObject.SetActive(false);
+            } else {
+                numText.text = $"x{count}";
+            }
+            
+            // Set card data
+            CardDataHolder cardDataHolder = cardGO.GetComponent<CardDataHolder>();
+            cardDataHolder.cardData = cardData;
+
+            // Set card button
+            Button cardButton = cardGO.GetComponent<Button>();
+            cardButton.onClick.RemoveAllListeners();
+            if (!isOnProjectUI) {
+                cardButton.onClick.AddListener(displayCardDetail);
+            } else {
+                cardButton.onClick.AddListener(placeCard);
             }
         }
     }
