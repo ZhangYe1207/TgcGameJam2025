@@ -102,7 +102,7 @@ public class ProjectUIManager : MonoBehaviour
     public void UpdateCardSlotUI() {
         int cardSlotsCount = GameManager.Instance.GetPropertyCurrentValue("CardSlots");
         Debug.Log($"update card slot ui, card slot number: {cardSlotsCount}");
-        Button[] cardSlotButtons = cardSlots.GetComponentsInChildren<Button>();
+        Button[] cardSlotButtons = cardSlots.GetComponentsInChildren<Button>(true);
         for (int i = 0; i < cardSlotButtons.Length; i++) {
             if (i < cardSlotsCount) {
                 cardSlotButtons[i].gameObject.SetActive(true);

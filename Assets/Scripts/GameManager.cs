@@ -334,8 +334,8 @@ public class GameManager : MonoBehaviour
 
     private void SetupHandCardUIbyIdAndCnt(string cardId, int count, Transform content) {
         Card cardData = DatabaseManager.Instance.cardDatabase.GetCardById(cardId);
-        Debug.Log($"setup Card image for {cardId}, image {cardData.cardImage}");
         if (cardData != null) {
+            Debug.Log($"setup Card image for {cardId}, image {cardData.cardImage}");
             // Instantiate card UI
             GameObject cardGO = Instantiate(cardUIPrefab, content);
 
