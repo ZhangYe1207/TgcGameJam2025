@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ProjectHandler : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class ProjectHandler : MonoBehaviour
     private GameObject locationGO;
     public bool isFinished = false;
     public Image locationSign;
+    public TextMeshProUGUI EText;
     private Color maskColor = new Color(80f/255, 80f/255, 80f/255, 128f/255);
 
     void Start()
@@ -78,7 +80,9 @@ public class ProjectHandler : MonoBehaviour
         locationPosition.y = 0;
         Vector3 playerPosition = GameManager.Instance.playerGO.transform.position;
         playerPosition.y = 0;
-        return Vector3.Distance(locationPosition, playerPosition) < eventTriggerRadius;
+        bool res = Vector3.Distance(locationPosition, playerPosition) < eventTriggerRadius;
+        EText.gameObject.SetActive(res);
+        return res;
     }
 
     private bool MouseHovering() {

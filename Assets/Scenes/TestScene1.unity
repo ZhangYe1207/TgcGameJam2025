@@ -2073,7 +2073,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 848722810}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &314989928
@@ -5675,6 +5676,85 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 828411768}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &848722809
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 304714460}
+    m_Modifications:
+    - target: {fileID: 969453834668196372, guid: 35d0dd33d650ea0449b824a9c87d7903,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 969453834668196372, guid: 35d0dd33d650ea0449b824a9c87d7903,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 969453834668196372, guid: 35d0dd33d650ea0449b824a9c87d7903,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 15.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 969453834668196372, guid: 35d0dd33d650ea0449b824a9c87d7903,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 969453834668196372, guid: 35d0dd33d650ea0449b824a9c87d7903,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 969453834668196372, guid: 35d0dd33d650ea0449b824a9c87d7903,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 969453834668196372, guid: 35d0dd33d650ea0449b824a9c87d7903,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 969453834668196372, guid: 35d0dd33d650ea0449b824a9c87d7903,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 969453834668196372, guid: 35d0dd33d650ea0449b824a9c87d7903,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 969453834668196372, guid: 35d0dd33d650ea0449b824a9c87d7903,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3447567763919114013, guid: 35d0dd33d650ea0449b824a9c87d7903,
+        type: 3}
+      propertyPath: m_Name
+      value: ProjectLocation
+      objectReference: {fileID: 0}
+    - target: {fileID: 4233713746285442381, guid: 35d0dd33d650ea0449b824a9c87d7903,
+        type: 3}
+      propertyPath: m_Name
+      value: EText
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 35d0dd33d650ea0449b824a9c87d7903, type: 3}
+--- !u!4 &848722810 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 969453834668196372, guid: 35d0dd33d650ea0449b824a9c87d7903,
+    type: 3}
+  m_PrefabInstance: {fileID: 848722809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &858946314
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8370,12 +8450,12 @@ PrefabInstance:
     - target: {fileID: 2922111218915518752, guid: d332e64ed6a6d43e9b74499f105facf3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.000061035156
+      value: -0.00079345703
       objectReference: {fileID: 0}
     - target: {fileID: 2922111218915518752, guid: d332e64ed6a6d43e9b74499f105facf3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 177.05597
+      value: 177.05588
       objectReference: {fileID: 0}
     - target: {fileID: 3173367584337807817, guid: d332e64ed6a6d43e9b74499f105facf3,
         type: 3}
