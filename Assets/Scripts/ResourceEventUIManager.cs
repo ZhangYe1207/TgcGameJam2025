@@ -1,13 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using TMPro;
 
 public class ResourceEventUIManager : MonoBehaviour
 {
     [Header("UI References")]
     [SerializeField] private GameObject eventPanel;
     [SerializeField] private Text titleText;
-    [SerializeField] private Text descriptionText;
+    [SerializeField] private TextMeshProUGUI descriptionText;
     [SerializeField] private Image eventImage;
     [SerializeField] private Button[] resultButtons = new Button[3];
     [SerializeField] private Text[] resultTexts = new Text[3];
