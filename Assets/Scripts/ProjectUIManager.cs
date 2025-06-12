@@ -179,7 +179,12 @@ public class ProjectUIManager : MonoBehaviour
             EffectExecutor.ExecuteEffect(effect.effectCode);
         }
         foreach (DelayedEffectData effect in result.delayedEffects) {
-            GameManager.Instance.DelayedEffects.Add(effect);
+            if (!GameManager.Instance.returnMoneyClearPlaced) {
+                Debug.Log($"returnMoneyClearPlaced is false, this effect {effect.effectCode} will happen");
+                GameManager.Instance.DelayedEffects.Add(effect);
+            } else {
+                Debug.Log($"returnMoneyClearPlaced is true, this effect {effect.effectCode} will not happen");
+            }
         }
         // 更新UI
         resultUI.SetActive(true);
@@ -221,6 +226,8 @@ public class ProjectUIManager : MonoBehaviour
         UpdateDicesUI();
         GameManager.Instance.UpdateHandCardUI();
         GameManager.Instance.currentPlacedCards.Clear();
+        GameManager.Instance.returnMoneyClearPlaced = false;
+        GameManager.Instance.functionCardReversePlaced = false;
 
         // 关闭UI
         projectUI.SetActive(false);

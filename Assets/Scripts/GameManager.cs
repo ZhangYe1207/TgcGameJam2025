@@ -57,8 +57,8 @@ public class GameManager : MonoBehaviour
 
     // 这些code需要根据当前游戏状态特殊计算，所以不放在静态工具类EffectExecutor里面
     private List<string> specialEffectCodes = new List<string> { "ReturnMoneyCard_Clear",  "FunctionCard_Reverse" };
-    private bool returnMoneyClearPlaced;
-    private bool functionCardReversePlaced;
+    public bool returnMoneyClearPlaced;
+    public bool functionCardReversePlaced;
 
     private void Awake()
     {

@@ -7,7 +7,7 @@ public class NPCHandler : MonoBehaviour {
     public string npcName;
     public NPC npcData;
     public TextMeshProUGUI EText;
-    public float eventTriggerRadius = 5f;
+    public float eventTriggerRadius = 2f;
     public bool isFinished = false;
     public Image locationSign;
 

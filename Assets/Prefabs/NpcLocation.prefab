@@ -397,6 +397,6 @@ MonoBehaviour:
     npcConversationName: 
     results: []
   EText: {fileID: 8893570422721654170}
-  eventTriggerRadius: 5
+  eventTriggerRadius: 2
   isFinished: 0
   locationSign: {fileID: 3542335435794566745}

@@ -8,7 +8,7 @@ public class ProjectHandler : MonoBehaviour
 {
     public string projectId;
     public Project projectData;
-    public float eventTriggerRadius = 5f;
+    public float eventTriggerRadius = 2f;
 
     private ProjectUIManager projectUI;
     private PromptUIManager promptUI;

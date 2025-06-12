@@ -6,7 +6,7 @@ public class RandomEventHandler : MonoBehaviour
 {
     public string eventId;
     public RandomEvent eventData;
-    public float eventTriggerRadius = 5f;
+    public float eventTriggerRadius = 2f;
 
     private ResourceEventUIManager resourceEventUI;
     private PromptUIManager promptUI;
