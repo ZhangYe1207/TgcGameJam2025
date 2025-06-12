@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using DialogueEditor;
 
 // 卡牌数据类
 [System.Serializable]
@@ -97,7 +98,7 @@ public class PlayerData
 }
 
 // 事件类型枚举
-public enum EventType
+public enum RandomEventType
 {
     Resource
 }
@@ -130,7 +131,7 @@ public class RandomEvent
     public string eventId;         // 事件唯一ID
     public string title;           // 事件标题
     public string description;     // 事件描述
-    public EventType eventType;    // 事件类型
+    public RandomEventType eventType;    // 事件类型
     public bool isPreviewable;     // 是否可预览
     public Sprite eventImage;      // 事件图片
     public EventResult[] results;  // 可选结果
@@ -138,6 +139,31 @@ public class RandomEvent
     public List<int> levels;              // 事件出现的关卡
     [Tooltip("Prerequisite可以有多个，如果满足任意一个则可以触发事件")]
     public EventPrerequisite[] prerequisites; // 前置条件
+}
+
+
+[System.Serializable]
+public class NPC 
+{
+    public string npcName;
+    [Header("NPC 出现的关卡")]
+    public int level;
+    // [Header("NPC 出现的条件，Condition之间是And的关系。\n这个条件会在关卡初始化的时候检查，在这个时间点满足条件的本关NPC才会出现")]
+    // public EventPrerequisite prerequisites;
+    [Header("把Conversations下面配的会话名称配进来，比如ExampleConv_Lilian")]
+    public string npcConversationName;
+    [Header("在这里配result，然后在DialogueEditor里面配每个对话对应的result index")]
+    public NPCResult[] results;
+}
+
+[System.Serializable]
+public class NPCResult
+{
+    public string description;
+    [Header("立即生效的Effect")]
+    public List<EffectData> immediateEffects;
+    [Header("延迟生效的Effect")]
+    public List<DelayedEffectData> delayedEffects;
 }
 
 // 项目结果

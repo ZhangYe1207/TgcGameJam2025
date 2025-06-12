@@ -47,3 +47,5 @@ MonoBehaviour:
   cardDatabase: {fileID: 11400000, guid: 029513bf88f6c2a47b575ea0fe037d10, type: 2}
   eventDatabase: {fileID: 11400000, guid: c81ccb8287537564aa7cecae1bbff170, type: 2}
   projectDatabase: {fileID: 11400000, guid: 0c4697d455f95be4ab6884fe1c20a310, type: 2}
+  locationDatabase: {fileID: 11400000, guid: 30ec5f92d15fa764890a83d73dcba67c, type: 2}
+  npcDatabase: {fileID: 11400000, guid: 962dbdac413a36b46aa8b14219bf008b, type: 2}

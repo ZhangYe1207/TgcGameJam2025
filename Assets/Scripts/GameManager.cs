@@ -277,6 +277,7 @@ public class GameManager : MonoBehaviour
 
     private void SetupHandCardUIbyIdAndCnt(string cardId, int count, Transform content) {
         Card cardData = DatabaseManager.Instance.cardDatabase.GetCardById(cardId);
+        Debug.Log($"setup Card image for {cardId}, image {cardData.cardImage}");
         if (cardData != null) {
             // Instantiate card UI
             GameObject cardGO = Instantiate(cardUIPrefab, content);
@@ -284,6 +285,7 @@ public class GameManager : MonoBehaviour
             // Set card image
             Image cardImage = cardGO.GetComponent<Image>();
             if (cardImage != null && cardData.cardImage != null) {
+                Debug.Log($"setup Card image for {cardId}, image {cardData.cardImage}");
                 cardImage.sprite = cardData.cardImage;
                 // Add random rotation
                 float randomRotation = Random.Range(-5f, 5f);

@@ -8,6 +8,7 @@ public class DatabaseManager : MonoBehaviour
     public EventDatabase eventDatabase;
     public ProjectDatabase projectDatabase;
     public LocationDatabase locationDatabase;
+    public NPCDatabase npcDatabase;
     
     private void Awake()
     {
@@ -19,6 +20,7 @@ public class DatabaseManager : MonoBehaviour
             eventDatabase = Resources.Load<EventDatabase>("Databases/EventDatabase");
             projectDatabase = Resources.Load<ProjectDatabase>("Databases/ProjectDatabase");
             locationDatabase = Resources.Load<LocationDatabase>("Databases/LocationDatabase");
+            npcDatabase = Resources.Load<NPCDatabase>("Databases/NPCDatabase");
         }
         else
         {

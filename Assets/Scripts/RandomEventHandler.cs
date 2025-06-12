@@ -55,7 +55,7 @@ public class RandomEventHandler : MonoBehaviour
     }
 
     private void ShowEventUI() {
-        if (eventData.eventType == EventType.Resource) {
+        if (eventData.eventType == RandomEventType.Resource) {
             resourceEventUI.SetRandomEventHandler(this);
             resourceEventUI.ShowEvent(eventData);
         }
