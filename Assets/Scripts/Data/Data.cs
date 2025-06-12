@@ -8,7 +8,9 @@ public class Card
 {
     public string cardName;
     public string cardId;
-    public string description;
+    [TextArea] public string description;
+    [Header("预览中展示的包装文字")]
+    [TextArea] public string details;
     public CardType cardType;
     public Sprite cardImage;
     public List<EffectData> cardEffects;

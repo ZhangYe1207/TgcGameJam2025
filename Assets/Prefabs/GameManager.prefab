@@ -49,7 +49,7 @@ MonoBehaviour:
   locationsGO: {fileID: 0}
   initActionPoints: 07000000090000000b0000000c000000
   initHandCards:
-  - money_small, money_small, money_small
+  - money_small, money_small, money_small, dice_minus_one, npc_000, npc_001, npc_002
   - money_small, money_small, money_medium, money_medium
   - money_small, money_small, money_small, money_medium, money_medium, money_medium
   - money_small, money_small, money_small, money_medium, money_medium, money_medium,
@@ -110,6 +110,7 @@ MonoBehaviour:
   NextDayButton: {fileID: 0}
   DailyReportUI: {fileID: 0}
   DailyReportConfirmButton: {fileID: 0}
+  CardDetailsManager: {fileID: 0}
   cardUIPrefab: {fileID: 7507374330508939489, guid: b1abd18d220cdea4ebdb419c59309497,
     type: 3}
   dailyResultItemPrefab: {fileID: 3495963337817191852, guid: dea1595e3bf79e3479c799a59d2d1840,
@@ -121,3 +122,5 @@ MonoBehaviour:
   npcLocationPrefab: {fileID: 487172645497294833, guid: 5423c5e181d212b40a73c2ab248c21ed,
     type: 3}
   nextLevelController: {fileID: 0}
+  returnMoneyClearPlaced: 0
+  functionCardReversePlaced: 0

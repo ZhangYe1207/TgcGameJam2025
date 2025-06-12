@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
     public Button NextDayButton;
     public GameObject DailyReportUI;
     public Button DailyReportConfirmButton;
+    public CardDetailsManager CardDetailsManager;
 
     [Header("UI Prefabs")]
     [SerializeField] private GameObject cardUIPrefab;
@@ -338,7 +339,8 @@ public class GameManager : MonoBehaviour
             // Debug.Log($"setup Card image for {cardId}, image {cardData.cardImage}");
             // Instantiate card UI
             GameObject cardGO = Instantiate(cardUIPrefab, content);
-
+            cardGO.name = cardData.cardName;
+            
             // Set card image
             Image cardImage = cardGO.GetComponent<Image>();
             if (cardImage != null && cardData.cardImage != null) {
@@ -360,6 +362,7 @@ public class GameManager : MonoBehaviour
             // Set card data
             CardDataHolder cardDataHolder = cardGO.GetComponent<CardDataHolder>();
             cardDataHolder.cardData = cardData;
+            cardDataHolder.CardDetailsManager = CardDetailsManager;
 
             // Set card button
             Button cardButton = cardGO.GetComponent<Button>();

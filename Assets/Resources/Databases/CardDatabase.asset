@@ -15,7 +15,8 @@ MonoBehaviour:
   allCards:
   - cardName: Shady Recommendation Letter
     cardId: dice_minus_one
-    description: Available Dice -1
+    description: "<size=85%>Card Effect: </size> \nAvailable Dice -1"
+    details: "The recommender? Your mom\u2019s cousin\u2019s neighbour. "
     cardType: 1
     cardImage: {fileID: 21300000, guid: 6b1280602a767413d92f95173273ceb1, type: 3}
     cardEffects:
@@ -25,6 +26,7 @@ MonoBehaviour:
   - cardName: Outdated Industry Report
     cardId: dice_minus_two
     description: Available Dice -2
+    details: 
     cardType: 1
     cardImage: {fileID: 21300000, guid: cddd2eca8232f4645b7e04c1aea99a2c, type: 3}
     cardEffects:
@@ -34,6 +36,7 @@ MonoBehaviour:
   - cardName: Long-Winded Consultant
     cardId: dice_minus_three
     description: Available Dice -3
+    details: 
     cardType: 1
     cardImage: {fileID: 21300000, guid: 72c75b3d868da94459e34eba13d756fe, type: 3}
     cardEffects:
@@ -43,6 +46,7 @@ MonoBehaviour:
   - cardName: "The Hustler\u2019s Journal"
     cardId: dice_plus_one
     description: Available Dice +1
+    details: 
     cardType: 1
     cardImage: {fileID: 21300000, guid: 8f373e0f52fc84fb48245db71b98c668, type: 3}
     cardEffects:
@@ -52,6 +56,7 @@ MonoBehaviour:
   - cardName: Polished Pitch Deck Template
     cardId: dice_plus_two
     description: Available Dice +2
+    details: 
     cardType: 1
     cardImage: {fileID: 21300000, guid: 71d128795849243fcb9444a961cdf4ba, type: 3}
     cardEffects:
@@ -61,6 +66,7 @@ MonoBehaviour:
   - cardName: Adorably Fluffy Husky
     cardId: dice_plus_three
     description: Available Dice +3
+    details: 
     cardType: 1
     cardImage: {fileID: 21300000, guid: f1a09b7f0fade6d44935c96cc19438ce, type: 3}
     cardEffects:
@@ -70,6 +76,7 @@ MonoBehaviour:
   - cardName: Small Pile of Money
     cardId: money_small
     description: 10 million
+    details: 
     cardType: 0
     cardImage: {fileID: 21300000, guid: bc5a494b3aa0f4fa693e4294788eb3c2, type: 3}
     cardEffects: []
@@ -77,6 +84,7 @@ MonoBehaviour:
   - cardName: Medium Pile of Money
     cardId: money_medium
     description: 20 million
+    details: 
     cardType: 0
     cardImage: {fileID: 21300000, guid: df3ea55c3480e4fd7b2ff5e5199a1e33, type: 3}
     cardEffects: []
@@ -84,6 +92,7 @@ MonoBehaviour:
   - cardName: Large Pile of Money
     cardId: money_large
     description: 40 million
+    details: 
     cardType: 0
     cardImage: {fileID: 21300000, guid: dec57db890fbd4ccda74c9ae64814c53, type: 3}
     cardEffects: []
@@ -91,6 +100,7 @@ MonoBehaviour:
   - cardName: Investor
     cardId: npc_000
     description: 
+    details: 
     cardType: 2
     cardImage: {fileID: 21300042, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     cardEffects:
@@ -100,6 +110,7 @@ MonoBehaviour:
   - cardName: Lilian
     cardId: npc_001
     description: 
+    details: 
     cardType: 2
     cardImage: {fileID: 21300000, guid: 1b16437d242db4d60a326e23c638afbb, type: 3}
     cardEffects:
@@ -109,6 +120,7 @@ MonoBehaviour:
   - cardName: The Duo
     cardId: npc_002
     description: 
+    details: 
     cardType: 2
     cardImage: {fileID: 21300000, guid: c01d051ec108e4e8ab9b7a4f55f0051b, type: 3}
     cardEffects:
