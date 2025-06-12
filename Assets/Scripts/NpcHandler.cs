@@ -63,6 +63,7 @@ public class NPCHandler : MonoBehaviour {
             GameManager.Instance.DelayedEffects.Add(effect);
         }
         GameManager.Instance.OnGameDataChanged();
+        GameManager.Instance.playerGO.GetComponent<PlayerController>().isLocked = false;
         ConversationManager.OnConversationEnded -= ConversationEnd;
     }
 }
