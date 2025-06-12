@@ -10,7 +10,6 @@ public class EffectExecutor : MonoBehaviour
     private Dictionary<string, FieldInfo> listGameProperties;
     private string[] supportedOperations = new string[] { "+=", "-=", "*=", "/=", "=" };
     private string[] supportedListOperations = new string[] { "add", "remove", "clear" };
-    private string[] specialEffectCodes = new string[] { "xxxx" };
     private static EffectExecutor instance;
 
     private void Awake()
@@ -51,13 +50,13 @@ public class EffectExecutor : MonoBehaviour
         // }
     }
 
-    public static void ExecuteEffect(string effectCode)
+    public static void ExecuteEffect(string effectCode, bool reverse = false)
     {
-        instance.InternalExecuteEffect(effectCode);
+        instance.InternalExecuteEffect(effectCode, reverse);
     }
 
 
-    private void InternalExecuteEffect(string effectCode)
+    private void InternalExecuteEffect(string effectCode, bool reverse = false)
     {
         // 解析List操作的特殊格式: "listName:add:value"
         if (effectCode.Contains(":"))
@@ -66,10 +65,10 @@ public class EffectExecutor : MonoBehaviour
             return;
         }
         
-        ExecuteNumberOperation(effectCode);
+        ExecuteNumberOperation(effectCode, reverse);
     }
 
-    private void ExecuteNumberOperation(string effectCode)
+    private void ExecuteNumberOperation(string effectCode, bool reverse)
     {
         // 基础类型操作解析
         string[] parts = effectCode.Split(supportedOperations, StringSplitOptions.RemoveEmptyEntries);
@@ -87,6 +86,9 @@ public class EffectExecutor : MonoBehaviour
                 int oldValue = property.currentValue;
                 foreach (var operation in supportedOperations) {
                     if (effectCode.Contains(operation)) {
+                        if (reverse) {
+                            value = -value;
+                        }
                         ApplyNumberOperation(property, value, operation);
                         Debug.Log($"执行效果 {effectCode} 成功，{propertyName}: {oldValue} -> {property.currentValue}");
                         return;

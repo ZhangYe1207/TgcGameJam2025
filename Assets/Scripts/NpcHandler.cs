@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using DialogueEditor;
+using UnityEngine.UI;
 
 public class NPCHandler : MonoBehaviour {
     public string npcName;
@@ -8,6 +9,9 @@ public class NPCHandler : MonoBehaviour {
     public TextMeshProUGUI EText;
     public float eventTriggerRadius = 5f;
     public bool isFinished = false;
+    public Image locationSign;
+
+    private Color maskColor = new Color(80f/255, 80f/255, 80f/255, 128f/255);
 
     private GameObject locationGO;
 
@@ -48,7 +52,7 @@ public class NPCHandler : MonoBehaviour {
         Vector3 playerPosition = GameManager.Instance.playerGO.transform.position;
         playerPosition.y = 0;
         bool res = Vector3.Distance(locationPosition, playerPosition) < eventTriggerRadius;
-        EText.gameObject.SetActive(res);
+        EText.gameObject.SetActive(res && !isFinished);
         return res;
     }
 
@@ -64,6 +68,8 @@ public class NPCHandler : MonoBehaviour {
         }
         GameManager.Instance.OnGameDataChanged();
         GameManager.Instance.playerGO.GetComponent<PlayerController>().isLocked = false;
+        locationSign.color = maskColor;
+        isFinished = true;
         ConversationManager.OnConversationEnded -= ConversationEnd;
     }
 }

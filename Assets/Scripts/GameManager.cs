@@ -55,6 +55,10 @@ public class GameManager : MonoBehaviour
     [Header("Next Level Controller")]
     [SerializeField] private NextLevelController nextLevelController;
 
+    // 这些code需要根据当前游戏状态特殊计算，所以不放在静态工具类EffectExecutor里面
+    private List<string> specialEffectCodes = new List<string> { "ReturnMoneyCard:clear",  "FunctionCard:Reverse" };
+    private bool returnMoneyClearPlaced;
+    private bool functionCardReversePlaced;
 
     private void Awake()
     {
@@ -373,7 +377,6 @@ public class GameManager : MonoBehaviour
     }
 
     private void placeCard() {
-        Debug.Log("place card");
         // Get the clicked card data
         CardDataHolder cardDataHolder = EventSystem.current.currentSelectedGameObject.GetComponent<CardDataHolder>();
         if (cardDataHolder == null || cardDataHolder.cardData == null) {
@@ -383,6 +386,7 @@ public class GameManager : MonoBehaviour
 
         // Remove card from hand
         string cardId = cardDataHolder.cardData.cardId;
+        Debug.Log($"place card {cardId}");
         if (HandCards.Contains(cardId)) {
             HandCards.Remove(cardId);
             
@@ -422,7 +426,19 @@ public class GameManager : MonoBehaviour
     public void ExecuteCardEffects() {
         foreach (Card card in currentPlacedCards) {
             foreach (EffectData effect in card.cardEffects) {
-                EffectExecutor.ExecuteEffect(effect.effectCode);
+                switch (effect.effectCode) {
+                    case "ReturnMoneyCard:clear":
+                        returnMoneyClearPlaced = true;
+                        break;
+                    case "FunctionCard:Reverse":
+                        functionCardReversePlaced = true;
+                        break;
+                }
+            }
+        }
+        foreach (Card card in currentPlacedCards) {
+            foreach (EffectData effect in card.cardEffects) {
+                EffectExecutor.ExecuteEffect(effect.effectCode, functionCardReversePlaced);
             }
         }
     }
@@ -437,7 +453,6 @@ public class GameManager : MonoBehaviour
     }
 
     public int GetProjectResultIndex(int[] dices) {
-        // TODO: 根据骰子结果获取项目结果
         int sum = 0;
         foreach (int dice in dices) {
             sum += dice;

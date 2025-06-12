@@ -81,7 +81,7 @@ public class ProjectHandler : MonoBehaviour
         Vector3 playerPosition = GameManager.Instance.playerGO.transform.position;
         playerPosition.y = 0;
         bool res = Vector3.Distance(locationPosition, playerPosition) < eventTriggerRadius;
-        EText.gameObject.SetActive(res);
+        EText.gameObject.SetActive(res && !isFinished);;
         return res;
     }
 

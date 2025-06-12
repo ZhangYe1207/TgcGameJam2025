@@ -68,6 +68,10 @@
 * 数值操作Effect Code格式：{PropertyName} {操作符} {值}， 样例：ActionPoints -= 1（行动点-1）
 * 列表操作Effect Code格式：{列表名}:{操作符}:{元素Id} HandCards:add:insight_card（往手牌中添加insight_card）， HandCards:clear （清空手牌）**注意别写成中文冒号了**
 
+#### Special effect code
+* ReturnMoneyCard:clear 使用后，该项目成功后不获得任何资金卡
+* FunctionCard:Reverse 使用后，该项目置入的其他功能卡反转（+2会变成-2，-1会变成+1）
+
 #### Condition
 * 当前支持的数值比较符：>=, <=, >, <, =, !=
 * 当前支持的列表判断：has(判断存在性)

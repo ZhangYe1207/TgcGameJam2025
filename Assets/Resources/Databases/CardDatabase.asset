@@ -103,7 +103,7 @@ MonoBehaviour:
     cardType: 2
     cardImage: {fileID: 21300000, guid: 1b16437d242db4d60a326e23c638afbb, type: 3}
     cardEffects:
-    - effectCode: CardSlot += 2
+    - effectCode: CardSlots += 2
       explanation: 
     amount: 0
   - cardName: The Duo
