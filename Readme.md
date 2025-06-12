@@ -69,8 +69,9 @@
 * 列表操作Effect Code格式：{列表名}:{操作符}:{元素Id} HandCards:add:insight_card（往手牌中添加insight_card）， HandCards:clear （清空手牌）**注意别写成中文冒号了**
 
 #### Special effect code
-* ReturnMoneyCard:clear 使用后，该项目成功后不获得任何资金卡
-* FunctionCard:Reverse 使用后，该项目置入的其他功能卡反转（+2会变成-2，-1会变成+1）
+**特殊的effect用下划线命名格式**
+* ReturnMoneyCard_Clear 使用后，该项目成功后不获得任何资金卡
+* FunctionCard_Reverse 使用后，该项目置入的其他功能卡反转（+2会变成-2，-1会变成+1）
 
 #### Condition
 * 当前支持的数值比较符：>=, <=, >, <, =, !=

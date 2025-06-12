@@ -53,6 +53,8 @@ public class ProjectUIManager : MonoBehaviour
     }
 
     public void ShowProject() {
+        projectUI.SetActive(true);
+
         // disable resultUI
         resultUI.SetActive(false);
         resultConfirmButton.gameObject.SetActive(false);
@@ -76,7 +78,6 @@ public class ProjectUIManager : MonoBehaviour
         ClearCardSlotData();
         UpdateCardSlotUI();
 
-        projectUI.SetActive(true);
         GameManager.Instance.isOnProjectUI = true;
         GameManager.Instance.playerGO.GetComponent<PlayerController>().isLocked = true;
         GameManager.Instance.UpdateHandCardUI();

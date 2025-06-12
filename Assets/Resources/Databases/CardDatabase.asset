@@ -94,7 +94,7 @@ MonoBehaviour:
     cardType: 2
     cardImage: {fileID: 21300042, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
     cardEffects:
-    - effectCode: ReturnMoneyCard:clear
+    - effectCode: ReturnMoneyCard_Clear
       explanation: 
     amount: 0
   - cardName: Lilian
@@ -112,6 +112,6 @@ MonoBehaviour:
     cardType: 2
     cardImage: {fileID: 21300000, guid: c01d051ec108e4e8ab9b7a4f55f0051b, type: 3}
     cardEffects:
-    - effectCode: FunctionCard:Revers
+    - effectCode: FunctionCard_Reverse
       explanation: 
     amount: 0

@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private NextLevelController nextLevelController;
 
     // 这些code需要根据当前游戏状态特殊计算，所以不放在静态工具类EffectExecutor里面
-    private List<string> specialEffectCodes = new List<string> { "ReturnMoneyCard:clear",  "FunctionCard:Reverse" };
+    private List<string> specialEffectCodes = new List<string> { "ReturnMoneyCard_Clear",  "FunctionCard_Reverse" };
     private bool returnMoneyClearPlaced;
     private bool functionCardReversePlaced;
 
@@ -424,20 +424,27 @@ public class GameManager : MonoBehaviour
     }
 
     public void ExecuteCardEffects() {
+        returnMoneyClearPlaced = false;
+        functionCardReversePlaced = false;
         foreach (Card card in currentPlacedCards) {
             foreach (EffectData effect in card.cardEffects) {
                 switch (effect.effectCode) {
-                    case "ReturnMoneyCard:clear":
+                    case "ReturnMoneyCard_Clear":
                         returnMoneyClearPlaced = true;
+                        Debug.Log("returnMoneyClearPlaced set to true");
                         break;
-                    case "FunctionCard:Reverse":
+                    case "FunctionCard_Reverse":
                         functionCardReversePlaced = true;
+                        Debug.Log("functionCardReversePlaced set to true");
                         break;
                 }
             }
         }
         foreach (Card card in currentPlacedCards) {
             foreach (EffectData effect in card.cardEffects) {
+                if (specialEffectCodes.Contains(effect.effectCode)){
+                    continue;
+                }
                 EffectExecutor.ExecuteEffect(effect.effectCode, functionCardReversePlaced);
             }
         }

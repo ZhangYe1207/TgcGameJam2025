@@ -86,7 +86,7 @@ public class EffectExecutor : MonoBehaviour
                 int oldValue = property.currentValue;
                 foreach (var operation in supportedOperations) {
                     if (effectCode.Contains(operation)) {
-                        if (reverse) {
+                        if (reverse && propertyName != "CardSlots") {
                             value = -value;
                         }
                         ApplyNumberOperation(property, value, operation);

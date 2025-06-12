@@ -5767,7 +5767,7 @@ PrefabInstance:
     - target: {fileID: 1761213648540929374, guid: f7930041eecb54178bbc4ed240b8b129,
         type: 3}
       propertyPath: initHandCards.Array.data[0]
-      value: money_small, money_small, money_small, npc_000, npc_001, npc_002
+      value: money_small, money_small, money_small, npc_000, npc_001, npc_002, dice_minus_one
       objectReference: {fileID: 0}
     - target: {fileID: 1967279606532599158, guid: f7930041eecb54178bbc4ed240b8b129,
         type: 3}
@@ -12632,7 +12632,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 11.1
+  field of view: 36.5
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -12658,8 +12658,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1414728686}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3409914, y: 0.07282814, z: -0.026507271, w: 0.9368662}
-  m_LocalPosition: {x: -7.04, y: 59.29, z: -83.2}
+  m_LocalRotation: {x: 0.30058482, y: 0.027045317, z: -0.008527354, w: 0.95333344}
+  m_LocalPosition: {x: -0.24, y: 8.8, z: -35.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
