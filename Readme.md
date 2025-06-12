@@ -74,11 +74,19 @@
 * 数值Condition Code格式：{PropertyName} {比较符} {值}， 样例：ActionPoints >= 1 
 * 列表Condition Code格式：{列表名}:{比较符}:{元素Id}， 样例：HandCards:has:some_npc （手牌中要有some_npc这张卡） 
 
+## 对白编辑器使用说明
+**文档在DialogueEditor这个文件夹下面**
+1. 把这个预制体Assets/Prefabs/Conversation/ExampleConv_Lilian.prefab拖入到Conversations这个节点下面，可以创建一个新的会话
+2. 在编辑器的上面菜单找到Window -> DialogueEditor，点击进入对白编辑器
+3. 编辑器的具体使用方式可以看Assets/DialogueEditor/DialogueEditorDocumentation.pdf
+4. 最重要的一点是，在最后结束的Speech Node上面，要配上ResultIndex，只有配了这个，才能触发NPC事件的结果结算
+
+
 ## DevLog
 TODO
 [ ] 卡牌效果预览
 [x] 按E交互提示
-[ ] NPC事件类型 & 对白编辑器
+[x] NPC事件类型 & 对白编辑器
 [x] 不同关卡行动点配置
 [x] 轮次结束后的延迟效果结算
 [x] 轮次结束UI & 功能  
