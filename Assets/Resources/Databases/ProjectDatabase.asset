@@ -53,8 +53,7 @@ MonoBehaviour:
         delayedLevel: 0
         explanation: You received <color=yellow> "Money Small" x1 </color> from the
           project <color=yellow> Inversion Spa  </color>
-    mustPlaceCards:
-    - money_small
+    mustPlaceCards: []
     needMoney: 10
     initNeedDices: 1
     initCardSlots: 2
@@ -81,8 +80,7 @@ MonoBehaviour:
       - effectCode: ProjectFinished:add:project_002
         explanation: 
       delayedEffects: []
-    mustPlaceCards:
-    - money_small
+    mustPlaceCards: []
     needMoney: 10
     initNeedDices: 5
     initCardSlots: 2
@@ -127,8 +125,7 @@ MonoBehaviour:
       - effectCode: HandCards:add:money_small
         delayedLevel: 0
         explanation: 
-    mustPlaceCards:
-    - money_small
+    mustPlaceCards: []
     needMoney: 10
     initNeedDices: 1
     initCardSlots: 2

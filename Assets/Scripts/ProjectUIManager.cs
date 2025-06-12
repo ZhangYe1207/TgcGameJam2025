@@ -157,7 +157,8 @@ public class ProjectUIManager : MonoBehaviour
             }
         }
         if (placeAmount < projectData.needMoney) {
-            GameManager.Instance.PromptUI.ShowOkPrompt("You must place at least \"" + projectData.needMoney + "million money\" to invest in this project.");
+            GameManager.Instance.PromptUI.ShowOkPrompt("This project need at least \n<color=yellow><b>\"" + projectData.needMoney + " million money\"</color></b>");
+            return;
         }
         foreach (string cardId in projectData.mustPlaceCards) {
             if (!GameManager.Instance.currentPlacedCards.Exists(card => card.cardId == cardId)) {
