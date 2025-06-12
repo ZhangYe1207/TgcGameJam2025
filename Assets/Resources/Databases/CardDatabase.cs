@@ -25,9 +25,9 @@ public class CardDatabase : ScriptableObject
                 continue;
             }
             card.cardImage = Resources.Load<Sprite>($"CardSprites/{card.cardName}");
-            Debug.Log("card.cardName: " + card.cardName);
-            Debug.Log("card.cardId: " + card.cardId);
-            Debug.Log("card.cardImage: " + card.cardImage);
+            // Debug.Log("card.cardName: " + card.cardName);
+            // Debug.Log("card.cardId: " + card.cardId);
+            // Debug.Log("card.cardImage: " + card.cardImage);
         }
     }
 }

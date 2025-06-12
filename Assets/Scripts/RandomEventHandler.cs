@@ -25,9 +25,7 @@ public class RandomEventHandler : MonoBehaviour
         }
         locationGO = gameObject.transform.parent.gameObject;
         resourceEventUI = GameObject.Find("Canvas").transform.Find("ResourceEventPanel").GetComponent<ResourceEventUIManager>();
-        Debug.Log("resourceEventUI: " + resourceEventUI);
         promptUI = GameObject.Find("Canvas").transform.Find("PromptUI").GetComponent<PromptUIManager>();
-        Debug.Log("promptUI: " + promptUI);
         playerController = GameManager.Instance.playerGO.GetComponent<PlayerController>();
     }
 

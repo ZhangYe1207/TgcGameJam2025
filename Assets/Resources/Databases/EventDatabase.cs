@@ -22,9 +22,9 @@ public class EventDatabase : ScriptableObject
     }
 
     private void InitEvents() {
-        foreach (var e in allEvents) {
-            Debug.Log(e.eventId);
-        }
+        // foreach (var e in allEvents) {
+        //     Debug.Log(e.eventId);
+        // }
     }
 
 }

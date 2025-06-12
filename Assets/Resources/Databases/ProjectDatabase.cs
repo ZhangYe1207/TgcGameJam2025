@@ -21,8 +21,8 @@ public class ProjectDatabase : ScriptableObject
     }
 
     private void InitProjects() {
-        foreach (var p in allProjects) {
-            Debug.Log(p.projectId);
-        }
+        // foreach (var p in allProjects) {
+        //     Debug.Log(p.projectId);
+        // }
     }
 }

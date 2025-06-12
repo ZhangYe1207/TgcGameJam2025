@@ -5764,6 +5764,11 @@ PrefabInstance:
       propertyPath: DailyReportConfirmButton
       value: 
       objectReference: {fileID: 328270153}
+    - target: {fileID: 1761213648540929374, guid: f7930041eecb54178bbc4ed240b8b129,
+        type: 3}
+      propertyPath: initHandCards.Array.data[0]
+      value: money_small, money_small, money_small, npc_000, npc_001, npc_002
+      objectReference: {fileID: 0}
     - target: {fileID: 1967279606532599158, guid: f7930041eecb54178bbc4ed240b8b129,
         type: 3}
       propertyPath: m_Name

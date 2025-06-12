@@ -22,9 +22,9 @@ public class NPCDatabase : ScriptableObject
     }
 
     private void InitNPCs() {
-        foreach (var e in NpcList) {
-            Debug.Log(e.npcName);
-        }
+        // foreach (var e in NpcList) {
+        //     Debug.Log(e.npcName);
+        // }
     }
 
 }

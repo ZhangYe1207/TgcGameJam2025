@@ -21,9 +21,6 @@ public class LocationDatabase : ScriptableObject
     public List<Location> GetRandomLocationsByLevel(int currentLevel, int count)
     {
         List<Location> locs = GetLocationsByLevel(currentLevel);
-        if (locs.Count < count) {
-            Debug.LogWarning("Not Enough Locations!");
-        }
         return ListRandomizer.RandomSelectWithoutRepeat<Location>(locs, count);
     }
 
