@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
     [Header("Location Prefabs")]
     [SerializeField] private GameObject eventLocationPrefab;
     [SerializeField] private GameObject projectLocationPrefab;
+    [SerializeField] private GameObject npcLocationPrefab;
     [Header("Next Level Controller")]
     [SerializeField] private NextLevelController nextLevelController;
 
@@ -151,24 +152,68 @@ public class GameManager : MonoBehaviour
             }
         }
         
-        // 捞取当前关卡所有事件/项目
+        // 捞取当前关卡所有事件/项目/npc
         List<RandomEvent> events = DatabaseManager.Instance.eventDatabase.GetEventsByLevel(currentLevel);
         List<Project> projects = DatabaseManager.Instance.projectDatabase.GetProjectsByLevel(currentLevel);
-        int cnt = events.Count + projects.Count;
+        List<NPC> npcs = DatabaseManager.Instance.npcDatabase.GetNPCsByLevel(currentLevel);
+        int cnt = events.Count + projects.Count + npcs.Count;
         // 随机获取location
         List<Location> locations = DatabaseManager.Instance.locationDatabase.GetRandomLocationsByLevel(currentLevel, cnt);
         if (locations.Count < cnt) {
-            Debug.LogWarning("This level doesn't have enough locations, will random pick events and projects.");
-            // TODO 随机选择
-        } else {
-            for (int i = 0; i < cnt; i++) {
-                if (i < events.Count) {
-                    SetupEventLocation(events[i], locations[i]);
-                } else {
-                    SetupProjectLocation(projects[i - events.Count], locations[i]);
+            Debug.Log("# of events > # of locations, random pick events");
+            bool[] eventSelected = RandomSelect(cnt, locations.Count); // 只有为True的event需要生成
+            int curLocIdx = 0;
+            for (int eventIdx = 0; eventIdx < cnt; eventIdx++) {
+                if (!eventSelected[eventIdx]) {
+                    continue;
                 }
+                if (eventIdx < events.Count) {
+                    SetupEventLocation(events[eventIdx], locations[curLocIdx]);
+                } else if (eventIdx < events.Count + projects.Count) {
+                    SetupProjectLocation(projects[eventIdx - events.Count], locations[curLocIdx]);
+                } else {
+                    SetupNPCLocation(npcs[eventIdx - (events.Count + projects.Count)], locations[curLocIdx]);
+                }
+                curLocIdx++;
+            }
+        } else {
+            Debug.Log("# of events <= # of locations, random pick locations");
+            bool[] locSelected = RandomSelect(locations.Count, cnt);
+            int curEventIdx = 0;
+            for (int locIdx = 0; locIdx < locations.Count; locIdx++) {
+                if (!locSelected[locIdx]) {
+                    continue;
+                }
+                if (curEventIdx < events.Count) {
+                    SetupEventLocation(events[curEventIdx], locations[locIdx]);
+                } else if (curEventIdx < events.Count + projects.Count) {
+                    SetupProjectLocation(projects[curEventIdx - events.Count], locations[locIdx]);
+                } else {
+                    SetupNPCLocation(npcs[curEventIdx - (events.Count + projects.Count)], locations[locIdx]);
+                }
+                curEventIdx++;
             }
         }
+    }
+
+    private bool[] RandomSelect(int n, int m) {
+        bool[] result = new bool[n];
+        for (int i = 0; i < m; i++)
+        {
+            result[i] = true;
+        }
+        
+        // 使用Fisher-Yates洗牌算法打乱数组
+        System.Random random = new System.Random();
+        for (int i = n - 1; i > 0; i--)
+        {
+            int j = random.Next(i + 1);
+            bool temp = result[i];
+            result[i] = result[j];
+            result[j] = temp;
+        }
+        
+        return result;
     }
 
     private void SetupEventLocation(RandomEvent e, Location location) {
@@ -185,6 +230,14 @@ public class GameManager : MonoBehaviour
         locGO.transform.position = location.position;
         var handler = locGO.transform.Find("Project").GetComponent<ProjectHandler>();
         handler.projectId = project.projectId;
+    }
+
+    private void SetupNPCLocation(NPC npc, Location location) {
+        GameObject locGO = Instantiate(npcLocationPrefab, locationsGO.transform);
+        locGO.name = npc.npcName;
+        locGO.transform.position = location.position;
+        var handler = locGO.transform.Find("Npc").GetComponent<NPCHandler>();
+        handler.npcName = npc.npcName;
     }
 
     private void SetupDailyReportUI(List<string> descriptions) {

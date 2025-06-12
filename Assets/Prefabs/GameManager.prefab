@@ -118,3 +118,6 @@ MonoBehaviour:
     type: 3}
   projectLocationPrefab: {fileID: 3447567763919114013, guid: 35d0dd33d650ea0449b824a9c87d7903,
     type: 3}
+  npcLocationPrefab: {fileID: 487172645497294833, guid: 5423c5e181d212b40a73c2ab248c21ed,
+    type: 3}
+  nextLevelController: {fileID: 0}
