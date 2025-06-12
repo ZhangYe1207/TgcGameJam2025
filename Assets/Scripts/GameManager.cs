@@ -257,6 +257,10 @@ public class GameManager : MonoBehaviour
             GameObject GO = Instantiate(dailyResultItemPrefab, content);
             GO.GetComponent<TextMeshProUGUI>().text = t;
         }
+        if (descriptions.Count == 0) {
+            GameObject GO = Instantiate(dailyResultItemPrefab, content);
+            GO.GetComponent<TextMeshProUGUI>().text = "Oops! No money gained from last week! What a <color=red>\"GREAT\"</color> inverstor!";
+        }
         DailyReportConfirmButton.gameObject.SetActive(true);
     }
 
@@ -340,7 +344,7 @@ public class GameManager : MonoBehaviour
             // Instantiate card UI
             GameObject cardGO = Instantiate(cardUIPrefab, content);
             cardGO.name = cardData.cardName;
-            
+
             // Set card image
             Image cardImage = cardGO.GetComponent<Image>();
             if (cardImage != null && cardData.cardImage != null) {
