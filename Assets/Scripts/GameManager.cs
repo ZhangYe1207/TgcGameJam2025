@@ -103,6 +103,8 @@ public class GameManager : MonoBehaviour
         NextDayButton.onClick.AddListener(NextDay);
         DailyReportConfirmButton.onClick.AddListener(DailyReportConfirm);
         DailyReportUI.SetActive(false);
+
+        SoundManager.Instance.PlayMusic("BGM");
     }
 
     private void EffectsCheck() {

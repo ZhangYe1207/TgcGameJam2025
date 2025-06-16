@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 8f;                // 控制移动速度
+    public float speed = 5f;                // 控制移动速度
     public bool isLocked = false;           // 控制是否禁用输入
     private Rigidbody rb;
     public Transform spriteChild;
+    private bool isWalking = false;
 
     private bool facingRight = true;
 
@@ -41,6 +42,25 @@ public class PlayerController : MonoBehaviour
 
         // 直接设置速度，不使用AddForce
         rb.velocity = moveInput * speed;
+        //SoundManager.Instance.PlayMusic("Car");
+
+
+        if (moveInput.magnitude > 0.1f)
+        {
+            if (!isWalking)
+            {
+                SoundManager.Instance.PlayMusic("Car");
+                isWalking = true;
+            }
+        }
+        else
+        {
+            if (isWalking)
+            {
+                SoundManager.Instance.FadeOutMusic("Car", 0.5f);
+                isWalking = false;
+            }
+        }
     }
 
     void Flip()

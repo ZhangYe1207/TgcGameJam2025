@@ -40,6 +40,7 @@ public class NPCHandler : MonoBehaviour {
                     Debug.LogWarning("NPC Conversation not found: " + npcName);
                 }
                 ConversationManager.Instance.StartConversation(conv);
+                SoundManager.Instance.PlayMusic("Bibobibo");
                 GameManager.Instance.playerGO.GetComponent<PlayerController>().isLocked = true;
                 ConversationManager.OnConversationEnded += ConversationEnd;
             }
@@ -71,5 +72,6 @@ public class NPCHandler : MonoBehaviour {
         locationSign.color = maskColor;
         isFinished = true;
         ConversationManager.OnConversationEnded -= ConversationEnd;
+        SoundManager.Instance.StopMusic("Bibobibo");
     }
 }

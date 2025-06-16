@@ -21,7 +21,8 @@ public class CardDataHolder : MonoBehaviour
         EventTrigger.Entry entry = new EventTrigger.Entry();
         entry.eventID = EventTriggerType.PointerEnter;
         entry.callback.AddListener((data) => { 
-            CardDetailsManager.Show(cardData, gameObject.transform.position); 
+            CardDetailsManager.Show(cardData, gameObject.transform.position);
+            SoundManager.Instance.Play("HoverOver");
         });
         et.triggers.Add(entry);
         

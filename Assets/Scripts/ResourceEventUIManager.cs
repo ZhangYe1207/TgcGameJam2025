@@ -47,6 +47,7 @@ public class ResourceEventUIManager : MonoBehaviour
         {
             eventImage.sprite = randomEvent.eventImage;
             eventImage.gameObject.SetActive(true);
+            SoundManager.Instance.Play("EnterEvent");
         }
         else
         {

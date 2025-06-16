@@ -54,6 +54,7 @@ public class ProjectUIManager : MonoBehaviour
 
     public void ShowProject() {
         projectUI.SetActive(true);
+        SoundManager.Instance.Play("EnterEvent");
 
         // disable resultUI
         resultUI.SetActive(false);
@@ -115,11 +116,14 @@ public class ProjectUIManager : MonoBehaviour
         foreach (Transform slot in cardSlots.transform) {
             if (slot.GetComponent<CardDataHolder>().cardData == null) {
                 slot.GetComponent<Image>().sprite = cardSlotSprite;
+                
             }
             else {
                 slot.GetComponent<Image>().sprite = slot.GetComponent<CardDataHolder>().cardData.cardImage;
+                SoundManager.Instance.Play("SetCardInSlot");
             }
         }
+        
     }
 
     private void removeCard() {
@@ -145,6 +149,7 @@ public class ProjectUIManager : MonoBehaviour
         // Add card back to hand
         GameManager.Instance.HandCards.Add(cardDataHolder.cardData.cardId);
         // Remove card from slot
+        SoundManager.Instance.Play("SetCardInSlot");
         GameManager.Instance.currentPlacedCards.Remove(cardDataHolder.cardData);
         cardDataHolder.cardData = null;
     }
@@ -168,6 +173,7 @@ public class ProjectUIManager : MonoBehaviour
                 return;
             }
         }
+        SoundManager.Instance.Play("Invest");
         // 如果满足，则进行骰骰子模拟
         int[] dices = GameManager.Instance.RollDices();
         // 获取结果
@@ -228,6 +234,7 @@ public class ProjectUIManager : MonoBehaviour
         GameManager.Instance.currentPlacedCards.Clear();
         GameManager.Instance.returnMoneyClearPlaced = false;
         GameManager.Instance.functionCardReversePlaced = false;
+        SoundManager.Instance.Play("Later");
 
         // 关闭UI
         projectUI.SetActive(false);
